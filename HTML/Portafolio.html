@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | JohanFilms</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #000000;
+            --dark-gray: #1d1d1f;
+            --apple-gray: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #2997ff; 
+            --border: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+        }
+
+        /* --- RESET & BASE --- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; letter-spacing: -0.015em; }
+        body {
+            background: var(--black);
+            color: var(--apple-gray);
+            font-family: var(--font-main);
+            line-height: 1.47059;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 52px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--apple-gray); text-decoration: none; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--apple-gray); opacity: 0.8; text-decoration: none; font-size: 0.75rem; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 1; }
+
+        /* --- HERO SECCIÓN --- */
+        .portfolio-hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+        .headline {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- CONTENEDOR DE CATEGORÍAS --- */
+        .content-section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 60px;
+        }
+        .category-title span { color: var(--accent); }
+
+        /* --- GRIDS DE FOTOS --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 100px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--dark-gray);
+            aspect-ratio: 16 / 9;
+            border: 1px solid var(--border);
+            transition: transform 0.4s ease;
+        }
+        .portfolio-item:hover { transform: scale(1.02); }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .item-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* --- SECCIÓN EVENTOS (Subcategorías) --- */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 100px;
+        }
+        .event-card {
+            background: #0a0a0a;
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            transition: background 0.3s;
+            cursor: pointer; /* Indica que es clickeable */
+        }
+        .event-card:hover { background: #151515; border-color: var(--accent); }
+        .event-card h3 { font-size: 1.2rem; font-weight: 600; color: #fff; }
+
+        footer {
+            padding: 80px 5% 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .footer-copy { color: var(--text-secondary); font-size: 0.8rem; }
+
+        /* Animaciones */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- ESTILOS DEL MODAL (VENTANA EMERGENTE) --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            overflow-y: auto;
+            padding: 40px 0;
+        }
+
+        .modal-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: fixed;
+            top: 20px; right: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 2100;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .modal-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s;
+        }
+        .modal-gallery img:hover { transform: scale(1.03); }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">JOHANFILMS</a>
+    <ul class="nav-links">
+        <li><a href="index.html">Proyectos</a></li>
+        <li><a href="About us.html">Nosotros</a></li>
+        <li><a href="Portafolio.html">Portafolio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>   
+</nav>
+
+<header class="portfolio-hero">
+    <h1 class="headline reveal active">Portafolio</h1>
+    <p style="color: var(--text-secondary); font-size: 1.2rem;" class="reveal active">Una selección de nuestra visión técnica y estética.</p>
+</header>
+
+<div class="content-section">
+
+    <h2 class="category-title reveal"><span>01.</span> Gastronomía</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-item reveal">
+            <img src="../Portafolio/comida1.webp" alt="Gastronomía">
+        </div>
+        <div class="portfolio-item reveal">
+            <img src="../Portafolio/comida2.webp" alt="Gastronomía">
+        </div>
+    </div>
+
+    <h2 class="category-title reveal"><span>02.</span> Producto</h2>
+    <div class="portfolio-grid">
+        <div class="portfolio-item reveal">
+            <img src="../portafolio/producto1.webp" alt="Producto">
+            <div class="item-label">Minimalismo Comercial</div>
+        </div>
+        <div class="portfolio-item reveal">
+            <img src="../portafolio/producto2.webp" alt="Producto">
+            <div class="item-label">Detalle de Marca</div>
+        </div>
+    </div>
+
+    <h2 class="category-title reveal"><span>03.</span> Eventos Sociales</h2>
+    <div class="events-grid">
+        <div class="event-card reveal" onclick="openModal('Bautizos')"><h3>Bautizos</h3></div>
+        <div class="event-card reveal" onclick="openModal('Cumpleaños')"><h3>Cumpleaños</h3></div>
+        <div class="event-card reveal" onclick="openModal('Baby Shower')"><h3>Baby Shower</h3></div>
+        <div class="event-card reveal" onclick="openModal('Bodas')"><h3>Bodas</h3></div>
+        <div class="event-card reveal" onclick="openModal('XV Años')"><h3>XV Años</h3></div>
+        <div class="event-card reveal" onclick="openModal('Graduaciones')"><h3>Graduaciones</h3></div>
+    </div>
+
+<h2 class="category-title reveal"><span>04.</span> Corporativo</h2>
+<div class="portfolio-grid">
+    <div class="portfolio-item reveal" style="aspect-ratio: 16 / 9; max-width: 1000px; margin: 0 auto;">
+        <video 
+            src="../portafolio/corp.mp4" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </video>
+        <div class="item-label">Business & Lifestyle</div>
+    </div>
+    <div class="credits-container reveal" style="margin-top: 30px; text-align: center; padding-bottom: 80px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto; border-top: 1px solid var(--border); padding-top: 30px;">
+        
+        <div class="credit-item">   
+            <span style="display: block; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px;">Producción</span>
+            <p style="font-size: 0.95rem; font-weight: 500; color: #fff;">Imotion Studio</p>
+        </div>
+
+        <div class="credit-item">
+            <span style="display: block; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px;">Dirección y Post</span>
+            <p style="font-size: 0.95rem; font-weight: 500; color: #fff;">Julio Chinchilla</p>
+        </div>
+
+        <div class="credit-item">
+            <span style="display: block; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px;">Film</span>
+            <p style="font-size: 0.95rem; font-weight: 500; color: #fff;">JohanFilms</p>
+        </div>
+
+        <div class="credit-item">
+            <span style="display: block; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px;">Ilustración y Foto</span>
+            <p style="font-size: 0.95rem; font-weight: 500; color: #fff;">René Muñoz</p>
+        </div>
+
+        <div class="credit-item">
+            <span style="display: block; font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 5px;">Voz en off y Audio</span>
+            <p style="font-size: 0.95rem; font-weight: 500; color: #fff;">Víctor Chique</p>
+        </div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+<div id="portfolioModal" class="modal">
+    <span class="close-modal" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Evento</h2>
+            <p id="modalDescription">Selección de los mejores momentos.</p>
+        </div>
+        <div class="modal-gallery" id="modalGallery"></div>
+    </div>
+</div>
+
+<footer>
+    <p class="footer-copy">&copy; 2026 JOHANFILMS. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    // Configuración de fotos por evento (5 fotos cada uno)
+    const eventData = {
+        'Bodas': ['../Portafolio/boda-foto1.webp', '../Portafolio/boda-foto2.webp', '../Portafolio/boda-foto3.webp', '../Portafolio/boda-foto4.webp', '../Portafolio/boda-foto5.webp', '../Portafolio/boda-foto6.webp','../Portafolio/boda-foto7.webp', '../Portafolio/boda-foto8.webp', '../Portafolio/boda-foto9.webp', '../Portafolio/boda-foto10.webp', '../Portafolio/boda-foto11.webp', '../Portafolio/boda-foto12.webp'], 
+        'XV Años': ['../Portafolio/xv-foto1.webp', '../Portafolio/xv-foto2.webp', '../Portafolio/xv-foto3.webp', '../Portafolio/xv-foto4.webp', '../Portafolio/xv-foto5.webp','../Portafolio/xv-foto6.webp','../Portafolio/xv-foto7.webp','../Portafolio/xv-foto8.webp','../Portafolio/xv-foto9.webp','../Portafolio/xv-foto10.webp', '../Portafolio/xv-foto11.webp', '../Portafolio/xv-foto12.webp'],
+        'Bautizos': ['../Portafolio/Bautizo-1.webp', '../Portafolio/Bautizo-2.webp', '../Portafolio/Bautizo-3.webp', '../Portafolio/Bautizo-4.webp', '../Portafolio/Bautizo-5.webp', '../Portafolio/Bautizo-7.webp', '../Portafolio/Bautizo-8.webp', '../Portafolio/Bautizo-9.webp', '../Portafolio/Bautizo-10.webp'],
+        'Cumpleaños': ['../Portafolio/cumpfoto-1.webp', '../Portafolio/cumpfoto-2.webp', '../Portafolio/cumpfoto-3.webp', '../Portafolio/cumpfoto-4.webp', '../Portafolio/cumpfoto-5.webp', '../Portafolio/cumpfoto-6.webp', '../Portafolio/cumpfoto-7.webp', '../Portafolio/cumpfoto-8.webp', '../Portafolio/cumpfoto-9.webp', '../Portafolio/cumpfoto-10.webp', '../Portafolio/cumpfoto-11.webp', '../Portafolio/cumpfoto-12.webp'],
+        'Baby Shower': ['../Portafolio/Baby-1.webp', '../Portafolio/Baby-2.webp', '../Portafolio/Baby-3.webp', '../Portafolio/Baby-4.webp', '../Portafolio/Baby-5.webp', '../Portafolio/Baby-6.webp', '../Portafolio/Baby-7.webp', '../Portafolio/Baby-8.webp', '../Portafolio/Baby-9.webp',],
+        'Graduaciones': ['../Portafolio/gradfoto-1.webp', '../Portafolio/gradfoto-2.webp', '../Portafolio/gradfoto-3.webp', '../Portafolio/gradfoto-4.webp', '../Portafolio/gradfoto-5.webp', '../Portafolio/gradfoto-6.webp', '../Portafolio/gradfoto-7.webp', '../Portafolio/gradfoto-8.webp', '../Portafolio/gradfoto-9.webp', '../Portafolio/gradfoto-10.webp', '../Portafolio/gradfoto-11.webp', '../Portafolio/gradfoto-12.webp', '../Portafolio/gradfoto-13.webp', '../Portafolio/gradfoto-14.webp', '../Portafolio/gradfoto-15.webp'],
+    };
+
+    function openModal(category) {
+        const modal = document.getElementById('portfolioModal');
+        const title = document.getElementById('modalTitle');
+        const gallery = document.getElementById('modalGallery');
+        
+        title.innerText = category;
+        gallery.innerHTML = ''; 
+
+        // Generar las fotos
+        eventData[category].forEach(imgName => {
+            const img = document.createElement('img');
+            img.src = `../portafolio/${imgName}`;
+            img.alt = category;
+            gallery.appendChild(img);
+        });
+
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeModal() {
+        document.getElementById('portfolioModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('portfolioModal');
+        if (event.target == modal) closeModal();
+    }
+
+    // Scroll Reveal Animation
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+        reveals.forEach((reveal) => {
+            if (reveal.getBoundingClientRect().top < window.innerHeight - 100) {
+                reveal.classList.add('active');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+</script>
+
+</body>
+</html>

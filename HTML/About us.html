@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | JohanFilms</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #000000;
+            --dark-gray: #1d1d1f;
+            --apple-gray: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #2997ff; 
+            --border: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+        }
+
+        /* --- RESET & BASE --- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; letter-spacing: -0.015em; }
+        body {
+            background: var(--black);
+            color: var(--apple-gray);
+            font-family: var(--font-main);
+            line-height: 1.47059;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 52px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--apple-gray); text-decoration: none; }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--apple-gray); opacity: 0.8; text-decoration: none; font-size: 0.75rem; transition: opacity 0.3s; }
+        .nav-links a:hover { opacity: 1; }
+
+        /* --- HERO SECCIÓN --- */
+        .about-hero {
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+        .headline {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .sub-headline {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            font-weight: 400;
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        .content-section {
+            padding: 100px 5%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .manifesto {
+            text-align: left;
+            margin-bottom: 120px;
+            border-left: 1px solid var(--accent);
+            padding-left: 30px;
+        }
+        .manifesto p {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            line-height: 1.4;
+            color: var(--apple-gray);
+            font-weight: 500;
+        }
+
+        /* --- IMAGEN SHOWCASE --- */
+        .showcase-image-container {
+            width: 100%;
+            margin-bottom: 100px;
+        }
+        .showcase-image {
+            width: 100%;
+            height: auto;
+            border-radius: 28px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* --- VIDEO IA --- */
+        .ai-video-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 80px 0 120px;
+        }
+        .ai-video-wrapper h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+        .ai-video-container {
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #000;
+        }
+        .ai-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- SECCIÓN VIDEO + TEXTO --- */
+        .showcase-split-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+        }
+        .showcase-video-container {
+            flex: 1;
+            max-width: 380px;
+            aspect-ratio: 9 / 16;
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            background: #000;
+        }
+        .showcase-vertical-video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .showcase-text-container {
+            flex: 1.2;
+            text-align: left;
+        }
+        .showcase-text-card { margin-bottom: 50px; }
+        .showcase-text-card h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .showcase-text-card p {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- LOS 3 PILARES --- */
+        .grid-pilares {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin: 80px 0;
+        }
+        .pilar-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .pilar-card p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* --- WORKFLOW --- */
+        .tech-section {
+            background: #0a0a0a;
+            border-radius: 30px;
+            padding: 80px 40px;
+            text-align: center;
+            border: 1px solid var(--border);
+            margin: 100px 0;
+        }
+        .tech-section h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 600; }
+        .tech-section p { color: var(--text-secondary); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+
+        /* --- SECCIÓN DE MARCAS ALIADAS --- */
+        .brands-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            margin-top: 40px;
+        }
+        .brands-section h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+        .brands-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            opacity: 0.8;
+        }
+        .brand-item {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.05em;
+        }
+
+        footer {
+            padding: 80px 5% 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .footer-copy { color: var(--text-secondary); font-size: 0.8rem; }
+
+        /* Animaciones */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .showcase-split-section { flex-direction: column; text-align: center; }
+            .showcase-text-container { text-align: center; }
+            .brands-container { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">JOHANFILMS</a>
+    <ul class="nav-links">
+     <li><a href="index.html">Proyectos</a></li>
+        <li><a href="About us.html">Nosotros</a></li>
+        <li><a href="Portafolio.html">Portafolio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+         
+    </ul>
+</nav>
+
+<section class="about-hero">
+    <h1 class="headline reveal active">Conoce como lo hacemos.</h1>
+    <p class="sub-headline reveal active">Buscamos la claridad visual a través de un proceso técnico riguroso y una visión estética depurada.</p>
+</section>
+
+<div class="content-section">
+    
+    <div class="manifesto reveal">
+        <p>Creemos que la simplicidad es el máximo grado de sofisticación. No solo capturamos imágenes; diseñamos la identidad visual que define el carácter de cada marca y el momento único de tu evento.</p>
+    </div>
+
+    <div class="showcase-image-container reveal">
+        <img src="../about us/about-foto1.webp" alt="JohanFilms Showcase" class="showcase-image">
+    </div>
+
+    <div class="tech-section reveal">
+        <h2>Workflow de Vanguardia</h2>
+        <p>Integramos herramientas de última generación y flujos de trabajo potenciados por IA para garantizar una ejecución ágil y una calidad visual que desafía los estándares convencionales.</p>
+    </div>
+
+    <div class="grid-pilares">
+        <div class="pilar-card reveal">
+            <h3>Creatividad</h3>
+            <p>Abordamos cada proyecto desde un estilo único, buscando soluciones visuales que no solo se vean bien, sino que conecten con la audiencia de forma genuina.</p>
+        </div>
+        <div class="pilar-card reveal" style="transition-delay: 0.1s;">
+            <h3>Perfección</h3>
+            <p>Nuestra curaduría es obsesiva. Cada detalle, desde la colorización hasta el ritmo del montaje, es ajustado para cumplir con una estética de alto nivel.</p>
+        </div>
+        <div class="pilar-card reveal" style="transition-delay: 0.2s;">
+            <h3>Rapidez</h3>
+            <p>Entendemos el ritmo del mercado actual. Optimizamos nuestros procesos de post-producción para entregar piezas listas para impactar en tiempo récord.</p>
+        </div>
+    </div>
+
+    <div class="ai-video-wrapper reveal">
+        <h4>AI Workflow Showcase</h4>
+        <div class="ai-video-container">
+            <video src="../about us/IA.mp4" autoplay muted loop playsinline></video>
+        </div>
+    </div>
+
+    <section class="showcase-split-section reveal">
+        <div class="showcase-video-container">
+            <video src="../about us/about-video1.mp4" 
+                   class="showcase-vertical-video" 
+                   autoplay muted loop playsinline preload="auto"></video>
+        </div>
+
+        <div class="showcase-text-container">
+            <div class="showcase-text-card">
+                <h3>Visión</h3>
+                <p>Ojo estratégico que transforma ideas en historias que conectan.</p>
+            </div>
+            <div class="showcase-text-card">
+                <h3>Impacto</h3>
+                <p>Contenido diseñado para detener el scroll y capturar la atención en segundos.</p>
+            </div>
+            <div class="showcase-text-card">
+                <h3>Futuro</h3>
+                <p>Nuestros servicios redefine los estándares visuales de tu industria.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="brands-section reveal">
+        <h4>Partners & Colaboraciones</h4>
+        <div class="brands-container">
+            <div class="brand-item">QUANSHOT</div>
+            <div class="brand-item">VILLA MOMENTI</div>
+            <div class="brand-item">VEETEE CREATIVE</div>
+            <div class="brand-item">VMÚ CREATIVE</div>
+            <div class="brand-item">IMOTION</div>
+            <div class="brand-item">CAELUM GT</div>
+            <div class="brand-item">JAVV.GT</div>
+        </div>
+    </section>
+
+</div> <footer>
+    <p class="footer-copy">&copy; 2026 JOHANFILMS. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+        reveals.forEach((reveal) => {
+            if (reveal.getBoundingClientRect().top < window.innerHeight - 100) {
+                reveal.classList.add('active');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+</script>
+
+</body>
+</html>

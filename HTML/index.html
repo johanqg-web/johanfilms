@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JohanFilms | Producción Audiovisual Premium</title>
+    
+    <!-- Fuente Inter (Estilo Apple) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fuente Inter (Estilo Apple) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- NUEVO: Estilos del Carrusel Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <style>
+        /* 1. Cobertura de Eventos - Tonos Cálidos (Celebración) */
+/* Ajuste para contenido vertical 9:16 */
+/* Elimina el fondo negro de todos los niveles del carrusel */
+.mySwiper, 
+.swiper-wrapper, 
+.swiper-slide, 
+.swiper-slide video, 
+.swiper-slide img {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* Asegura que el contenedor del carrusel no tenga sombra interna negra */
+.mySwiper {
+    background: none !important;
+}
+
+.swiper-slide video.vertical, .swiper-slide img.vertical {
+    width: auto !important;
+    height: 100% !important;
+    max-width: 100%;
+    margin: 0 auto;
+object-fit: contain !important;
+    border-radius: 20px;
+}
+/* Asegura que los controles del video no rompan la estética premium */
+video::-webkit-media-controls-enclosure {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-radius: 20px;
+}
+/* Refuerzo de contraste para los títulos */
+.project-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 15px rgba(0,0,0,1); /* Máxima legibilidad */
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-shadow: 0 1px 10px rgba(0,0,0,1);
+}
+        :root {
+            --black: #000000;
+            --dark-gray: #1d1d1f;
+            --apple-gray: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent: #2997ff; 
+            --border: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+        }
+
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            letter-spacing: -0.015em; 
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--black);
+            color: var(--apple-gray);
+            font-family: var(--font-main);
+            line-height: 1.47059;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 52px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--apple-gray);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            z-index: 1001;
+        }
+
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--apple-gray); opacity: 0.8; text-decoration: none; font-size: 0.75rem; font-weight: 400; transition: opacity 0.3s ease; }
+        .nav-links a:hover { opacity: 1; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle { font-size: clamp(1.2rem, 2.5vw, 1.6rem); color: var(--text-secondary); max-width: 650px; margin-bottom: 40px; font-weight: 400; }
+
+        /* --- BOTONES --- */
+        .btn { padding: 14px 28px; border-radius: 30px; font-size: 1rem; font-weight: 500; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: inline-block; }
+        .btn-primary { background: var(--apple-gray); color: var(--black); }
+        .btn-primary:hover { transform: scale(1.02); background: #fff; }
+
+        /* --- PORTAFOLIO --- */
+        .section { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 15px; font-weight: 600; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+        .project-card { background: var(--dark-gray); aspect-ratio: 16/10; border-radius: 20px; overflow: hidden; position: relative; cursor: pointer; border: 1px solid var(--border); transition: transform 0.4s ease; }
+        .project-card:hover { transform: scale(1.01); }
+        .project-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: opacity 0.6s ease, transform 0.6s ease; }
+        .project-card:hover .project-img { opacity: 0.8; transform: scale(1.03); }
+        .project-info { position: absolute; bottom: 30px; left: 30px; right: 30px; }
+        .project-info h3 { font-size: 1.4rem; margin-bottom: 6px; font-weight: 600; }
+        .project-info p { color: var(--apple-gray); font-size: 0.95rem; opacity: 0.8; }
+
+        /* --- MODAL (VENTANA FLOTANTE) --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); opacity: 0; transition: opacity 0.2s ease; }
+        .modal.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
+        .modal-content { background-color: var(--dark-gray); border: 1px solid var(--border); border-radius: 24px; padding: 40px; width: 90%; max-width: 800px; position: relative; transform: translateY(30px) scale(0.95); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .modal.show .modal-content { transform: translateY(0) scale(1); }
+        .close-btn { position: absolute; top: 20px; right: 25px; color: var(--text-secondary); font-size: 28px; font-weight: 300; cursor: pointer; transition: color 0.3s; }
+        .close-btn:hover { color: #fff; }
+
+        /* --- CARRUSEL INFINITO DE MARCAS --- */
+        .marquee-container {
+            padding: 80px 0;
+            overflow: hidden;
+            background: #0a0a0a;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .marquee {
+            display: flex;
+            width: max-content;
+            animation: scrollMarquee 45s linear infinite;
+        }
+
+        .marquee:hover { animation-play-state: paused; }
+
+        .marquee-content {
+            display: flex;
+            gap: 60px;
+            padding-right: 60px;
+        }
+
+        .marquee-content span {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.5;
+            transition: opacity 0.3s, color 0.3s;
+            cursor: default;
+            white-space: nowrap;
+        }
+
+        .marquee-content span:hover {
+            opacity: 1;
+            color: var(--apple-gray);
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- FORMULARIO DE CONTACTO --- */
+        .contact-container { max-width: 500px; margin: 0 auto; }
+        .form-group { margin-bottom: 24px; }
+        input, select, textarea { width: 100%; padding: 18px; background: var(--dark-gray); border: 1px solid var(--border); border-radius: 14px; color: #fff; font-family: var(--font-main); font-size: 1rem; outline: none; transition: border-color 0.3s, background-color 0.3s; }
+        input:focus, select:focus, textarea:focus { border-color: var(--accent); background: #252528; }
+        .btn-send { width: 100%; background: var(--apple-gray); color: var(--black); border: none; padding: 18px; border-radius: 14px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: transform 0.3s, background 0.3s; }
+        .btn-send:hover { background: #fff; transform: scale(1.01); }
+
+        /* --- ANIMACIONES SCROLL --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-title { font-size: 3.5rem; }
+            .section { padding: 80px 20px; }
+            .modal-content { padding: 30px 20px; }
+        }
+
+        /* --- FOOTER --- */
+        footer { padding: 40px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .social-links a { color: var(--apple-gray); text-decoration: none; font-size: 0.9rem; margin: 0 10px; transition: color 0.3s; opacity: 0.7; }
+        .social-links a:hover { opacity: 1; }
+        .footer-copy { color: var(--text-secondary); font-size: 0.8rem; }
+        /* Estilo para redondear el carrusel de Johan Films */
+/* Estilo definitivo para redondear el carrusel de Johan Films */
+.mySwiper {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    width: 100%;
+    height: 100%;
+    /* Truco para Mac/Safari: fuerza el recorte de las esquinas */
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+.mySwiper img, .mySwiper video {
+    border-radius: 20px !important;
+    object-fit: cover;
+    display: block;
+}
+
+/* Forzamos el recorte también en las diapositivas individuales */
+.swiper-slide {
+    border-radius: 20px !important;
+    overflow: hidden !important;
+}
+
+/* Efecto de elevación para las tarjetas/botones de proyectos */
+.project-card {
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Cuando el mouse pasa por encima (Hover) */
+.project-card:hover {
+    /* --- CONFIGURACIÓN DE FONDOS INDIVIDUALES --- */
+
+/* 1. Eventos: Usamos tu foto optimizada de 351 KB */
+.card-eventos {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.85)), 
+                      url('Fotos/evento-foto1.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+/* 2. Partnership: Sugiero un tono oscuro profundo o una foto de producción */
+.card-partnership {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), 
+                      url('Videos/recorrido-plaza-real-frame.webp'); 
+    background-size: cover;
+    background-position: center;
+}
+
+/* 3. Wellness: Un tono verdoso/azulado muy sutil para salud y estética */
+.card-wellness {
+    background-image: linear-gradient(rgba(0,20,20,0.5), rgba(0,0,0,0.9)), 
+                      url('Fotos/simulacion-arquitectura.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- REFUERZO DE CONTRASTE --- */
+.project-info h3 {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9); /* Sombra para que el texto no se pierda */
+}
+
+.project-info p {
+    text-shadow: 0 1px 5px rgba(0,0,0,0.9);
+    opacity: 0.9;
+}
+
+/* Ajuste para que el hover sea suave */
+.project-card {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+    /* Hace que el botón sobresalga (crece un 3%) */
+    transform: translateY(-8px) scale(1.03);
+    
+    /* Crea una sombra suave y profunda para dar efecto de altura */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    
+    /* Opcional: Si quieres que resalte un poco más el brillo */
+    border-color: var(--accent);
+}
+/* --- ESTILOS SHOWCASE (Imagen, Video y Línea) --- */
+        .showcase-image-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: auto;
+            border-radius: 28px;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .showcase-split-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            padding: 100px 0;
+            margin-top: 80px;
+            border-top: 1px solid var(--border); /* ESTA ES LA LÍNEA QUE BUSCAMOS */
+        }
+
+        .showcase-video-container {
+            flex: 1;
+            max-width: 380px; 
+            width: 100%;
+            aspect-ratio: 9 / 16; 
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            background: #000;
+        }
+
+        .showcase-vertical-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .showcase-text-container {
+            flex: 1.2;
+            text-align: left;
+        }
+
+        .showcase-text-card { margin-bottom: 50px; }
+
+        .showcase-text-card h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .showcase-text-card p {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- ESTA ES LA SOLUCIÓN PARA LAS MARCAS --- */
+        .brands-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px; 
+            flex-wrap: wrap; /* Esto evita que la página se minimice o se estire */
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand-item {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.1em;
+            white-space: nowrap; /* Mantiene el nombre de la marca en una sola línea */
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">JOHANFILMS</a>
+    <ul class="nav-links">
+        <li><a href="JohanFilms.html">Proyectos</a></li>
+        <li><a href="About us.html">Nosotros</a></li>
+        <li><a href="Portafolio.html">Portafolio</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+</nav>
+
+<section class="hero reveal active">
+    <h1 class="hero-title">Marcas que impactan.<br>Eventos que trascienden.</h1>
+    <p class="hero-subtitle">Producción audiovisual. Potenciamos la imagen comercial de tu negocio y capturamos la emoción genuina de tus eventos más importantes.</p>
+    <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">Cotizar un proyecto</a>
+    </div>
+</section>
+
+<section class="section" id="proyectos">
+    <div class="section-header reveal">
+        <h2>Nuestro Trabajo</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Documentamos historias genuinas, capturando la esencia de tu marca y la emoción de cada momento irrepetible.</p>
+    </div>
+    <div class="grid">
+       <!-- Botón 1: Cobertura de Eventos -->
+<div class="project-card reveal card-eventos" data-index="0">
+    <div class="project-info">
+        <h3>Cobertura de Eventos</h3>
+        <p>Momentos y celebraciones.</p>
+    </div>
+</div>
+
+<!-- Botón 2: Partnership Creativo -->
+<div class="project-card reveal card-partnership" style="transition-delay: 0.1s;" data-index="1">
+    <div class="project-info">
+        <h3>Partnership Creativo</h3>
+        <p>Tu equipo visual mes a mes.</p>
+    </div>
+</div>
+
+<!-- Botón 3: Visual Assets -->
+<div class="project-card reveal card-wellness" style="transition-delay: 0.2s;" data-index="2">
+    <div class="project-info">
+        <h3>Visual Assets</h3>
+        <p>Contenido premium sin mensualidades.</p>
+    </div>
+</div>
+    </div>
+</section>
+
+<!-- CARRUSEL INFINITO DE MARCAS -->
+<section class="marquee-container reveal">
+    <p style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 30px;">Han confiado en nosotros</p>
+    <div class="marquee">
+        <!-- Grupo 1 -->
+        <div class="marquee-content">
+            <span>DekalB</span><span>Cervezería Gallo</span><span>Wakami</span><span>UMG</span><span>Tennis Nais</span><span>USAC</span><span>Vitalmed</span><span>Metroproyectos</span><span>Mealbox</span><span>Decora</span><span>Intecap</span><span>Plaza América</span><span>CityPlaza</span><span>Rejobot</span><span>Coca Cola Los Volcanes</span><span>Klampas</span><span>Prog. Moscamed</span><span>Mealbox</span><span>PL Beauty Aesthetic</span><span>SNK Store</span><span>Lias Bakery Coatepeque</span>
+        </div>
+        <!-- Grupo 2 (Duplicado idéntico para crear la ilusión de scroll infinito) -->
+        <div class="marquee-content">
+            <span>DekalB</span><span>Cervezería Gallo</span><span>Wakami</span><span>UMG</span><span>Tennis Nais</span><span>USAC</span><span>Vitalmed</span><span>Metroproyectos</span><span>Mealbox</span><span>Decora</span><span>Intecap</span><span>Plaza América</span><span>CityPlaza</span><span>Rejobot</span><span>Coca Cola Los Volcanes</span><span>Klampas</span><span>Prog. Moscamed</span><span>Mealbox</span><span>PL Beauty Aesthetic</span><span>SNK Store</span><span>Lias Bakery Coatepeque</span>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="contacto">
+    <div class="section-header reveal">
+        <h2>Impulsemos tu marca.</h2>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Déjanos tus datos y diseñaremos la producción visual adecuada para tu empresa.</p>
+    </div>
+    
+    <div class="contact-container reveal">
+        <form id="waForm">
+            <div class="form-group">
+                <input type="text" id="nombre" placeholder="¿Cuál es tu nombre?" required>
+            </div>
+            <div class="form-group">
+                <select id="servicio" required>
+                    <option value="" disabled selected>Selecciona el servicio que necesitas</option>
+                    <option value="Cobertura de Eventos">Cobertura de Eventos (Momentos inolvidables)</option>
+                    <option value="Partnership Creativo">Partnership Creativo (Tu equipo visual mes a mes)</option>
+                    <option value="Marcas & Wellness">Marcas & Wellness (Publicidad premium)</option>
+                    <option value="Proyecto a la medida">Tengo otra idea en mente</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea id="mensaje" rows="4" placeholder="Cuéntanos brevemente sobre tu proyecto..." required></textarea>
+            </div>
+            <button type="submit" class="btn-send">Iniciar Conversación</button>
+        </form>
+    </div>
+</section>
+
+<!-- MODAL PARA PROYECTOS --><!-- MODAL PARA PROYECTOS CON CARRUSEL -->
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2 id="modalTitle">Título del Proyecto</h2>
+        <p id="modalCategory" style="color: var(--text-secondary); margin-bottom: 20px;">Categoría</p>
+        
+        <!-- Carrusel Swiper -->
+        <div class="swiper mySwiper" style="border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
+            <div class="swiper-wrapper" id="modalMediaContent">
+                <!-- Aquí se inyectarán las fotos y videos automáticamente -->
+            </div>
+            <!-- Botones de navegación del carrusel -->
+            <div class="swiper-button-next" style="color: rgba(255,255,255,0.8); transform: scale(0.7);"></div>
+            <div class="swiper-button-prev" style="color: rgba(255,255,255,0.8); transform: scale(0.7);"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        
+        <p id="modalDescription" style="margin-top: 20px; font-size: 0.95rem; line-height: 1.6;">Descripción.</p>
+    </div>
+</div>
+
+<!-- NUEVO: Script del Carrusel Swiper (Debe ir justo arriba de tu <script> principal) -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<footer>
+   
+    <p class="footer-copy">&copy; 2026 JOHANFILMS. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    // SCROLL ANIMATIONS
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        const elementVisible = 100;
+        reveals.forEach((reveal) => {
+            const elementTop = reveal.getBoundingClientRect().top;
+            if (elementTop < windowHeight - elementVisible) {
+                reveal.classList.add('active');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // MODAL LOGIC
+    const modal = document.getElementById("projectModal");
+    const closeBtn = document.querySelector(".close-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalCategory = document.getElementById("modalCategory");
+    const modalDescription = document.getElementById("modalDescription");
+
+   // Datos de tus proyectos con sus fotos y videos reales
+    const projectData = [
+        {
+            title: "Cobertura de Eventos",
+            category: "Tu evento no tiene límites, nuestras fotos tampoco.",
+            description: "Capturamos la esencia de tus momentos más especiales. A través de fotografía artística y cinematografía de alta fidelidad, transformando tus celebraciones en recuerdos eternos que podrás revivir una y otra vez.",
+media: [
+  { type: 'video', url: '../Fotos/evento-video1.mp4' },
+  { type: 'image', url: '../Fotos/evento-foto1.webp' },
+  { type: 'image', url: '../Fotos/evento-foto2.webp' },
+  { type: 'image', url: '../Fotos/evento-foto3.webp' },
+  { type: 'image', url: '../Fotos/evento-foto4.webp' },
+  { type: 'image', url: '../Fotos/evento-foto5.webp' }
+  
+]
+        },
+    {
+    title: "Partnership Creativo",
+    category: "Contenido para Redes Sociales & Estrategia",
+    description: "Diseñamos un flujo constante de contenido de alto impacto en formato vertical (9:16) y fotografías que marcan la diferencia. Optimizamos cada pieza para Reels y TikTok, asegurando que tu marca mantenga una presencia profesional, dinámica y visualmente impecable todos los días.",
+    media: [
+         { type: 'video', url: '../Fotos_partnershipcreativo/partner-video1.mp4', },
+           { type: 'video', url: '../Fotos_partnershipcreativo/partner-video2.mp4', },
+        { type: 'image', url: '../Fotos_partnershipcreativo/partner-foto1.webp',  },
+            { type: 'image', url: '../Fotos_partnershipcreativo/partner-foto4.webp',  },
+          { type: 'image', url: '../Fotos_partnershipcreativo/partner-foto2.webp',  },
+            { type: 'image', url: '../Fotos_partnershipcreativo/partner-foto3.webp',  }
+          
+       
+    ]
+},
+        {
+            title: "Visual Assets",
+            category: "Paquetes por Proyecto",
+            description: "Contenido de calidad sin contratos. Fotografía y video de alto impacto diseñados para empresas/marcas que necesitan renovar su imagen o lanzar un proyecto específico de manera inmediata.",
+            media: [
+                { type: 'video', url: '../Visual/visual-video1.mp4' },
+                { type: 'image', url: '../Visual/visual-foto1.webp' },
+                 { type: 'image', url: '../Visual/visual-foto2.webp' },
+                  { type: 'image', url: '../Visual/visual-foto3.webp' },
+                   { type: 'image', url: '../Visual/visual-foto4.webp' },
+                   { type: 'image', url: '../Visual/visual-foto5.webp' }
+               
+            ]
+        }
+    ];
+
+    let swiperInstance = null; // Variable para controlar el carrusel
+
+    projectCards.forEach((card, index) => {
+        card.addEventListener('click', () => {
+            modalTitle.innerText = projectData[index].title;
+            modalCategory.innerText = projectData[index].category;
+            modalDescription.innerText = projectData[index].description;
+            
+            // Generar los slides de fotos y videos
+            const mediaContainer = document.getElementById("modalMediaContent");
+            mediaContainer.innerHTML = ''; // Limpiamos el carrusel anterior
+            
+   // Reemplaza desde la línea 498 hasta la 506 con esto:
+projectData[index].media.forEach(item => {
+    let slideContent = '';
+    // Detecta si el archivo tiene el formato vertical definido en tu projectData
+    const formatClass = item.format === 'vertical' ? 'vertical' : '';
+    
+    if (item.type === 'image') {
+        slideContent = `<img src="${item.url}" class="${formatClass}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">`;
+    } else if (item.type === 'video') {
+slideContent = `<video src="${item.url}" class="${formatClass}" autoplay muted loop playsinline style="width: auto; height: 100%; max-width: 100%; object-fit: contain; border-radius: 20px; background: transparent;"></video>`;
+  }
+    
+    // El estilo flex y el fondo negro aseguran que el contenido vertical se vea centrado y premium
+mediaContainer.innerHTML += `<div class="swiper-slide" style="display: flex; justify-content: center; align-items: center; background: transparent !important;">${slideContent}</div>`;
+});
+
+            modal.classList.add("show");
+            document.body.style.overflow = "hidden"; 
+
+            // Inicializar o actualizar el carrusel
+            if (swiperInstance) {
+                swiperInstance.destroy(true, true);
+            }
+            swiperInstance = new Swiper(".mySwiper", {
+                navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+                pagination: { el: ".swiper-pagination", clickable: true },
+                loop: false,
+                grabCursor: true
+            });
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove("show");
+        setTimeout(() => { if(!modal.classList.contains("show")) document.body.style.overflow = "auto"; }, 400); 
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove("show");
+            setTimeout(() => { document.body.style.overflow = "auto"; }, 400);
+        }
+    });
+
+    // WHATSAPP
+    document.getElementById('waForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre').value;
+        const servicio = document.getElementById('servicio').value;
+        const mensaje = document.getElementById('mensaje').value;
+        const telefono = "50247474348"; 
+        const texto = `Hola JohanFilms. Te escribo de parte de ${nombre}. Nos interesa el servicio de "${servicio}". Detalles del proyecto: ${mensaje}`;
+        const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
+        window.open(url, '_blank');
+    });
+</script>
+
+</body>
+</html>
