@@ -30,7 +30,20 @@
     background: transparent !important;
     background-color: transparent !important;
 }
+.media-frame video.vertical{
+    width: auto !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    background: transparent !important;
+}
 
+.swiper-slide{
+    overflow: hidden !important;
+}
+.media-frame{
+    background: transparent !important;
+}
 /* Asegura que el contenedor del carrusel no tenga sombra interna negra */
 .mySwiper {
     background: none !important;
@@ -357,7 +370,7 @@ video::-webkit-media-controls-enclosure {
             overflow: hidden;
             border: 1px solid var(--border);
             box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            background: #000;
+            background: transparent;
         }
 
         .showcase-vertical-video {
@@ -415,6 +428,136 @@ video::-webkit-media-controls-enclosure {
             resize: none;
             outline: none;
         }
+
+
+/* =========================================================
+   FIX FINAL JOHANFILMS — Loader premium + videos controlados
+   ========================================================= */
+.modal-content{
+    width: min(92vw, 900px);
+    max-height: 92vh;
+    overflow: hidden;
+}
+
+.mySwiper{
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    max-height: 65vh !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    position: relative !important;
+}
+
+.swiper-wrapper,
+.swiper-slide{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.swiper-slide{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    border-radius: 20px !important;
+}
+
+.media-frame{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: transparent;
+    border-radius: 20px;
+}
+
+.media-frame img,
+.media-frame video{
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+    background: transparent;
+}
+
+.media-frame img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.media-frame video{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.media-frame video.vertical,
+.media-frame img.vertical{
+    width: auto !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+}
+
+.video-loader{
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    transition: opacity 0.22s ease;
+    border-radius: 20px;
+}
+
+.video-loader::before{
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 42px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.28);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: -1;
+}
+
+.video-loader.hidden{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video-loader p{
+    color: rgba(255,255,255,0.72);
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    margin: 0;
+    font-weight: 400;
+}
+
+@media (max-width: 768px){
+    .modal-content{
+        width: 94vw;
+        max-height: 90vh;
+        padding: 28px 18px;
+    }
+
+    .mySwiper{
+        max-height: 58vh !important;
+    }
+}
+        
     </style>
 </head>
 <body>
@@ -520,7 +663,7 @@ video::-webkit-media-controls-enclosure {
         <p id="modalCategory" style="color: var(--text-secondary); margin-bottom: 20px;">Categoría</p>
         
         <!-- Carrusel Swiper -->
-        <div class="swiper mySwiper" style="border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #000;">
+<div class="swiper mySwiper" style="border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: transparent;">
             <div class="swiper-wrapper" id="modalMediaContent">
                 <!-- Aquí se inyectarán las fotos y videos automáticamente -->
             </div>
@@ -573,12 +716,12 @@ video::-webkit-media-controls-enclosure {
             category: "Tu evento no tiene límites, nuestras fotos tampoco.",
             description: "Capturamos la esencia de tus momentos más especiales. A través de fotografía artística y cinematografía de alta fidelidad, transformando tus celebraciones en recuerdos eternos que podrás revivir una y otra vez.",
 media: [
-  { type: 'video', url: '../Fotos/evento-video1.mp4' },
-  { type: 'image', url: '../Fotos/evento-foto1.webp' },
-  { type: 'image', url: '../Fotos/evento-foto2.webp' },
-  { type: 'image', url: '../Fotos/evento-foto3.webp' },
-  { type: 'image', url: '../Fotos/evento-foto4.webp' },
-  { type: 'image', url: '../Fotos/evento-foto5.webp' }
+  { type: 'video', url: 'Fotos/evento-video1.mp4' },
+  { type: 'image', url: 'Fotos/evento-foto1.webp' },
+  { type: 'image', url: 'Fotos/evento-foto2.webp' },
+  { type: 'image', url: 'Fotos/evento-foto3.webp' },
+  { type: 'image', url: 'Fotos/evento-foto4.webp' },
+  { type: 'image', url: 'Fotos/evento-foto5.webp' }
   
 ]
         },
@@ -587,12 +730,12 @@ media: [
     category: "Contenido para Redes Sociales & Estrategia",
     description: "Diseñamos un flujo constante de contenido de alto impacto en formato vertical (9:16) y fotografías que marcan la diferencia. Optimizamos cada pieza para Reels y TikTok, asegurando que tu marca mantenga una presencia profesional, dinámica y visualmente impecable todos los días.",
     media: [
-         { type: 'video', url: '../Fotos_partnershipcreativo/partner-video1.mp4', },
-           { type: 'video', url: '../Fotos_partnershipcreativo/partner-video2.mp4', },
-        { type: 'image', url: '../Fotos_partnershipcreativo/partner-foto1.webp',  },
-            { type: 'image', url: '../Fotos_partnershipcreativo/partner-foto4.webp',  },
-          { type: 'image', url: '../Fotos_partnershipcreativo/partner-foto2.webp',  },
-            { type: 'image', url: '../Fotos_partnershipcreativo/partner-foto3.webp',  }
+         { type: 'video', url: 'Fotos_partnershipcreativo/partner-video1.mp4', },
+           { type: 'video', url: 'Fotos_partnershipcreativo/partner-video2.mp4', },
+        { type: 'image', url: 'Fotos_partnershipcreativo/partner-foto1.webp',  },
+            { type: 'image', url: 'Fotos_partnershipcreativo/partner-foto4.webp',  },
+          { type: 'image', url: 'Fotos_partnershipcreativo/partner-foto2.webp',  },
+            { type: 'image', url: 'Fotos_partnershipcreativo/partner-foto3.webp',  }
           
        
     ]
@@ -602,12 +745,12 @@ media: [
             category: "Paquetes por Proyecto",
             description: "Contenido de calidad sin contratos. Fotografía y video de alto impacto diseñados para empresas/marcas que necesitan renovar su imagen o lanzar un proyecto específico de manera inmediata.",
             media: [
-                { type: 'video', url: '../Visual/visual-video1.mp4' },
-                { type: 'image', url: '../Visual/visual-foto1.webp' },
-                 { type: 'image', url: '../Visual/visual-foto2.webp' },
-                  { type: 'image', url: '../Visual/visual-foto3.webp' },
-                   { type: 'image', url: '../Visual/visual-foto4.webp' },
-                   { type: 'image', url: '../Visual/visual-foto5.webp' }
+                { type: 'video', url: 'Visual/visual-video1.mp4' },
+                { type: 'image', url: 'Visual/visual-foto1.webp' },
+                 { type: 'image', url: 'Visual/visual-foto2.webp' },
+                  { type: 'image', url: 'Visual/visual-foto3.webp' },
+                   { type: 'image', url: 'Visual/visual-foto4.webp' },
+                   { type: 'image', url: 'Visual/visual-foto5.webp' }
                
             ]
         }
@@ -625,21 +768,92 @@ media: [
             const mediaContainer = document.getElementById("modalMediaContent");
             mediaContainer.innerHTML = ''; // Limpiamos el carrusel anterior
             
-   // Reemplaza desde la línea 498 hasta la 506 con esto:
-projectData[index].media.forEach(item => {
-    let slideContent = '';
-    // Detecta si el archivo tiene el formato vertical definido en tu projectData
-    const formatClass = item.format === 'vertical' ? 'vertical' : '';
-    
-    if (item.type === 'image') {
-        slideContent = `<img src="${item.url}" class="${formatClass}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">`;
-    } else if (item.type === 'video') {
-slideContent = `<video src="${item.url}" class="${formatClass}" autoplay muted loop playsinline style="width: auto; height: 100%; max-width: 100%; object-fit: contain; border-radius: 20px; background: transparent;"></video>`;
-  }
-    
-    // El estilo flex y el fondo negro aseguran que el contenido vertical se vea centrado y premium
-mediaContainer.innerHTML += `<div class="swiper-slide" style="display: flex; justify-content: center; align-items: center; background: transparent !important;">${slideContent}</div>`;
-});
+   // Generar cada slide con loader premium y contenedor seguro
+            projectData[index].media.forEach((item, mediaIndex) => {
+                const formatClass = item.format === 'vertical' ? 'vertical' : '';
+                const mediaId = `project-media-${index}-${mediaIndex}`;
+
+                let slideContent = '';
+
+                if (item.type === 'image') {
+                    slideContent = `
+                        <div class="media-frame">
+                            <img src="${item.url}" class="${formatClass}" alt="${projectData[index].title}">
+                        </div>
+                    `;
+                } else if (item.type === 'video') {
+                    slideContent = `
+                        <div class="media-frame">
+                            <div class="video-loader">
+                                <p>Cargando experiencia...</p>
+                            </div>
+
+                            <video
+                                id="${mediaId}"
+                                src="${item.url}"
+                                class="${formatClass}"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                preload="auto"
+                                disablepictureinpicture
+                                controlslist="nodownload noplaybackrate nofullscreen">
+                            </video>
+                        </div>
+                    `;
+                }
+
+                mediaContainer.innerHTML += `
+                    <div class="swiper-slide">
+                        ${slideContent}
+                    </div>
+                `;
+            });
+
+            // Loader + detección automática de videos verticales
+            requestAnimationFrame(() => {
+                const videos = mediaContainer.querySelectorAll('video');
+
+                videos.forEach(video => {
+                    const frame = video.closest('.media-frame');
+                    const loader = frame ? frame.querySelector('.video-loader') : null;
+
+                    const hideLoader = () => {
+                        if (loader) loader.classList.add('hidden');
+                    };
+
+                    const lockVideoSize = () => {
+                        if (video.videoHeight > video.videoWidth) {
+                            video.classList.add('vertical');
+                        } else {
+                            video.classList.remove('vertical');
+                        }
+                    };
+
+                    video.addEventListener('loadedmetadata', () => {
+                        lockVideoSize();
+                        hideLoader();
+                    });
+
+                    video.addEventListener('loadeddata', hideLoader);
+                    video.addEventListener('canplay', hideLoader);
+                    video.addEventListener('canplaythrough', hideLoader);
+                    video.addEventListener('playing', hideLoader);
+                    video.addEventListener('error', hideLoader);
+
+                    video.load();
+
+                    video.play()
+                        .then(hideLoader)
+                        .catch(() => {
+                            setTimeout(hideLoader, 450);
+                        });
+
+                    // Seguridad: nunca dejar el loader pegado aunque el navegador tarde o bloquee eventos.
+                    setTimeout(hideLoader, 700);
+                });
+            });
 
             modal.classList.add("show");
             document.body.style.overflow = "hidden"; 

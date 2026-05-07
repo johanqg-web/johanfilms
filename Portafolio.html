@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | JohanFilms</title>
+    <title>portafolio | JohanFilms</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -208,6 +208,40 @@
             transition: transform 0.3s;
         }
         .modal-gallery img:hover { transform: scale(1.03); }
+        .video-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.video-loader{
+    position: absolute;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    transition: opacity 0.5s ease;
+}
+
+.video-loader.hidden{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video-loader p{
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    margin: 0;
+}
+
+.loader-spinner{
+    display: none;
+}
 
     </style>
 </head>
@@ -218,7 +252,7 @@
     <ul class="nav-links">
         <li><a href="index.html">Proyectos</a></li>
         <li><a href="About us.html">Nosotros</a></li>
-        <li><a href="Portafolio.html">Portafolio</a></li>
+        <li><a href="portafolio.html">portafolio</a></li>
         <li><a href="contacto.html">Contacto</a></li>
     </ul>   
 </nav>
@@ -233,10 +267,10 @@
     <h2 class="category-title reveal"><span>01.</span> Gastronomía</h2>
     <div class="portfolio-grid">
         <div class="portfolio-item reveal">
-            <img src="Portafolio/comida1.webp" alt="Gastronomía">
+            <img src="portafolio/comida1.webp" alt="Gastronomía">
         </div>
         <div class="portfolio-item reveal">
-            <img src="Portafolio/comida2.webp" alt="Gastronomía">
+            <img src="portafolio/comida2.webp" alt="Gastronomía">
         </div>
     </div>
 
@@ -265,14 +299,25 @@
 <h2 class="category-title reveal"><span>04.</span> Corporativo</h2>
 <div class="portfolio-grid">
     <div class="portfolio-item reveal" style="aspect-ratio: 16 / 9; max-width: 1000px; margin: 0 auto;">
-        <video 
-            src="portafolio/corp.mp4" 
-            autoplay 
-            muted 
-            loop 
-            playsinline 
-            style="width: 100%; height: 100%; object-fit: cover;">
-        </video>
+        <div class="video-container">
+
+    <div class="video-loader" id="videoLoader">
+        <div class="loader-spinner"></div>
+        <p>Cargando experiencia...</p>
+    </div>
+
+   <video
+    id="heroVideo"
+    src="portafolio/corp.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    style="width: 100%; height: 100%; object-fit: cover; display: block;">
+</video>
+
+</div>
         <div class="item-label">Business & Lifestyle</div>
     </div>
     <div class="credits-container reveal" style="margin-top: 30px; text-align: center; padding-bottom: 80px;">
@@ -327,12 +372,12 @@
 <script>
     // Configuración de fotos por evento (5 fotos cada uno)
     const eventData = {
-        'Bodas': ['Portafolio/boda-foto1.webp', 'Portafolio/boda-foto2.webp', 'Portafolio/boda-foto3.webp', 'Portafolio/boda-foto4.webp', 'Portafolio/boda-foto5.webp', 'Portafolio/boda-foto6.webp','Portafolio/boda-foto7.webp', 'Portafolio/boda-foto8.webp', 'Portafolio/boda-foto9.webp', 'Portafolio/boda-foto10.webp', 'Portafolio/boda-foto11.webp', 'Portafolio/boda-foto12.webp'], 
-        'XV Años': ['Portafolio/xv-foto1.webp', 'Portafolio/xv-foto2.webp', 'Portafolio/xv-foto3.webp', 'Portafolio/xv-foto4.webp', 'Portafolio/xv-foto5.webp','Portafolio/xv-foto6.webp','Portafolio/xv-foto7.webp','Portafolio/xv-foto8.webp','Portafolio/xv-foto9.webp','Portafolio/xv-foto10.webp', 'Portafolio/xv-foto11.webp', 'Portafolio/xv-foto12.webp'],
-        'Bautizos': ['Portafolio/Bautizo-1.webp', 'Portafolio/Bautizo-2.webp', 'Portafolio/Bautizo-3.webp', 'Portafolio/Bautizo-4.webp', 'Portafolio/Bautizo-5.webp', 'Portafolio/Bautizo-7.webp', 'Portafolio/Bautizo-8.webp', 'Portafolio/Bautizo-9.webp', 'Portafolio/Bautizo-10.webp'],
-        'Cumpleaños': ['Portafolio/cumpfoto-1.webp', 'Portafolio/cumpfoto-2.webp', 'Portafolio/cumpfoto-3.webp', 'Portafolio/cumpfoto-4.webp', 'Portafolio/cumpfoto-5.webp', 'Portafolio/cumpfoto-6.webp', 'Portafolio/cumpfoto-7.webp', 'Portafolio/cumpfoto-8.webp', 'Portafolio/cumpfoto-9.webp', 'Portafolio/cumpfoto-10.webp', 'Portafolio/cumpfoto-11.webp', 'Portafolio/cumpfoto-12.webp'],
-        'Baby Shower': ['Portafolio/Baby-1.webp', 'Portafolio/Baby-2.webp', 'Portafolio/Baby-3.webp', 'Portafolio/Baby-4.webp', 'Portafolio/Baby-5.webp', 'Portafolio/Baby-6.webp', 'Portafolio/Baby-7.webp', 'Portafolio/Baby-8.webp', 'Portafolio/Baby-9.webp',],
-        'Graduaciones': ['Portafolio/gradfoto-1.webp', 'Portafolio/gradfoto-2.webp', 'Portafolio/gradfoto-3.webp', 'Portafolio/gradfoto-4.webp', 'Portafolio/gradfoto-5.webp', 'Portafolio/gradfoto-6.webp', 'Portafolio/gradfoto-7.webp', 'Portafolio/gradfoto-8.webp', 'Portafolio/gradfoto-9.webp', 'Portafolio/gradfoto-10.webp', 'Portafolio/gradfoto-11.webp', 'Portafolio/gradfoto-12.webp', 'Portafolio/gradfoto-13.webp', 'Portafolio/gradfoto-14.webp', 'Portafolio/gradfoto-15.webp'],
+        'Bodas': ['portafolio/boda-foto1.webp', 'portafolio/boda-foto2.webp', 'portafolio/boda-foto3.webp', 'portafolio/boda-foto4.webp', 'portafolio/boda-foto5.webp', 'portafolio/boda-foto6.webp','portafolio/boda-foto7.webp', 'portafolio/boda-foto8.webp', 'portafolio/boda-foto9.webp', 'portafolio/boda-foto10.webp', 'portafolio/boda-foto11.webp', 'portafolio/boda-foto12.webp'], 
+        'XV Años': ['portafolio/xv-foto1.webp', 'portafolio/xv-foto2.webp', 'portafolio/xv-foto3.webp', 'portafolio/xv-foto4.webp', 'portafolio/xv-foto5.webp','portafolio/xv-foto6.webp','portafolio/xv-foto7.webp','portafolio/xv-foto8.webp','portafolio/xv-foto9.webp','portafolio/xv-foto10.webp', 'portafolio/xv-foto11.webp', 'portafolio/xv-foto12.webp'],
+        'Bautizos': ['portafolio/Bautizo-1.webp', 'portafolio/Bautizo-2.webp', 'portafolio/Bautizo-3.webp', 'portafolio/Bautizo-4.webp', 'portafolio/Bautizo-5.webp', 'portafolio/Bautizo-7.webp', 'portafolio/Bautizo-8.webp', 'portafolio/Bautizo-9.webp', 'portafolio/Bautizo-10.webp'],
+        'Cumpleaños': ['portafolio/cumpfoto-1.webp', 'portafolio/cumpfoto-2.webp', 'portafolio/cumpfoto-3.webp', 'portafolio/cumpfoto-4.webp', 'portafolio/cumpfoto-5.webp', 'portafolio/cumpfoto-6.webp', 'portafolio/cumpfoto-7.webp', 'portafolio/cumpfoto-8.webp', 'portafolio/cumpfoto-9.webp', 'portafolio/cumpfoto-10.webp', 'portafolio/cumpfoto-11.webp', 'portafolio/cumpfoto-12.webp'],
+        'Baby Shower': ['portafolio/Baby-1.webp', 'portafolio/Baby-2.webp', 'portafolio/Baby-3.webp', 'portafolio/Baby-4.webp', 'portafolio/Baby-5.webp', 'portafolio/Baby-6.webp', 'portafolio/Baby-7.webp', 'portafolio/Baby-8.webp', 'portafolio/Baby-9.webp',],
+        'Graduaciones': ['portafolio/gradfoto-1.webp', 'portafolio/gradfoto-2.webp', 'portafolio/gradfoto-3.webp', 'portafolio/gradfoto-4.webp', 'portafolio/gradfoto-5.webp', 'portafolio/gradfoto-6.webp', 'portafolio/gradfoto-7.webp', 'portafolio/gradfoto-8.webp', 'portafolio/gradfoto-9.webp', 'portafolio/gradfoto-10.webp', 'portafolio/gradfoto-11.webp', 'portafolio/gradfoto-12.webp', 'portafolio/gradfoto-13.webp', 'portafolio/gradfoto-14.webp', 'portafolio/gradfoto-15.webp'],
     };
 
     function openModal(category) {
@@ -346,7 +391,7 @@
         // Generar las fotos
         eventData[category].forEach(imgName => {
             const img = document.createElement('img');
-            img.src = `portafolio/${imgName}`;
+            img.src = imgName;
             img.alt = category;
             gallery.appendChild(img);
         });
@@ -377,6 +422,23 @@
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 </script>
+<script>
+const video = document.getElementById('heroVideo');
+const loader = document.getElementById('videoLoader');
 
+function hideVideoLoader() {
+    if (loader) loader.classList.add('hidden');
+}
+
+if (video) {
+    video.addEventListener('loadeddata', hideVideoLoader);
+    video.addEventListener('canplay', hideVideoLoader);
+    video.addEventListener('playing', hideVideoLoader);
+
+    video.play().catch(() => {
+        hideVideoLoader();
+    });
+}
+</script>
 </body>
 </html>
