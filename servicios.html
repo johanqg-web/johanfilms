@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios | JohanFilms</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <style>
+    :root{
+      --black:#000000;
+      --panel:#0b0b0c;
+      --panel-soft:#111113;
+      --white:#f5f5f7;
+      --muted:#8e8e93;
+      --muted-2:#5f5f66;
+      --accent:#2997ff;
+      --border:rgba(255,255,255,.1);
+      --border-strong:rgba(255,255,255,.16);
+      --font:'Inter',sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--black);
+      color:var(--white);
+      font-family:var(--font);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(41,151,255,.18), transparent 34%),
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.055), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.035), transparent 22%);
+      z-index:-1;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:1000;
+      height:52px;
+      padding:0 5%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:rgba(0,0,0,.72);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:saturate(180%) blur(20px);
+      -webkit-backdrop-filter:saturate(180%) blur(20px);
+    }
+
+    .nav-logo{
+      font-size:1.05rem;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      font-size:.75rem;
+      opacity:.78;
+      transition:opacity .25s ease,color .25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      opacity:1;
+      color:#fff;
+    }
+
+    .menu-toggle{
+      display:none;
+      width:34px;
+      height:34px;
+      position:relative;
+      z-index:1002;
+      cursor:pointer;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      gap:6px;
+    }
+
+    .menu-toggle span{
+      width:18px;
+      height:1.5px;
+      background:#fff;
+      border-radius:999px;
+      transition:all .3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1){transform:translateY(3.8px) rotate(45deg)}
+    .menu-toggle.active span:nth-child(2){transform:translateY(-3.8px) rotate(-45deg)}
+
+    .services-page{
+      min-height:100vh;
+      padding:128px 5% 72px;
+    }
+
+    .services-inner{
+      width:min(1180px,100%);
+      margin:0 auto;
+    }
+
+    .hero-services{
+      text-align:center;
+      max-width:820px;
+      margin:0 auto 58px;
+    }
+
+    .eyebrow{
+      color:var(--muted);
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.34em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+
+    .hero-services h1{
+      font-size:clamp(3.2rem,7.8vw,6rem);
+      line-height:.95;
+      font-weight:800;
+      letter-spacing:-.075em;
+      margin-bottom:24px;
+      background:linear-gradient(180deg,#fff 0%,#d7d7dc 45%,#8f8f98 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-services p{
+      color:var(--muted);
+      font-size:clamp(1rem,2vw,1.22rem);
+      line-height:1.65;
+      max-width:760px;
+      margin:0 auto;
+      font-weight:400;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .service-card{
+      position:relative;
+      min-height:315px;
+      padding:28px 26px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--border-strong);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.012)),
+        var(--panel);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      transition:transform .4s cubic-bezier(.16,1,.3,1), border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .service-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 25% 0%, rgba(41,151,255,.13), transparent 34%);
+      opacity:.75;
+      pointer-events:none;
+    }
+
+    .service-card > *{
+      position:relative;
+      z-index:1;
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(41,151,255,.55);
+      box-shadow:0 28px 70px rgba(0,0,0,.48);
+    }
+
+    .icon-box{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:rgba(41,151,255,.12);
+      border:1px solid rgba(41,151,255,.35);
+      color:var(--accent);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.18rem;
+      margin-bottom:28px;
+    }
+
+    .service-card h2{
+      font-size:1.22rem;
+      line-height:1.15;
+      letter-spacing:-.04em;
+      font-weight:750;
+      margin-bottom:14px;
+    }
+
+    .service-card p{
+      color:rgba(245,245,247,.62);
+      font-size:.95rem;
+      line-height:1.55;
+      letter-spacing:-.02em;
+      max-width:95%;
+    }
+
+    .price-line{
+      padding-top:22px;
+      margin-top:auto;
+      color:#fff;
+      font-size:.86rem;
+      font-weight:750;
+      line-height:1.4;
+    }
+
+    .price-line span{
+      color:var(--accent);
+    }
+
+
+
+    .card-footer{
+      position:relative;
+      z-index:2;
+      padding-top:24px;
+      margin-top:auto;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .card-cta{
+      min-height:42px;
+      width:100%;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.045);
+      color:#f5f5f7;
+      font-size:.82rem;
+      font-weight:750;
+      letter-spacing:-.015em;
+      transition:transform .32s cubic-bezier(.16,1,.3,1), background .32s ease, border-color .32s ease, color .32s ease, box-shadow .32s ease;
+    }
+
+    .service-card:hover .card-cta{
+      transform:translateY(-2px);
+      border-color:rgba(245,245,247,.42);
+      background:#f5f5f7;
+      color:#000;
+      box-shadow:0 18px 38px rgba(0,0,0,.32);
+    }
+
+    .bottom-cta{
+      margin:54px auto 0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:0 24px;
+      border-radius:999px;
+      font-size:.95rem;
+      font-weight:650;
+      transition:transform .28s ease, background .28s ease, border-color .28s ease;
+    }
+
+    .btn-primary{
+      background:#f5f5f7;
+      color:#000;
+    }
+
+    .btn-primary:hover{transform:scale(1.02);background:#fff}
+
+    .btn-secondary{
+      color:rgba(255,255,255,.72);
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.035);
+    }
+
+    .btn-secondary:hover{transform:scale(1.02);border-color:rgba(255,255,255,.28)}
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:34px 5%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      color:var(--muted-2);
+      font-size:.82rem;
+      max-width:1180px;
+      margin:0 auto;
+    }
+
+    .footer-brand{
+      color:#fff;
+      font-weight:750;
+      letter-spacing:.04em;
+    }
+
+    .footer-links{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .footer-links a{
+      color:var(--muted);
+      transition:color .25s ease;
+    }
+
+    .footer-links a:hover{color:#fff}
+
+    .reveal{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity .75s cubic-bezier(.5,0,0,1), transform .75s cubic-bezier(.5,0,0,1);
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:1120px){
+      .services-grid{grid-template-columns:repeat(3,1fr)}
+    }
+
+    @media(max-width:768px){
+      nav{padding:0 20px}
+      .nav-logo{font-size:.9rem}
+      .menu-toggle{display:flex}
+      .nav-links{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:100%;
+        height:100vh;
+        background:rgba(0,0,0,.96);
+        backdrop-filter:blur(30px);
+        -webkit-backdrop-filter:blur(30px);
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:40px;
+        transition:right .45s cubic-bezier(.77,0,.175,1);
+        z-index:1000;
+      }
+      .nav-links.active{right:0}
+      .nav-links a{font-size:1.5rem!important;font-weight:650;opacity:1}
+      .services-page{padding:108px 20px 56px}
+      .hero-services{margin-bottom:42px}
+      .hero-services h1{font-size:clamp(3rem,15vw,4.6rem)}
+      .hero-services p{font-size:1rem}
+      .services-grid{grid-template-columns:1fr;gap:14px}
+      .service-card{min-height:auto;padding:26px 24px}
+      .icon-box{margin-bottom:24px}
+      footer{flex-direction:column;text-align:center;padding:28px 20px 34px}
+    }
+
+    @media(min-width:769px) and (max-width:1120px){
+      .services-grid .service-card:nth-child(4),
+      .services-grid .service-card:nth-child(5){
+        grid-column:span 1;
+      }
+    }
+
+
+    /* --- HOVER PREMIUM: tarjeta sobresale y las demás bajan visualmente --- */
+    .service-card{
+      will-change:transform, opacity, filter;
+      isolation:isolate;
+      transform-origin:center;
+    }
+
+    .service-card::before{
+      z-index:0;
+    }
+
+    .service-card::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      border-radius:24px;
+      background:
+        linear-gradient(135deg, rgba(41,151,255,.28), transparent 34%),
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.16), transparent 40%);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .38s ease;
+      z-index:0;
+    }
+
+    .service-card > *{
+      z-index:2;
+    }
+
+    .icon-box{
+      transition:transform .38s cubic-bezier(.16,1,.3,1), background .32s ease, border-color .32s ease, box-shadow .32s ease;
+    }
+
+    @media (hover:hover) and (pointer:fine){
+      .services-grid:hover .service-card.reveal.active:not(:hover){
+        transform:translateY(6px) scale(.965);
+        opacity:.52;
+        filter:saturate(.72) brightness(.72);
+      }
+
+      .services-grid .service-card.reveal.active:hover{
+        transform:translateY(-18px) scale(1.07);
+        opacity:1;
+        filter:none;
+        z-index:25;
+        border-color:rgba(41,151,255,.78);
+        box-shadow:
+          0 35px 90px rgba(0,0,0,.68),
+          0 0 0 1px rgba(41,151,255,.18),
+          0 0 46px rgba(41,151,255,.20);
+      }
+
+      .services-grid .service-card.reveal.active:hover::after{
+        opacity:1;
+      }
+
+      .services-grid .service-card.reveal.active:hover .icon-box{
+        transform:translateY(-3px) scale(1.12);
+        background:rgba(41,151,255,.20);
+        border-color:rgba(41,151,255,.75);
+        box-shadow:0 0 28px rgba(41,151,255,.25);
+      }
+
+      footer {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-copy {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.85rem;
+  margin: 0;
+}
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">JOHANFILMS</a>
+
+    <div class="menu-toggle" id="menuToggle" aria-label="Abrir menú" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html" class="active">Servicios</a></li>
+      <li><a href="Portafolio.html">Portafolio</a></li>
+      <li><a href="partnership.html">Partnership</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="services-page">
+    <div class="services-inner">
+      <section class="hero-services reveal active">
+        <div class="eyebrow">Elige el servicio que necesitas</div>
+        <h1>Elige el servicio que necesitas.</h1>
+        <p>Selecciona una categoría y escríbenos directamente por WhatsApp. Te enviaremos la información del servicio según tu fecha, ubicación y tipo de cobertura.</p>
+      </section>
+
+      <section class="services-grid" aria-label="Servicios JohanFilms">
+        <a class="service-card reveal" href="https://wa.me/50247474348?text=Hola%20JohanFilms%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Bodas.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20para%20conocer%20las%20opciones%20disponibles." target="_blank" rel="noopener">
+          <div>
+            <div class="icon-box"><i class="ti ti-rings" aria-hidden="true"></i></div>
+            <h2>Bodas</h2>
+            <p>Coberturas para bodas civiles, ceremonias religiosas y celebraciones completas con una estética elegante y emocional.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-line">Desde <span>Q1,399</span></div>
+            <div class="card-cta">Solicitar información</div>
+          </div>
+        </a>
+
+        <a class="service-card reveal" href="https://wa.me/50247474348?text=Hola%20JohanFilms%2C%20estoy%20interesado%20en%20el%20servicio%20de%20XV%20a%C3%B1os.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20para%20conocer%20las%20opciones%20disponibles." target="_blank" rel="noopener" style="transition-delay:.06s">
+          <div>
+            <div class="icon-box"><i class="ti ti-cake" aria-hidden="true"></i></div>
+            <h2>XV años</h2>
+            <p>Sesión, evento, familia, decoración y una historia visual completa para recordar esta etapa con intención.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-line">Desde <span>Q1,399</span></div>
+            <div class="card-cta">Solicitar información</div>
+          </div>
+        </a>
+
+        <a class="service-card reveal" href="https://wa.me/50247474348?text=Hola%20JohanFilms%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Eventos%20sociales.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20para%20conocer%20las%20opciones%20disponibles." target="_blank" rel="noopener" style="transition-delay:.12s">
+          <div>
+            <div class="icon-box"><i class="ti ti-confetti" aria-hidden="true"></i></div>
+            <h2>Eventos sociales</h2>
+            <p>Cumpleaños, graduaciones, baby showers, pedidas de mano y reuniones familiares documentadas con detalle.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-line">Desde <span>Q999</span></div>
+            <div class="card-cta">Solicitar información</div>
+          </div>
+        </a>
+
+        <a class="service-card reveal" href="https://wa.me/50247474348?text=Hola%20JohanFilms%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Marcas%20mensuales.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20para%20conocer%20las%20opciones%20disponibles." target="_blank" rel="noopener" style="transition-delay:.18s">
+          <div>
+            <div class="icon-box"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
+            <h2>Marcas mensuales</h2>
+            <p>Contenido constante para empresas que quieren verse profesionales, activas y coherentes todos los meses.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-line">Desde <span>Q1,499 / mes</span></div>
+            <div class="card-cta">Solicitar información</div>
+          </div>
+        </a>
+
+        <a class="service-card reveal" href="https://wa.me/50247474348?text=Hola%20JohanFilms%2C%20estoy%20interesado%20en%20el%20servicio%20de%20Marcas%20una%20vez.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20para%20conocer%20las%20opciones%20disponibles." target="_blank" rel="noopener" style="transition-delay:.24s">
+          <div>
+            <div class="icon-box"><i class="ti ti-camera-cog" aria-hidden="true"></i></div>
+            <h2>Marcas una vez</h2>
+            <p>Fotos, reels o producción puntual para lanzar productos, servicios, campañas o renovar la imagen de tu marca.</p>
+          </div>
+          <div class="card-footer">
+            <div class="price-line">Desde <span>Q1,099</span></div>
+            <div class="card-cta">Solicitar información</div>
+          </div>
+        </a>
+      </section>
+
+     <nav>
+    <a href="index.html" class="nav-logo">JOHANFILMS</a>
+
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+         <li><a href="index.html">Proyectos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="Portafolio.html">Portafolio</a></li>
+         <li><a href="servicios.html">servicios</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+</nav>
+    </div>
+  </main>
+
+ <footer>
+    <p class="footer-copy">&copy;2026 JOHANFILMS. Todos los derechos reservados.</p>
+</footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      reveals.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 90) el.classList.add('active');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    const toggleMenu = () => {
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') toggleMenu();
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  </script>
+</body>
+</html>
