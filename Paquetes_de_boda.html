@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JohanFilms | Paquetes de Boda</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <style>
+    :root{
+      --black:#000;
+      --surface:#0a0a0b;
+      --text:#f5f5f7;
+      --muted:#8e8e93;
+      --muted-2:#626268;
+      --accent:#2997ff;
+      --accent-2:#0071e3;
+      --gold:#ffd76a;
+      --success:#34c759;
+      --success-soft:rgba(52,199,89,.12);
+      --success-border:rgba(52,199,89,.32);
+      --border:rgba(255,255,255,.10);
+      --font:'Inter', sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;letter-spacing:-.015em;}
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--black);
+      color:var(--text);
+      font-family:var(--font);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.47;
+    }
+    a{color:inherit;text-decoration:none;}
+    button{font-family:inherit;}
+
+    nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      height:52px;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 5%;
+      background:rgba(0,0,0,.72);
+      backdrop-filter:saturate(180%) blur(20px);
+      -webkit-backdrop-filter:saturate(180%) blur(20px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-logo{font-size:1.05rem;font-weight:800;letter-spacing:.02em;}
+    .nav-links{display:flex;list-style:none;gap:30px;align-items:center;}
+    .nav-links a{font-size:.75rem;color:rgba(245,245,247,.76);transition:opacity .25s ease,color .25s ease;}
+    .nav-links a:hover,.nav-links a.active{color:#fff;opacity:1;}
+
+    .menu-toggle{
+      display:none;
+      width:34px;height:34px;
+      z-index:1002;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:6px;
+    }
+    .menu-toggle span{width:18px;height:1.5px;background:#fff;border-radius:999px;transition:.3s ease;}
+    .menu-toggle.active span:nth-child(1){transform:translateY(3.8px) rotate(45deg);}
+    .menu-toggle.active span:nth-child(2){transform:translateY(-3.8px) rotate(-45deg);}
+
+    .section{
+      width:min(1180px, 100%);
+      margin:0 auto;
+      padding:96px 24px;
+    }
+    .eyebrow{
+      color:var(--accent);
+      font-size:.72rem;
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      margin-bottom:14px;
+    }
+    .section-head{
+      text-align:center;
+      max-width:780px;
+      margin:0 auto 52px;
+    }
+    .section-head h2{
+      font-size:clamp(2rem,4.6vw,4rem);
+      line-height:.98;
+      letter-spacing:-.055em;
+      margin-bottom:18px;
+      font-weight:900;
+    }
+    .section-head p{
+      color:var(--muted);
+      font-size:clamp(1rem,1.7vw,1.2rem);
+      line-height:1.65;
+    }
+
+    .hero{
+      min-height:96vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:112px 24px 72px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(41,151,255,.20), transparent 36%),
+        radial-gradient(circle at 12% 24%, rgba(255,255,255,.08), transparent 28%),
+        linear-gradient(180deg,#050505 0%,#000 80%);
+      border-bottom:0;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(to bottom, black, transparent 78%);
+      -webkit-mask-image:linear-gradient(to bottom, black, transparent 78%);
+      opacity:.28;
+      pointer-events:none;
+    }
+    .hero-inner{position:relative;text-align:center;max-width:980px;margin:0 auto;}
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:rgba(255,255,255,.72);
+      font-size:.78rem;
+      font-weight:750;
+      padding:8px 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.045);
+      border-radius:999px;
+      margin-bottom:24px;
+      backdrop-filter:blur(12px);
+    }
+    .hero h1{
+      font-size:clamp(3.2rem,9vw,7.6rem);
+      line-height:.92;
+      letter-spacing:-.075em;
+      font-weight:900;
+      margin-bottom:26px;
+      background:linear-gradient(180deg,#fff 0%,#d9d9df 52%,#85858d 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero p{
+      color:var(--muted);
+      max-width:720px;
+      margin:0 auto 34px;
+      font-size:clamp(1.08rem,2vw,1.45rem);
+      line-height:1.58;
+    }
+    .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:46px;}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border:none;
+      cursor:pointer;
+      border-radius:999px;
+      padding:14px 24px;
+      font-size:.96rem;
+      font-weight:800;
+      transition:transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .btn:hover{transform:translateY(-2px);}
+    .btn-primary{background:#f5f5f7;color:#000;}
+    .btn-primary:hover{background:#fff;}
+    .btn-secondary{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.14);}
+    .btn-secondary:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);}
+
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      max-width:850px;
+      margin:0 auto;
+    }
+    .stat{
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:18px;
+      text-align:left;
+    }
+    .stat strong{display:block;font-size:.92rem;margin-bottom:5px;}
+    .stat span{display:block;color:var(--muted);font-size:.82rem;line-height:1.45;}
+
+    .seller-strip{
+      width:min(1120px,calc(100% - 48px));
+      margin:56px auto 0;
+      display:grid;
+      grid-template-columns:1.4fr .85fr;
+      gap:16px;
+      position:relative;
+      z-index:5;
+    }
+    .seller-strip::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:-32px;
+      transform:translateX(-50%);
+      width:100vw;
+      height:1px;
+      background:rgba(255,255,255,.08);
+      pointer-events:none;
+    }
+    .seller-copy,.seller-note{
+      border-radius:26px;
+      background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
+      border:1px solid rgba(255,255,255,.10);
+      padding:28px;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      box-shadow:0 24px 80px rgba(0,0,0,.40);
+    }
+    .seller-copy h2{font-size:clamp(1.75rem,3.4vw,3rem);line-height:1.02;letter-spacing:-.055em;margin-bottom:14px;}
+    .seller-copy p,.seller-note p{color:var(--muted);font-size:.98rem;line-height:1.65;}
+    .seller-note strong{display:block;font-size:1.05rem;margin-bottom:10px;}
+
+    .quick-nav{
+      position:sticky;
+      top:52px;
+      z-index:30;
+      display:flex;
+      justify-content:center;
+      padding:14px 20px;
+      background:rgba(0,0,0,.76);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      overflow-x:auto;
+    }
+    .quick-nav-inner{display:flex;gap:10px;min-width:max-content;}
+    .quick-nav a{
+      color:rgba(255,255,255,.68);
+      font-size:.78rem;
+      font-weight:750;
+      padding:9px 14px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:999px;
+      background:rgba(255,255,255,.035);
+      transition:.25s ease;
+      white-space:nowrap;
+    }
+    .quick-nav a:hover{color:#fff;border-color:rgba(41,151,255,.45);background:rgba(41,151,255,.10);}
+
+    .grid{display:grid;gap:18px;align-items:stretch;}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+
+    .card-grid:hover .pkg-card:not(:hover){
+      transform:translateY(8px) scale(.97);
+      opacity:.62;
+      filter:saturate(.75) brightness(.78);
+    }
+    .pkg-card{
+      position:relative;
+      overflow:hidden;
+      min-height:100%;
+      background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;
+      padding:28px;
+      transition:transform .42s cubic-bezier(.165,.84,.44,1), opacity .3s ease, filter .3s ease, border-color .3s ease, box-shadow .3s ease;
+      transform:translateZ(0);
+      display:flex;
+      flex-direction:column;
+    }
+    .pkg-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:radial-gradient(circle at 25% 0%, rgba(41,151,255,.18), transparent 42%);
+      opacity:.55;
+      pointer-events:none;
+    }
+    .pkg-card.featured{
+      border-color:rgba(41,151,255,.52);
+      background:linear-gradient(180deg,rgba(41,151,255,.13),rgba(255,255,255,.035));
+      box-shadow:0 0 0 1px rgba(41,151,255,.08),0 30px 90px rgba(0,0,0,.40);
+    }
+    .pkg-card.gold::before{background:radial-gradient(circle at 25% 0%, rgba(255,215,106,.16), transparent 42%);}
+    .pkg-card:hover{
+      transform:translateY(-18px) scale(1.035);
+      z-index:20;
+      border-color:rgba(41,151,255,.72);
+      box-shadow:0 36px 100px rgba(0,0,0,.72),0 0 0 1px rgba(41,151,255,.15),0 0 48px rgba(41,151,255,.16);
+      opacity:1;
+      filter:none;
+    }
+    .pkg-card.gold:hover{border-color:rgba(255,215,106,.70);box-shadow:0 36px 100px rgba(0,0,0,.72),0 0 48px rgba(255,215,106,.13);}
+    .pkg-card > *{position:relative;z-index:1;}
+
+    .pkg-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      width:max-content;
+      max-width:100%;
+      padding:6px 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.72);
+      font-size:.62rem;
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:850;
+      white-space:nowrap;
+    }
+    .pkg-tag.blue{background:rgba(41,151,255,.14);border-color:rgba(41,151,255,.28);color:#73b9ff;}
+    .pkg-tag.solid{background:var(--accent-2);border-color:var(--accent-2);color:#fff;}
+    .pkg-tag.gold{background:rgba(255,215,106,.13);border-color:rgba(255,215,106,.25);color:var(--gold);}
+    .pkg-tag.soft{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.66);}
+    .pkg-title{font-size:1.5rem;line-height:1.05;letter-spacing:-.04em;margin:18px 0 8px;font-weight:850;}
+    .pkg-desc{font-size:.91rem;color:var(--muted);line-height:1.55;min-height:58px;margin-bottom:22px;}
+    .price-wrap{margin-bottom:12px;}
+    .price{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;letter-spacing:-.06em;line-height:.9;}
+    .price sup{font-size:.42em;color:var(--accent);font-weight:850;margin-right:2px;}
+    .price-note{font-size:.80rem;color:var(--muted-2);font-weight:750;margin-top:8px;line-height:1.35;}
+    .combo-saving{
+      width:max-content;
+      max-width:100%;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      margin-top:12px;
+      padding:7px 11px;
+      border-radius:999px;
+      background:var(--success-soft);
+      border:1px solid var(--success-border);
+      color:var(--success);
+      font-size:.78rem;
+      font-weight:850;
+      line-height:1;
+      letter-spacing:-.01em;
+      box-shadow:0 0 28px rgba(52,199,89,.08);
+    }
+    .combo-saving i{font-size:14px;}
+    .includes{font-size:.72rem;color:var(--muted-2);text-transform:uppercase;letter-spacing:.11em;font-weight:850;margin-bottom:18px;}
+    .divider{height:1px;background:rgba(255,255,255,.08);margin:22px 0;}
+    .list{list-style:none;display:grid;gap:11px;margin-bottom:0;}
+    .list li{display:flex;gap:10px;color:rgba(245,245,247,.72);font-size:.90rem;line-height:1.45;}
+    .check{
+      width:18px;height:18px;min-width:18px;
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:50%;
+      background:rgba(41,151,255,.12);
+      border:1px solid rgba(41,151,255,.26);
+      color:var(--accent);
+      font-size:11px;
+      margin-top:1px;
+    }
+    .card-btn{
+      margin-top:auto;
+      width:100%;
+      border:0;
+      padding:13px 16px;
+      border-radius:999px;
+      background:#f5f5f7;
+      color:#000;
+      font-size:.90rem;
+      font-weight:850;
+      cursor:pointer;
+      transition:transform .25s ease,background .25s ease;
+    }
+    .card-btn:hover{background:#fff;transform:translateY(-1px);}
+    .card-btn.secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14);}
+    .card-btn.secondary:hover{background:rgba(255,255,255,.12);}
+
+    .value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px;}
+    .value-item{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:22px;}
+    .value-icon{width:42px;height:42px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(41,151,255,.12);border:1px solid rgba(41,151,255,.24);color:var(--accent);margin-bottom:14px;font-size:20px;}
+    .value-item h3{font-size:1rem;margin-bottom:8px;}
+    .value-item p{color:var(--muted);font-size:.88rem;line-height:1.55;}
+
+    .note-box{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.10);border-radius:26px;padding:26px;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .note-box h3{font-size:1.15rem;margin-bottom:8px;}
+    .note-box p{color:var(--muted);font-size:.92rem;line-height:1.6;}
+
+    .cta{padding:105px 24px;text-align:center;background:radial-gradient(circle at 50% 0%, rgba(41,151,255,.18), transparent 36%),#030303;border-top:1px solid rgba(255,255,255,.08);}
+    .cta h2{font-size:clamp(2.4rem,6vw,5.5rem);line-height:.95;letter-spacing:-.065em;margin-bottom:20px;}
+    .cta p{color:var(--muted);max-width:620px;margin:0 auto 30px;font-size:1.08rem;line-height:1.65;}
+
+    footer{padding:42px 24px;border-top:1px solid rgba(255,255,255,.08);text-align:center;color:var(--muted-2);font-size:.82rem;}
+    .footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:18px;}
+    .footer-links a{color:rgba(255,255,255,.62);font-size:.84rem;}
+    .footer-links a:hover{color:#fff;}
+
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.5,0,0,1),transform .8s cubic-bezier(.5,0,0,1);}
+    .reveal.active{opacity:1;transform:translateY(0);}
+
+    @media(max-width:1080px){.grid-4{grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media(max-width:980px){.grid-3{grid-template-columns:1fr;}.seller-strip,.note-box{grid-template-columns:1fr;}.value-grid{grid-template-columns:1fr;}.hero-stats{grid-template-columns:1fr;}}
+    @media(max-width:768px){
+      nav{padding:0 20px;}
+      .nav-logo{font-size:.9rem;}
+      .menu-toggle{display:flex;}
+      .nav-links{position:fixed;top:0;right:-100%;width:100%;height:100vh;background:rgba(0,0,0,.96);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);flex-direction:column;justify-content:center;align-items:center;gap:38px;transition:right .45s cubic-bezier(.77,0,.175,1);z-index:1000;}
+      .nav-links.active{right:0;}
+      .nav-links a{font-size:1.45rem;font-weight:850;color:#fff;}
+      .hero{min-height:auto;padding-top:108px;}
+      .hero h1{font-size:clamp(3rem,16vw,5rem);}
+      .section{padding:74px 20px;}
+      .grid-4,.grid-2{grid-template-columns:1fr;}
+      .pkg-card:hover{transform:translateY(-8px) scale(1.015);}
+      .card-grid:hover .pkg-card:not(:hover){transform:none;opacity:1;filter:none;}
+      .seller-strip{width:calc(100% - 32px);margin:42px auto 0;}
+      .seller-strip::before{top:-24px;}
+      .seller-copy,.seller-note,.pkg-card{padding:24px;}
+      .quick-nav{justify-content:flex-start;}
+      .stat{text-align:center;}
+      .hero-actions .btn{width:100%;}
+      .combo-saving{font-size:.74rem;white-space:normal;line-height:1.25;border-radius:16px;}
+      .card-btn{margin-top:22px;}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">JOHANFILMS</a>
+    <div class="menu-toggle" id="menuToggle" aria-label="Abrir menú" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+    </div>
+  
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner reveal active">
+      <div class="hero-badge"><i class="ti ti-heart"></i> Bodas · Foto + Video</div>
+      <h1>El día pasa.<br>La historia queda.</h1>
+      <p>Una boda no se repite. Por eso diseñamos coberturas que no solo muestran cómo se vio tu día, sino cómo se sintió vivirlo.</p>
+      <div class="hero-actions">
+        <a href="#combos" class="btn btn-primary">Ver combos recomendados</a>
+        <button class="btn btn-secondary" onclick="sendPackage('Quiero cotizar una boda con JohanFilms')">Cotizar mi fecha</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>Fecha reservada</strong><span>Se agenda con 50% de anticipo para asegurar disponibilidad.</span></div>
+        <div class="stat"><strong>Entrega profesional</strong><span>Material editado y organizado por link privado o USB según paquete.</span></div>
+        <div class="stat"><strong>Cupos limitados</strong><span>Trabajamos pocas bodas al mes para cuidar cada producción.</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="seller-strip reveal">
+    <div class="seller-copy">
+      <div class="eyebrow">Nuestra recomendación honesta</div>
+      <h2>Si solo contratás una parte, tu recuerdo queda incompleto.</h2>
+      <p>La fotografía congela los momentos. El video conserva las voces, los abrazos, la entrada, los votos y todo lo que pasa demasiado rápido. Por eso los combos aparecen primero: son la decisión más completa y la mejor inversión.</p>
+    </div>
+    <div class="seller-note">
+      <strong>Una boda se vive una vez.</strong>
+      <p>El lugar, la comida y la decoración se disfrutan ese día. Las fotos y el video son lo que queda para volver a sentirlo.</p>
+    </div>
+  </section>
+
+  <div class="quick-nav" aria-label="Navegación de paquetes">
+    <div class="quick-nav-inner">
+      <a href="#combos">Combos Foto + Video</a>
+      <a href="#foto">Solo Foto</a>
+      <a href="#video">Solo Video</a>
+      <a href="#preboda">Preboda</a>
+      <a href="#reservar">Reservar</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="section" id="combos">
+      <div class="section-head reveal">
+        <div class="eyebrow">La experiencia completa</div>
+        <h2>Combos Foto + Video</h2>
+        <p>Foto y video trabajando de la mano, durante las mismas horas, para contar la boda como una sola historia. La opción más clara para parejas que no quieren sentir que faltó algo importante.</p>
+      </div>
+
+      <div class="grid grid-3 card-grid">
+        <article class="pkg-card reveal">
+          <span class="pkg-tag blue">Combo Esencia Wedding</span>
+          <h3 class="pkg-title">Esencia Wedding</h3>
+          <p class="pkg-desc">Para bodas civiles, íntimas o celebraciones donde quieren conservar lo más importante del día con foto y video juntos.</p>
+          <div class="price-wrap">
+            <div class="price"><sup>Q</sup>5,999</div>
+            <div class="price-note">6 horas de cobertura foto + video</div>
+            <div class="combo-saving"><i class="ti ti-discount-2"></i> Ahorrás Q499 al elegir combo</div>
+          </div>
+          <div class="includes">Boda íntima · Civil · Celebración pequeña</div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>6 horas de cobertura foto + video.</li>
+            <li><span class="check">✓</span>Momentos principales de ceremonia.</li>
+            <li><span class="check">✓</span>Momentos clave de la celebración.</li>
+            <li><span class="check">✓</span>Fotografías profesionales editadas.</li>
+            <li><span class="check">✓</span>Video cinemático de 10 a 12 minutos.</li>
+            <li><span class="check">✓</span>Reel vertical para redes sociales.</li>
+            <li><span class="check">✓</span>Entrega por link privado.</li>
+          </ul>
+          <button class="card-btn secondary" onclick="sendPackage('Combo Esencia Wedding para boda Q5,999')">Cotizar Esencia</button>
+        </article>
+
+        <article class="pkg-card featured reveal" style="transition-delay:.06s">
+          <span class="pkg-tag solid">Más recomendado</span>
+          <h3 class="pkg-title">Cine Wedding</h3>
+          <p class="pkg-desc">Para la mayoría de bodas. Más calma, más historia y más seguridad para no dejar fuera lo que hace único ese día.</p>
+          <div class="price-wrap">
+            <div class="price"><sup>Q</sup>8,499</div>
+            <div class="price-note">8 horas de cobertura foto + video</div>
+            <div class="combo-saving"><i class="ti ti-discount-2"></i> Ahorrás Q999 al elegir combo</div>
+          </div>
+          <div class="includes">La opción más equilibrada</div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>8 horas de cobertura foto + video.</li>
+            <li><span class="check">✓</span>Preparativos parciales.</li>
+            <li><span class="check">✓</span>Cobertura completa de ceremonia.</li>
+            <li><span class="check">✓</span>Sesión de pareja.</li>
+            <li><span class="check">✓</span>Recepción y momentos importantes.</li>
+            <li><span class="check">✓</span>Fotografías profesionales editadas.</li>
+            <li><span class="check">✓</span>Video cinemático de 13 a 15 minutos.</li>
+            <li><span class="check">✓</span>Reel vertical para redes sociales.</li>
+            <li><span class="check">✓</span>Entrega por link privado.</li>
+          </ul>
+          <button class="card-btn" onclick="sendPackage('Combo Cine Wedding para boda Q8,499')">Quiero Cine Wedding</button>
+        </article>
+
+        <article class="pkg-card gold reveal" style="transition-delay:.12s">
+          <span class="pkg-tag gold">Premium</span>
+          <h3 class="pkg-title">Full Wedding</h3>
+          <p class="pkg-desc">Para parejas que quieren una historia más completa, desde los preparativos hasta los momentos más importantes de la fiesta.</p>
+          <div class="price-wrap">
+            <div class="price"><sup>Q</sup>10,999</div>
+            <div class="price-note">10 horas de cobertura foto + video</div>
+            <div class="combo-saving"><i class="ti ti-discount-2"></i> Ahorrás Q1,999 al elegir combo</div>
+          </div>
+          <div class="includes">Historia completa del día</div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>10 horas de cobertura foto + video.</li>
+            <li><span class="check">✓</span>Preparativos completos.</li>
+            <li><span class="check">✓</span>Ceremonia completa.</li>
+            <li><span class="check">✓</span>Sesión artística.</li>
+            <li><span class="check">✓</span>Recepción y momentos importantes de fiesta.</li>
+            <li><span class="check">✓</span>Fotografías profesionales editadas.</li>
+            <li><span class="check">✓</span>Video documental/cinemático de 15 a 20 minutos.</li>
+            <li><span class="check">✓</span>Trailer para redes sociales.</li>
+            <li><span class="check">✓</span>Entrega por link privado.</li>
+          </ul>
+          <button class="card-btn secondary" onclick="sendPackage('Combo Full Wedding para boda Q10,999')">Cotizar Full Wedding</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="value-grid reveal">
+        <div class="value-item">
+          <div class="value-icon"><i class="ti ti-heart-handshake"></i></div>
+          <h3>Una sola historia</h3>
+          <p>Foto y video no compiten entre sí. Trabajan juntos para que cada momento tenga coherencia visual.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><i class="ti ti-clock-heart"></i></div>
+          <h3>Más tranquilidad</h3>
+          <p>Elegir bien antes evita arrepentirse después. En una boda no se pueden repetir los votos, la entrada ni las reacciones.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon"><i class="ti ti-sparkles"></i></div>
+          <h3>Recuerdo completo</h3>
+          <p>Las fotos te muestran el instante. El video te devuelve la voz, el movimiento y la emoción del día.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="foto">
+      <div class="section-head reveal">
+        <div class="eyebrow">Paquetes por aparte</div>
+        <h2>Solo Fotografía</h2>
+        <p>Para parejas que desean una cobertura fotográfica limpia, elegante y natural. Desde bodas civiles hasta coberturas completas con más horas y mayor seguridad visual.</p>
+      </div>
+      <div class="grid grid-4 card-grid">
+        <article class="pkg-card reveal">
+          <span class="pkg-tag soft">Boda Civil</span>
+          <h3 class="pkg-title">Cobertura Íntima</h3>
+          <p class="pkg-desc">Para ceremonias civiles o celebraciones pequeñas donde lo más importante es conservar los momentos esenciales con elegancia.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>1,399</div><div class="price-note">4 horas de cobertura fotográfica</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>Ceremonia civil.</li>
+            <li><span class="check">✓</span>Fotografías familiares.</li>
+            <li><span class="check">✓</span>Sesión breve de pareja.</li>
+            <li><span class="check">✓</span>Detalles del momento.</li>
+            <li><span class="check">✓</span>Edición profesional.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <button class="card-btn secondary" onclick="sendPackage('Boda Civil Solo Foto Q1,399')">Cotizar Boda Civil</button>
+        </article>
+
+        <article class="pkg-card reveal" style="transition-delay:.04s">
+          <span class="pkg-tag blue">Esencia</span>
+          <h3 class="pkg-title">Esencia Foto</h3>
+          <p class="pkg-desc">Una cobertura fotográfica más amplia para bodas pequeñas o celebraciones donde la historia necesita más tiempo.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>2,499</div><div class="price-note">6 horas de cobertura fotográfica</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>6 horas de cobertura.</li>
+            <li><span class="check">✓</span>Momentos principales de ceremonia.</li>
+            <li><span class="check">✓</span>Sesión de pareja.</li>
+            <li><span class="check">✓</span>Fotografías profesionales editadas.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <button class="card-btn secondary" onclick="sendPackage('Paquete Esencia Foto para boda Q2,499')">Cotizar Esencia Foto</button>
+        </article>
+
+        <article class="pkg-card featured reveal" style="transition-delay:.08s">
+          <span class="pkg-tag solid">Recomendado</span>
+          <h3 class="pkg-title">Cine Foto</h3>
+          <p class="pkg-desc">Más tiempo para cubrir preparativos parciales, ceremonia, pareja y recepción con una entrega más completa.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>3,499</div><div class="price-note">8 horas de cobertura fotográfica</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>8 horas de cobertura.</li>
+            <li><span class="check">✓</span>Preparativos parciales.</li>
+            <li><span class="check">✓</span>Cobertura completa de ceremonia.</li>
+            <li><span class="check">✓</span>Sesión de pareja.</li>
+            <li><span class="check">✓</span>Recepción y momentos importantes.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <button class="card-btn" onclick="sendPackage('Paquete Cine Foto para boda Q3,499')">Quiero Cine Foto</button>
+        </article>
+
+        <article class="pkg-card gold reveal" style="transition-delay:.12s">
+          <span class="pkg-tag gold">Premium</span>
+          <h3 class="pkg-title">Full Foto</h3>
+          <p class="pkg-desc">Para bodas que necesitan una historia fotográfica más completa desde preparativos hasta fiesta.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>4,999</div><div class="price-note">10 horas de cobertura fotográfica</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>10 horas de cobertura.</li>
+            <li><span class="check">✓</span>Preparativos completos.</li>
+            <li><span class="check">✓</span>Ceremonia completa.</li>
+            <li><span class="check">✓</span>Sesión artística.</li>
+            <li><span class="check">✓</span>Recepción y momentos importantes de fiesta.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <button class="card-btn secondary" onclick="sendPackage('Paquete Full Foto para boda Q4,999')">Cotizar Full Foto</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="video">
+      <div class="section-head reveal">
+        <div class="eyebrow">Paquetes por aparte</div>
+        <h2>Solo Video</h2>
+        <p>Para parejas que quieren volver a sentir la boda con movimiento, música, voces y una narrativa cinematográfica. Tres opciones claras para contar tu historia.</p>
+      </div>
+      <div class="grid grid-3 card-grid">
+        <article class="pkg-card reveal">
+          <span class="pkg-tag blue">Esencia Wedding</span>
+          <h3 class="pkg-title">Esencia Wedding</h3>
+          <p class="pkg-desc">Para bodas íntimas donde lo más importante es conservar la emoción principal del día con una pieza elegante y fácil de volver a ver.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>3,999</div><div class="price-note">6 horas de cobertura de video</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>6 horas de cobertura.</li>
+            <li><span class="check">✓</span>Momentos principales de ceremonia.</li>
+            <li><span class="check">✓</span>Momentos clave de la celebración.</li>
+            <li><span class="check">✓</span>Grabación en 4K.</li>
+            <li><span class="check">✓</span>Video cinemático de 10 a 12 minutos.</li>
+            <li><span class="check">✓</span>Reel vertical para redes sociales.</li>
+            <li><span class="check">✓</span>Entrega por link privado.</li>
+          </ul>
+          <button class="card-btn secondary" onclick="sendPackage('Paquete de video Esencia Wedding para boda Q3,999')">Cotizar Esencia</button>
+        </article>
+
+        <article class="pkg-card featured reveal" style="transition-delay:.06s">
+          <span class="pkg-tag solid">Más recomendado</span>
+          <h3 class="pkg-title">Cine Wedding</h3>
+          <p class="pkg-desc">El punto perfecto para la mayoría de bodas: más calma, más historia y más seguridad para no dejar fuera lo que hace único ese día.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>5,999</div><div class="price-note">8 horas de cobertura de video</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>8 horas de cobertura.</li>
+            <li><span class="check">✓</span>Preparativos parciales.</li>
+            <li><span class="check">✓</span>Cobertura completa de ceremonia.</li>
+            <li><span class="check">✓</span>Votos y momentos importantes.</li>
+            <li><span class="check">✓</span>Sesión de pareja y recepción.</li>
+            <li><span class="check">✓</span>Video cinemático de 13 a 15 minutos.</li>
+            <li><span class="check">✓</span>Reel vertical para redes sociales.</li>
+            <li><span class="check">✓</span>Entrega por link privado.</li>
+          </ul>
+          <button class="card-btn" onclick="sendPackage('Paquete de video Cine Wedding para boda Q5,999')">Quiero Cine Wedding</button>
+        </article>
+
+        <article class="pkg-card gold reveal" style="transition-delay:.12s">
+          <span class="pkg-tag gold">Premium</span>
+          <h3 class="pkg-title">Full Wedding Film</h3>
+          <p class="pkg-desc">Para quienes quieren revivir la boda desde el inicio hasta los momentos más importantes de la fiesta, con una historia más completa y emocional.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>7,999</div><div class="price-note">10 horas de cobertura de video</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>10 horas de cobertura.</li>
+            <li><span class="check">✓</span>Preparativos completos.</li>
+            <li><span class="check">✓</span>Ceremonia completa.</li>
+            <li><span class="check">✓</span>Sesión artística.</li>
+            <li><span class="check">✓</span>Recepción y momentos importantes de fiesta.</li>
+            <li><span class="check">✓</span>Video documental/cinemático de 15 a 20 minutos.</li>
+            <li><span class="check">✓</span>Trailer para redes sociales.</li>
+            <li><span class="check">✓</span>Entrega por link privado.</li>
+          </ul>
+          <button class="card-btn secondary" onclick="sendPackage('Paquete de video Full Wedding Film para boda Q7,999')">Cotizar Full Wedding Film</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="preboda">
+      <div class="section-head reveal">
+        <div class="eyebrow">Complemento recomendado</div>
+        <h2>Sesión Preboda</h2>
+        <p>Una sesión previa ayuda a tener fotos elegantes antes del evento y a que la pareja se sienta más cómoda frente a cámara el día de la boda.</p>
+      </div>
+      <div class="grid grid-2 card-grid">
+        <article class="pkg-card reveal">
+          <span class="pkg-tag">Sesión Básica</span>
+          <h3 class="pkg-title">Preboda Básica</h3>
+          <p class="pkg-desc">Para parejas que quieren una sesión limpia, elegante y directa en una locación.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>1,399</div><div class="price-note">2 horas de cobertura</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>Fotos ilimitadas 4K.</li>
+            <li><span class="check">✓</span>Edición profesional.</li>
+            <li><span class="check">✓</span>Una locación.</li>
+            <li><span class="check">✓</span>Entrega USB + digital.</li>
+          </ul>
+          <button class="card-btn secondary" onclick="sendPackage('Sesión preboda Básica Q1,399')">Cotizar Preboda Básica</button>
+        </article>
+
+        <article class="pkg-card featured reveal" style="transition-delay:.06s">
+          <span class="pkg-tag solid">Recomendada</span>
+          <h3 class="pkg-title">Preboda Profesional</h3>
+          <p class="pkg-desc">Más tiempo, varias locaciones y fotos físicas para elevar la experiencia antes del evento.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>1,799</div><div class="price-note">3 horas de cobertura</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>Fotos ilimitadas 4K.</li>
+            <li><span class="check">✓</span>20 fotos físicas estándar.</li>
+            <li><span class="check">✓</span>Varias locaciones.</li>
+            <li><span class="check">✓</span>Entrega USB + digital.</li>
+          </ul>
+          <button class="card-btn" onclick="sendPackage('Sesión preboda Profesional Q1,799')">Quiero Preboda Profesional</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="note-box reveal">
+        <div>
+          <h3>Información importante</h3>
+          <p>Los precios están sujetos a disponibilidad de fecha. Para reservar se trabaja con anticipo del 50%. Los viáticos se cotizan por aparte si el evento es fuera de Suchitepéquez. La hora adicional tiene un costo de Q300.</p>
+        </div>
+        <div>
+          <h3>Consejo de compra</h3>
+          <p>Si estás entre dos paquetes, elegí el que te dé más tranquilidad. En una boda no se puede repetir la entrada, los votos, el primer baile ni las reacciones de la familia.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta" id="reservar">
+    <div class="reveal">
+      <div class="eyebrow">Reservá tu fecha</div>
+      <h2>Hablemos de tu boda.</h2>
+      <p>Escríbenos por WhatsApp con tu fecha, ubicación y paquete favorito. Te confirmamos disponibilidad y te guiamos con la mejor opción.</p>
+      <button class="btn btn-primary" onclick="sendPackage('Hola JohanFilms, quiero cotizar la cobertura de mi boda. Mi fecha es:')">Escribir por WhatsApp</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="Portafolio.html">Portafolio</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <p>&copy; 2026 JOHANFILMS. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const phone = "50247474348";
+
+    function sendPackage(packageName){
+      const text = `Hola JohanFilms. Estoy interesado/a en ${packageName}. Quiero confirmar disponibilidad y recibir más información para mi boda.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    function toggleMenu(){
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('keydown', (event) => {
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      reveals.forEach((reveal) => {
+        const elementTop = reveal.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 90) reveal.classList.add('active');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+</body>
+</html>

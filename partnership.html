@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JohanFilms | Partnership Creativo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    :root{
+      --black:#000;
+      --surface:#0a0a0b;
+      --surface-2:#111114;
+      --surface-3:#151519;
+      --text:#f5f5f7;
+      --muted:#8e8e93;
+      --muted-2:#5f5f66;
+      --accent:#2997ff;
+      --accent-2:#0071e3;
+      --gold:#ffd76a;
+      --success:#34c759;
+      --border:rgba(255,255,255,.10);
+      --border-strong:rgba(255,255,255,.18);
+      --font:'Inter', sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;letter-spacing:-.015em;}
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--black);
+      color:var(--text);
+      font-family:var(--font);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.47;
+    }
+    a{color:inherit;text-decoration:none;}
+    button{font-family:inherit;}
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      height:52px;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 5%;
+      background:rgba(0,0,0,.72);
+      backdrop-filter:saturate(180%) blur(20px);
+      -webkit-backdrop-filter:saturate(180%) blur(20px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-logo{
+      font-size:1.05rem;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .nav-links{display:flex;list-style:none;gap:30px;align-items:center;}
+    .nav-links a{font-size:.75rem;color:rgba(245,245,247,.76);transition:opacity .25s ease,color .25s ease;}
+    .nav-links a:hover,.nav-links a.active{color:#fff;opacity:1;}
+
+    .menu-toggle{
+      display:none;
+      width:34px;height:34px;
+      z-index:1002;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:6px;
+    }
+    .menu-toggle span{width:18px;height:1.5px;background:#fff;border-radius:999px;transition:.3s ease;}
+    .menu-toggle.active span:nth-child(1){transform:translateY(3.8px) rotate(45deg);}
+    .menu-toggle.active span:nth-child(2){transform:translateY(-3.8px) rotate(-45deg);}
+
+    /* GENERAL */
+    .section{
+      width:min(1180px, 100%);
+      margin:0 auto;
+      padding:96px 24px;
+    }
+    .eyebrow{
+      color:var(--accent);
+      font-size:.72rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      margin-bottom:14px;
+    }
+    .section-head{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 52px;
+    }
+    .section-head h2{
+      font-size:clamp(2rem,4.6vw,4rem);
+      line-height:.98;
+      letter-spacing:-.055em;
+      margin-bottom:18px;
+    }
+    .section-head p{
+      color:var(--muted);
+      font-size:clamp(1rem,1.7vw,1.2rem);
+      line-height:1.65;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:90vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:132px 24px 88px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 50% 14%, rgba(41,151,255,.18), transparent 34%),
+        radial-gradient(circle at 82% 24%, rgba(255,255,255,.06), transparent 30%),
+        linear-gradient(180deg,#050505 0%,#000 82%);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(to bottom, black, transparent 78%);
+      opacity:.28;
+      pointer-events:none;
+    }
+    .hero-inner{
+      position:relative;
+      text-align:center;
+      max-width:900px;
+      margin:0 auto;
+      padding:0 10px;
+    }
+    .hero-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:rgba(255,255,255,.72);
+      font-size:.76rem;
+      font-weight:750;
+      padding:8px 15px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.045);
+      border-radius:999px;
+      margin-bottom:30px;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+    }
+    .hero h1{
+      max-width:900px;
+      margin:0 auto 30px;
+      font-size:clamp(3.15rem,7.15vw,6.45rem);
+      line-height:1.02;
+      letter-spacing:-.062em;
+      font-weight:900;
+      text-wrap:balance;
+      background:linear-gradient(180deg,#fff 0%,#d9d9df 55%,#8f8f98 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero h1 span{
+      display:block;
+      margin-top:.04em;
+    }
+    .hero p{
+      color:var(--muted);
+      max-width:660px;
+      margin:0 auto 36px;
+      font-size:clamp(1rem,1.55vw,1.18rem);
+      line-height:1.72;
+      letter-spacing:-.025em;
+    }
+    .hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:38px;}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:14px 24px;
+      border-radius:999px;
+      font-size:.95rem;
+      font-weight:700;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:transform .35s cubic-bezier(.2,1,.2,1), background .25s ease, border-color .25s ease, opacity .25s ease;
+    }
+    .btn:hover{transform:translateY(-2px) scale(1.02);}
+    .btn-primary{background:#f5f5f7;color:#000;}
+    .btn-primary:hover{background:#fff;}
+    .btn-secondary{background:rgba(255,255,255,.055);color:#fff;border-color:rgba(255,255,255,.12);}
+    .btn-secondary:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.2);}
+
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:1px;
+      max-width:820px;
+      margin:0 auto;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 18px 70px rgba(0,0,0,.28);
+    }
+    .stat{
+      background:rgba(10,10,12,.82);
+      padding:20px 20px;
+      text-align:left;
+    }
+    .stat strong{display:block;font-size:.86rem;margin-bottom:4px;color:#fff;}
+    .stat span{display:block;font-size:.76rem;color:var(--muted);line-height:1.45;}
+
+    /* SELLING STRIP */
+    .seller-strip{
+      width:min(980px, calc(100% - 48px));
+      margin:58px auto 0;
+      position:relative;
+      z-index:4;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:1px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.08);
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 30px 90px rgba(0,0,0,.45);
+    }
+    .seller-copy,.seller-note{
+      background:rgba(13,13,16,.94);
+      padding:28px;
+    }
+    .seller-copy h2{font-size:clamp(1.45rem,3vw,2.15rem);line-height:1.05;letter-spacing:-.045em;margin-bottom:12px;}
+    .seller-copy p,.seller-note p{color:var(--muted);font-size:.98rem;line-height:1.65;}
+    .seller-note{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .seller-note strong{color:#fff;font-size:.88rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+    .seller-note em{color:#fff;font-style:normal;}
+
+    /* CARDS */
+    .grid{display:grid;gap:18px;}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+
+    .card-grid:hover .pkg-card:not(:hover){
+      transform:translateY(5px) scale(.982);
+      opacity:.62;
+      filter:saturate(.80) brightness(.82);
+    }
+    .pkg-card{
+      position:relative;
+      overflow:hidden;
+      min-height:100%;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.018)),
+        var(--surface-2);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:26px;
+      padding:30px;
+      transition:
+        transform .45s cubic-bezier(.16,1,.3,1),
+        box-shadow .45s ease,
+        border-color .45s ease,
+        opacity .45s ease,
+        filter .45s ease,
+        background .45s ease;
+      box-shadow:0 18px 50px rgba(0,0,0,.24);
+    }
+    .pkg-card::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:radial-gradient(circle at 20% 0%, rgba(41,151,255,.17), transparent 34%);
+      opacity:.62;
+      pointer-events:none;
+    }
+    .pkg-card:hover{
+      transform:translateY(-18px) scale(1.035);
+      z-index:20;
+      border-color:rgba(41,151,255,.68);
+      box-shadow:
+        0 36px 100px rgba(0,0,0,.72),
+        0 0 0 1px rgba(41,151,255,.16),
+        0 0 54px rgba(41,151,255,.16);
+    }
+    .pkg-card.featured{
+      border-color:rgba(41,151,255,.82);
+      background:
+        radial-gradient(circle at 35% 0%, rgba(41,151,255,.23), transparent 36%),
+        linear-gradient(180deg,rgba(41,151,255,.12),rgba(255,255,255,.025)),
+        #0b1018;
+    }
+    .pkg-card.gold::before{background:radial-gradient(circle at 20% 0%, rgba(255,215,106,.21), transparent 34%);}
+    .pkg-card.gold:hover{border-color:rgba(255,215,106,.70);box-shadow:0 36px 100px rgba(0,0,0,.72),0 0 48px rgba(255,215,106,.13);}
+    .pkg-card > *{position:relative;z-index:1;}
+
+    .pkg-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:22px;}
+    .pkg-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      width:max-content;
+      max-width:100%;
+      padding:6px 11px;
+      border-radius:999px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.10);
+      color:rgba(255,255,255,.72);
+      font-size:.62rem;
+      line-height:1;
+      text-transform:uppercase;
+      letter-spacing:.13em;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .pkg-tag.blue{background:rgba(41,151,255,.14);border-color:rgba(41,151,255,.28);color:#73b9ff;}
+    .pkg-tag.solid{background:var(--accent-2);border-color:var(--accent-2);color:#fff;}
+    .pkg-tag.gold{background:rgba(255,215,106,.13);border-color:rgba(255,215,106,.25);color:var(--gold);}
+    .pkg-title{font-size:1.5rem;line-height:1.05;letter-spacing:-.04em;margin-bottom:8px;font-weight:800;}
+    .pkg-desc{font-size:.91rem;color:var(--muted);line-height:1.55;min-height:58px;margin-bottom:22px;}
+    .price-wrap{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+    .price{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;letter-spacing:-.06em;line-height:.9;}
+    .price sup{font-size:.42em;color:var(--accent);font-weight:800;margin-right:2px;}
+    .period{color:var(--muted);font-size:.86rem;margin-bottom:8px;}
+    .daily{font-size:.82rem;color:var(--accent);font-weight:800;margin-bottom:18px;}
+    .scarcity{font-size:.78rem;color:rgba(255,215,106,.88);font-weight:700;margin-bottom:18px;}
+    .includes{font-size:.72rem;color:var(--muted-2);text-transform:uppercase;letter-spacing:.11em;font-weight:800;margin-bottom:18px;}
+    .divider{height:1px;background:rgba(255,255,255,.08);margin:22px 0;}
+    .list{list-style:none;display:grid;gap:11px;}
+    .list li{display:flex;gap:10px;color:rgba(245,245,247,.72);font-size:.90rem;line-height:1.45;}
+    .check{
+      width:18px;height:18px;min-width:18px;
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:50%;
+      background:rgba(41,151,255,.12);
+      border:1px solid rgba(41,151,255,.26);
+      color:var(--accent);
+      font-size:11px;
+      margin-top:1px;
+    }
+    .sales-line{
+      margin-top:20px;
+      padding:14px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.045);
+      border:1px solid rgba(255,255,255,.08);
+      color:rgba(255,255,255,.78);
+      font-size:.84rem;
+      line-height:1.5;
+    }
+    .sales-line strong{color:#fff;}
+    .card-btn{
+      margin-top:22px;
+      width:100%;
+      border:0;
+      padding:13px 16px;
+      border-radius:999px;
+      background:#f5f5f7;
+      color:#000;
+      font-size:.90rem;
+      font-weight:800;
+      cursor:pointer;
+      transition:transform .25s ease,background .25s ease;
+    }
+    .card-btn:hover{background:#fff;transform:translateY(-1px);}
+    .card-btn.secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14);}
+    .card-btn.secondary:hover{background:rgba(255,255,255,.12);}
+
+    /* VALUE */
+    .value-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:16px;
+      margin-top:24px;
+    }
+    .value-item{
+      background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      padding:22px;
+    }
+    .value-icon{
+      width:42px;height:42px;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(41,151,255,.12);
+      border:1px solid rgba(41,151,255,.24);
+      color:var(--accent);
+      margin-bottom:14px;
+      font-size:20px;
+    }
+    .value-item h3{font-size:1rem;margin-bottom:8px;}
+    .value-item p{color:var(--muted);font-size:.88rem;line-height:1.55;}
+
+    /* PROCESS */
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:1px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      overflow:hidden;
+    }
+    .process-step{
+      background:rgba(12,12,14,.92);
+      padding:26px;
+    }
+    .process-number{color:var(--accent);font-size:.82rem;font-weight:900;letter-spacing:.12em;margin-bottom:14px;}
+    .process-step h3{font-size:1.1rem;margin-bottom:8px;}
+    .process-step p{color:var(--muted);font-size:.88rem;line-height:1.55;}
+
+    /* ANCHOR NAV */
+    .quick-nav{
+      position:sticky;
+      top:52px;
+      z-index:30;
+      display:flex;
+      justify-content:center;
+      padding:14px 20px;
+      background:rgba(0,0,0,.76);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      overflow-x:auto;
+    }
+    .quick-nav-inner{display:flex;gap:10px;min-width:max-content;}
+    .quick-nav a{
+      color:rgba(255,255,255,.68);
+      font-size:.78rem;
+      font-weight:700;
+      padding:9px 14px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:999px;
+      background:rgba(255,255,255,.035);
+      transition:.25s ease;
+    }
+    .quick-nav a:hover{color:#fff;border-color:rgba(41,151,255,.45);background:rgba(41,151,255,.10);}
+
+    /* NOTES */
+    .note-box{
+      background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:26px;
+      padding:26px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+    .note-box h3{font-size:1.15rem;margin-bottom:8px;}
+    .note-box p{color:var(--muted);font-size:.92rem;line-height:1.6;}
+
+    /* MARQUEE */
+    .marquee-container{
+      padding:80px 0;
+      overflow:hidden;
+      background:#0a0a0a;
+      border-top:1px solid rgba(255,255,255,.08);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .marquee-eyebrow{
+      text-align:center;
+      color:var(--muted);
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:.10em;
+      margin-bottom:30px;
+      font-weight:600;
+    }
+    .marquee{display:flex;width:max-content;animation:scrollMarquee 45s linear infinite;}
+    .marquee:hover{animation-play-state:paused;}
+    .marquee-content{display:flex;gap:60px;padding-right:60px;}
+    .marquee-content span{
+      font-size:1.3rem;
+      font-weight:700;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      opacity:.5;
+      transition:opacity .3s ease,color .3s ease;
+      white-space:nowrap;
+    }
+    .marquee-content span:hover{opacity:1;color:var(--text);}
+    @keyframes scrollMarquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+    .cta{
+      padding:105px 24px;
+      text-align:center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(41,151,255,.18), transparent 36%),
+        #030303;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .cta h2{font-size:clamp(2.4rem,6vw,5.5rem);line-height:.95;letter-spacing:-.065em;margin-bottom:20px;}
+    .cta p{color:var(--muted);max-width:620px;margin:0 auto 30px;font-size:1.08rem;line-height:1.65;}
+
+    footer{
+      padding:42px 24px;
+      border-top:1px solid rgba(255,255,255,.08);
+      text-align:center;
+      color:var(--muted-2);
+      font-size:.82rem;
+    }
+    .footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:18px;}
+    .footer-links a{color:rgba(255,255,255,.62);font-size:.84rem;}
+    .footer-links a:hover{color:#fff;}
+
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.5,0,0,1),transform .8s cubic-bezier(.5,0,0,1);}
+    .reveal.active{opacity:1;transform:translateY(0);}
+
+    @media(max-width:980px){
+      .grid-3,.grid-4{grid-template-columns:1fr;}
+      .seller-strip,.note-box{grid-template-columns:1fr;}
+      .value-grid,.process-grid{grid-template-columns:1fr 1fr;}
+      .hero-stats{grid-template-columns:1fr;}
+    }
+    @media(max-width:768px){
+      nav{padding:0 20px;}
+      .nav-logo{font-size:.9rem;}
+      .menu-toggle{display:flex;}
+      .nav-links{
+        position:fixed;
+        top:0;right:-100%;
+        width:100%;height:100vh;
+        background:rgba(0,0,0,.96);
+        backdrop-filter:blur(28px);
+        -webkit-backdrop-filter:blur(28px);
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:38px;
+        transition:right .45s cubic-bezier(.77,0,.175,1);
+        z-index:1000;
+      }
+      .nav-links.active{right:0;}
+      .nav-links a{font-size:1.45rem;font-weight:800;color:#fff;}
+      .hero{min-height:auto;padding:108px 20px 64px;}
+      .hero-inner{padding:0;max-width:100%;}
+      .hero h1{font-size:clamp(2.7rem,13vw,4.45rem);line-height:1.04;letter-spacing:-.06em;}
+      .hero p{font-size:1rem;line-height:1.65;max-width:92%;}
+      .section{padding:74px 20px;}
+      .grid-4,.grid-2{grid-template-columns:1fr;}
+      .pkg-card:hover{transform:translateY(-8px) scale(1.015);}
+      .card-grid:hover .pkg-card:not(:hover){transform:none;opacity:1;filter:none;}
+      .seller-strip{width:calc(100% - 32px);}
+      .seller-copy,.seller-note,.pkg-card{padding:24px;}
+      .quick-nav{justify-content:flex-start;}
+      .stat{text-align:center;}
+      .value-grid,.process-grid{grid-template-columns:1fr;}
+      .marquee-container{padding:64px 0;}
+      .marquee-content{gap:42px;padding-right:42px;}
+      .marquee-content span{font-size:1rem;}
+    }
+
+    @media(max-width:480px){
+      .hero-badge{
+        max-width:100%;
+        white-space:normal;
+        justify-content:center;
+        line-height:1.35;
+      }
+      .hero h1{
+        font-size:clamp(2.55rem,12.8vw,3.55rem);
+        letter-spacing:-.055em;
+      }
+      .hero-actions .btn{
+        width:100%;
+        max-width:310px;
+      }
+      .hero-stats{
+        border-radius:20px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">JOHANFILMS</a>
+    <div class="menu-toggle" id="menuToggle" aria-label="Abrir menú" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+  
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner reveal active">
+      <div class="hero-badge"><i class="ti ti-brand-instagram"></i> Partnership Creativo · Contenido mensual</div>
+      <h1>Tu marca no necesita más contenido.<span>Necesita verse mejor.</span></h1>
+      <p>Dirección creativa, fotografía, video y diseño para marcas que quieren verse profesionales, constantes y memorables todos los meses.</p>
+      <div class="hero-actions">
+        <a href="#paquetes" class="btn btn-primary">Ver paquetes mensuales</a>
+        <button class="btn btn-secondary" onclick="sendPackage('Quiero cotizar contenido mensual para mi marca')">Cotizar mi marca</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>Desde Q50 al día</strong><span>Una inversión diaria baja para mantener tu marca activa y profesional.</span></div>
+        <div class="stat"><strong>Contenido constante</strong><span>Videos, fotos y piezas visuales listas para alimentar tus redes.</span></div>
+        <div class="stat"><strong>Cupos limitados</strong><span>Trabajamos pocas marcas al mes para cuidar dirección, edición y entrega.</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="seller-strip reveal">
+    <div class="seller-copy">
+      <div class="eyebrow">Nuestra recomendación de ventas</div>
+      <h2>Tu competencia no siempre es mejor. A veces solo se mira más constante.</h2>
+      <p>Una marca que publica con intención se queda en la mente del cliente. El contenido mensual no es gasto: es presencia, confianza y recordación. Si tu negocio se ve profesional, el cliente te percibe más confiable antes de escribirte.</p>
+    </div>
+    <div class="seller-note">
+      <strong>Psicología simple</strong>
+      <p><em>El cliente compra lo que entiende, recuerda y percibe como confiable.</em> Si tu marca aparece poco o se ve improvisada, estás dejando ventas en manos de alguien más visible.</p>
+    </div>
+  </section>
+
+  <div class="quick-nav">
+   
+    </div>
+  </div>
+
+  <main>
+    <section class="section" id="paquetes">
+      <div class="section-head reveal">
+        <div class="eyebrow">Planes mensuales</div>
+        <h2>Elige tu nivel de crecimiento</h2>
+        <p>Todos los paquetes incluyen dirección creativa, producción visual y entrega organizada. La diferencia está en la intensidad, volumen y presencia que tu marca necesita cada mes.</p>
+      </div>
+
+      <div class="grid grid-3 card-grid">
+        <article class="pkg-card reveal">
+          <div class="pkg-top">
+            <span class="pkg-tag">Entrada</span>
+          </div>
+          <h3 class="pkg-title">Presencia</h3>
+          <p class="pkg-desc">Para negocios que quieren verse profesionales y empezar a publicar con constancia.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>1,499</div></div>
+          <div class="period">/ mes</div>
+          <div class="daily">≈ Q50 al día</div>
+          <div class="scarcity">⚡ Cupos limitados por mes</div>
+          <div class="divider"></div>
+          <p class="includes">Incluye</p>
+          <ul class="list">
+            <li><span class="check">✓</span>4 videos verticales para Reels o TikTok</li>
+            <li><span class="check">✓</span>Hasta 20 fotografías profesionales</li>
+            <li><span class="check">✓</span>8 piezas de diseño gráfico para posts y stories</li>
+            <li><span class="check">✓</span>Dirección creativa durante la sesión</li>
+            <li><span class="check">✓</span>Calendario de contenido básico</li>
+            <li><span class="check">✓</span>Entrega organizada por link privado</li>
+          </ul>
+          <div class="sales-line"><strong>Ideal para empezar:</strong> la mayoría de marcas primero necesita verse constante antes de invertir en campañas más grandes.</div>
+          <button class="card-btn secondary" onclick="sendPackage('el Paquete Presencia de Q1,499 mensual')">Quiero Presencia</button>
+        </article>
+
+        <article class="pkg-card featured reveal" style="transition-delay:.08s">
+          <div class="pkg-top">
+            <span class="pkg-tag solid">Más popular</span>
+          </div>
+          <h3 class="pkg-title">Crecimiento</h3>
+          <p class="pkg-desc">Para marcas que quieren constancia, mejor imagen y contenido suficiente para moverse todo el mes.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>2,499</div></div>
+          <div class="period">/ mes</div>
+          <div class="daily">≈ Q83 al día</div>
+          <div class="scarcity">⚡ Incluye revisión de estrategia mensual</div>
+          <div class="divider"></div>
+          <p class="includes">Incluye</p>
+          <ul class="list">
+            <li><span class="check">✓</span>8 videos verticales para Reels o TikTok</li>
+            <li><span class="check">✓</span>Hasta 40 fotografías profesionales</li>
+            <li><span class="check">✓</span>12 piezas de diseño gráfico para posts y stories</li>
+            <li><span class="check">✓</span>Planificación mensual alineada a tu marca</li>
+            <li><span class="check">✓</span>Dirección creativa completa</li>
+            <li><span class="check">✓</span>Calendario de contenido completo</li>
+            <li><span class="check">✓</span>Entrega organizada por link privado</li>
+          </ul>
+          <div class="sales-line"><strong>El equilibrio recomendado:</strong> suficiente contenido para que tu marca no desaparezca y no dependa de publicar improvisado.</div>
+          <button class="card-btn" onclick="sendPackage('el Paquete Crecimiento de Q2,499 mensual')">Quiero Crecimiento</button>
+        </article>
+
+        <article class="pkg-card gold reveal" style="transition-delay:.16s">
+          <div class="pkg-top">
+            <span class="pkg-tag gold">Premium</span>
+          </div>
+          <h3 class="pkg-title">Dominación</h3>
+          <p class="pkg-desc">Para marcas que quieren liderar visualmente su mercado y estar siempre presentes en redes.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>3,499</div></div>
+          <div class="period">/ mes</div>
+          <div class="daily">≈ Q117 al día</div>
+          <div class="scarcity">⚡ Atención prioritaria y entrega express</div>
+          <div class="divider"></div>
+          <p class="includes">Incluye</p>
+          <ul class="list">
+            <li><span class="check">✓</span>10 videos verticales para Reels o TikTok</li>
+            <li><span class="check">✓</span>Hasta 60 fotografías profesionales</li>
+            <li><span class="check">✓</span>12 piezas de diseño creativo para carrusel</li>
+            <li><span class="check">✓</span>Videos con Drone incluido en vertical y horizontal</li>
+            <li><span class="check">✓</span>Planificación mensual personalizada</li>
+            <li><span class="check">✓</span>Calendario estratégico completo</li>
+            <li><span class="check">✓</span>Dirección creativa total</li>
+            <li><span class="check">✓</span>Entrega organizada por link privado</li>
+          </ul>
+          <div class="sales-line"><strong>Para marcas que quieren verse arriba:</strong> cuando el contenido se convierte en tu mejor vendedor, deja de ser un gasto.</div>
+          <button class="card-btn secondary" onclick="sendPackage('el Paquete Dominación de Q3,499 mensual')">Quiero Dominación</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="valor">
+      <div class="section-head reveal">
+        <div class="eyebrow">Por qué trabajar mensual</div>
+        <h2>La confianza se construye con repetición.</h2>
+        <p>Una sola publicación puede gustar. Una presencia constante hace que la gente recuerde tu marca, entienda lo que vendes y te tenga presente cuando necesita comprar.</p>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-item reveal">
+          <div class="value-icon"><i class="ti ti-repeat"></i></div>
+          <h3>Constancia visual</h3>
+          <p>Tu marca deja de publicar solo cuando hay tiempo y empieza a tener presencia todos los meses.</p>
+        </div>
+        <div class="value-item reveal" style="transition-delay:.06s">
+          <div class="value-icon"><i class="ti ti-bulb"></i></div>
+          <h3>Dirección creativa</h3>
+          <p>No solo grabamos. Pensamos cómo debe verse tu marca para comunicar mejor y vender con más confianza.</p>
+        </div>
+        <div class="value-item reveal" style="transition-delay:.12s">
+          <div class="value-icon"><i class="ti ti-brand-instagram"></i></div>
+          <h3>Contenido para redes</h3>
+          <p>Formato vertical, fotos y piezas pensadas para Instagram, TikTok, Facebook y campañas digitales.</p>
+        </div>
+        <div class="value-item reveal" style="transition-delay:.18s">
+          <div class="value-icon"><i class="ti ti-chart-line"></i></div>
+          <h3>Percepción de marca</h3>
+          <p>Cuando una empresa se ve profesional, el cliente percibe más orden, más calidad y más seguridad.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proceso">
+      <div class="section-head reveal">
+        <div class="eyebrow">Cómo trabajamos</div>
+        <h2>Un flujo pensado para marcas ocupadas.</h2>
+        <p>La idea es que tu negocio tenga contenido profesional sin que tengas que improvisar cada semana qué publicar.</p>
+      </div>
+
+      <div class="process-grid reveal">
+        <div class="process-step">
+          <div class="process-number">01</div>
+          <h3>Diagnóstico</h3>
+          <p>Entendemos tu marca, productos, servicios, tono visual y objetivo del mes.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">02</div>
+          <h3>Planificación</h3>
+          <p>Definimos ideas, piezas necesarias y dirección creativa antes de producir.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">03</div>
+          <h3>Producción</h3>
+          <p>Realizamos la sesión de foto, video y contenido necesario según el paquete.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-number">04</div>
+          <h3>Entrega</h3>
+          <p>Recibís el material editado y organizado para que tu marca pueda publicarlo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="note-box reveal">
+        <div>
+          <h3>Información importante</h3>
+          <p>Los paquetes mensuales están sujetos a disponibilidad. Para iniciar se agenda con anticipo y se define fecha de producción. Los viáticos se cotizan por aparte si la producción es fuera de Suchitepéquez.</p>
+        </div>
+        <div>
+          <h3>Consejo de compra</h3>
+          <p>Si tu marca vende todos los días, tu contenido también debería trabajar todos los días. El paquete correcto no es el más barato: es el que te da suficiente presencia para que el cliente no se olvide de ti.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="marquee-container" id="marcas">
+    <p class="marquee-eyebrow">Han confiado en nosotros</p>
+    <div class="marquee">
+      <div class="marquee-content">
+        <span>DekalB</span><span>Cervecería Gallo</span><span>Wakami</span><span>UMG</span><span>Tennis Nais</span><span>USAC</span><span>Vitalmed</span><span>Metroproyectos</span><span>Mealbox</span><span>Decora</span><span>Intecap</span><span>Plaza América</span><span>CityPlaza</span><span>Rejobot</span><span>Coca Cola Los Volcanes</span><span>Klampas</span><span>Prog. Moscamed</span><span>PL Beauty Aesthetic</span><span>SNK Store</span><span>Lia's Bakery Coatepeque</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span>DekalB</span><span>Cervecería Gallo</span><span>Wakami</span><span>UMG</span><span>Tennis Nais</span><span>USAC</span><span>Vitalmed</span><span>Metroproyectos</span><span>Mealbox</span><span>Decora</span><span>Intecap</span><span>Plaza América</span><span>CityPlaza</span><span>Rejobot</span><span>Coca Cola Los Volcanes</span><span>Klampas</span><span>Prog. Moscamed</span><span>PL Beauty Aesthetic</span><span>SNK Store</span><span>Lia's Bakery Coatepeque</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="reservar">
+    <div class="reveal">
+      <div class="eyebrow">Empecemos este mes</div>
+      <h2>Tu marca activa,<br>profesional y constante.</h2>
+      <p>Escríbenos por WhatsApp con el nombre de tu marca, rubro y paquete favorito. Te ayudamos a elegir la mejor opción según tu objetivo.</p>
+      <button class="btn btn-primary" onclick="sendPackage('Quiero trabajar contenido mensual para mi marca con JohanFilms')">Escribir por WhatsApp</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="Portafolio.html">Portafolio</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <p>&copy; 2026 JOHANFILMS. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const phone = "50247474348";
+
+    function sendPackage(packageName){
+      const text = `Hola JohanFilms. Estoy interesado/a en ${packageName}. Quiero confirmar disponibilidad y recibir más información para mi marca.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      const elementVisible = 90;
+      reveals.forEach((reveal) => {
+        const elementTop = reveal.getBoundingClientRect().top;
+        if(elementTop < windowHeight - elementVisible){
+          reveal.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    function toggleMenu(){
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  </script>
+</body>
+</html>

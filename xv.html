@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JohanFilms | Paquetes de XV Años</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <style>
+    :root{
+      --black:#000000;
+      --text:#f5f5f7;
+      --muted:#9a9aa1;
+      --muted-2:#66666d;
+      --blue:#2997ff;
+      --blue-2:#0071e3;
+      --rose:#ff4fd8;
+      --violet:#8b5cf6;
+      --gold:#ffd76a;
+      --green:#34c759;
+      --border:rgba(255,255,255,.12);
+      --border-soft:rgba(255,255,255,.08);
+      --glass:rgba(255,255,255,.065);
+      --glass-strong:rgba(255,255,255,.105);
+      --font:'Inter',sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;letter-spacing:-.015em;}
+    html{scroll-behavior:smooth;}
+    body{
+      background:#000;
+      color:var(--text);
+      font-family:var(--font);
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.47;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-3;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255,79,216,.18), transparent 30%),
+        radial-gradient(circle at 78% 8%, rgba(41,151,255,.20), transparent 34%),
+        radial-gradient(circle at 50% 62%, rgba(139,92,246,.12), transparent 38%),
+        linear-gradient(180deg,#050505 0%,#000 52%,#030303 100%);
+    }
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size:76px 76px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.75), transparent 82%);
+      opacity:.22;
+    }
+    a{color:inherit;text-decoration:none;}
+    button{font-family:inherit;}
+
+    /* NAV */
+    nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      height:52px;
+      z-index:1000;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 5%;
+      background:rgba(0,0,0,.64);
+      backdrop-filter:saturate(180%) blur(22px);
+      -webkit-backdrop-filter:saturate(180%) blur(22px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-logo{font-weight:900;font-size:1.05rem;letter-spacing:.03em;}
+    .nav-links{display:flex;align-items:center;gap:30px;list-style:none;}
+    .nav-links a{font-size:.75rem;color:rgba(245,245,247,.72);transition:.25s ease;}
+    .nav-links a:hover,.nav-links a.active{color:#fff;opacity:1;}
+    .menu-toggle{
+      display:none;width:34px;height:34px;z-index:1002;cursor:pointer;
+      align-items:center;justify-content:center;flex-direction:column;gap:6px;
+    }
+    .menu-toggle span{width:18px;height:1.5px;background:#fff;border-radius:999px;transition:.3s ease;}
+    .menu-toggle.active span:nth-child(1){transform:translateY(3.8px) rotate(45deg);}
+    .menu-toggle.active span:nth-child(2){transform:translateY(-3.8px) rotate(-45deg);}
+
+    /* LIQUID GLASS BASE */
+    .glass{
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.038) 38%, rgba(255,255,255,.022)),
+        rgba(10,10,14,.64);
+      border:1px solid var(--border);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        0 22px 70px rgba(0,0,0,.38);
+      backdrop-filter:blur(26px) saturate(150%);
+      -webkit-backdrop-filter:blur(26px) saturate(150%);
+    }
+    .glass::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(circle at 22% 0%, rgba(255,255,255,.22), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(41,151,255,.18), transparent 28%),
+        radial-gradient(circle at 28% 88%, rgba(255,79,216,.11), transparent 34%);
+      opacity:.68;
+      pointer-events:none;
+    }
+    .glass > *{position:relative;z-index:1;}
+
+    .liquid-scene{position:relative;overflow:hidden;}
+    .orb{
+      position:absolute;
+      border-radius:999px;
+      filter:blur(28px);
+      opacity:.56;
+      pointer-events:none;
+      animation:floatOrb 12s ease-in-out infinite alternate;
+    }
+    .orb.one{width:260px;height:260px;background:rgba(255,79,216,.22);left:8%;top:18%;}
+    .orb.two{width:320px;height:320px;background:rgba(41,151,255,.20);right:8%;top:10%;animation-delay:-4s;}
+    .orb.three{width:220px;height:220px;background:rgba(255,215,106,.12);left:48%;bottom:4%;animation-delay:-8s;}
+    @keyframes floatOrb{
+      from{transform:translate3d(-14px,10px,0) scale(1);}
+      to{transform:translate3d(18px,-18px,0) scale(1.08);}
+    }
+
+    .section{
+      width:min(1180px,100%);
+      margin:0 auto;
+      padding:96px 24px;
+    }
+    .section-head{
+      text-align:center;
+      max-width:780px;
+      margin:0 auto 52px;
+    }
+    .eyebrow{
+      color:var(--blue);
+      font-size:.72rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.19em;
+      margin-bottom:14px;
+    }
+    .section-head h2{
+      font-size:clamp(2.25rem,5vw,4.6rem);
+      line-height:.95;
+      letter-spacing:-.065em;
+      margin-bottom:18px;
+      background:linear-gradient(180deg,#fff 0%,#d9d9df 58%,#8a8a92 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .section-head p{color:var(--muted);font-size:clamp(1rem,1.7vw,1.18rem);line-height:1.65;}
+
+    /* HERO */
+    .hero{
+      min-height:98vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:116px 24px 80px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .hero-inner{position:relative;text-align:center;max-width:1030px;margin:0 auto;}
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      color:rgba(255,255,255,.78);
+      font-size:.78rem;font-weight:800;
+      margin-bottom:24px;
+    }
+    .hero h1{
+      font-size:clamp(3.15rem,9.6vw,8rem);
+      line-height:.90;
+      letter-spacing:-.082em;
+      font-weight:900;
+      margin-bottom:26px;
+      background:linear-gradient(180deg,#fff 0%,#e4e4eb 45%,#9a9aa4 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero h1 .accent-word{
+      background:linear-gradient(90deg,#fff,#ffd6f4 28%,#8ed0ff 70%,#fff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero p{
+      max-width:720px;
+      margin:0 auto 34px;
+      color:var(--muted);
+      font-size:clamp(1.06rem,2vw,1.35rem);
+      line-height:1.62;
+    }
+    .hero-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:34px;}
+    .btn{
+      position:relative;
+      overflow:hidden;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border-radius:999px;
+      padding:14px 24px;
+      border:1px solid rgba(255,255,255,.12);
+      font-size:.95rem;
+      font-weight:850;
+      cursor:pointer;
+      transition:transform .32s cubic-bezier(.2,1,.2,1),box-shadow .32s ease,border-color .32s ease,background .32s ease;
+    }
+    .btn::after,.card-btn::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      transform:translateX(-120%) skewX(-18deg);
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.36),transparent);
+      transition:transform .7s cubic-bezier(.2,1,.2,1);
+      pointer-events:none;
+    }
+    .btn:hover::after,.card-btn:hover::after{transform:translateX(120%) skewX(-18deg);}
+    .btn:hover{transform:translateY(-3px) scale(1.025);box-shadow:0 18px 48px rgba(0,0,0,.42);}
+    .btn-primary{background:#f5f5f7;color:#000;border-color:#f5f5f7;}
+    .btn-primary:hover{background:#fff;}
+    .btn-secondary{background:rgba(255,255,255,.06);color:#fff;backdrop-filter:blur(18px);}
+    .btn-secondary:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);}
+
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      max-width:860px;
+      margin:0 auto;
+    }
+    .stat{
+      border-radius:22px;
+      padding:18px 18px;
+      text-align:left;
+    }
+    .stat strong{display:block;font-size:.86rem;margin-bottom:4px;color:#fff;}
+    .stat span{display:block;font-size:.76rem;color:var(--muted);line-height:1.45;}
+
+    /* SELLER */
+    .seller-wrap{
+      width:min(1020px,calc(100% - 48px));
+      margin:56px auto 0;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:16px;
+      position:relative;
+      z-index:5;
+    }
+    .seller-card{border-radius:28px;padding:32px;}
+    .seller-card h2{font-size:clamp(1.6rem,3.2vw,2.55rem);line-height:1.02;letter-spacing:-.055em;margin-bottom:14px;}
+    .seller-card p{color:var(--muted);font-size:.98rem;line-height:1.68;}
+    .seller-card strong{color:#fff;}
+
+    /* QUICK NAV */
+    .quick-nav{
+      position:sticky;
+      top:52px;
+      z-index:30;
+      display:flex;
+      justify-content:center;
+      padding:14px 20px;
+      background:rgba(0,0,0,.60);
+      backdrop-filter:blur(22px) saturate(140%);
+      -webkit-backdrop-filter:blur(22px) saturate(140%);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      overflow-x:auto;
+    }
+    .quick-nav-inner{display:flex;gap:10px;min-width:max-content;}
+    .quick-nav a{
+      color:rgba(255,255,255,.74);
+      font-size:.78rem;
+      font-weight:800;
+      padding:9px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.10);
+      transition:.25s ease;
+    }
+    .quick-nav a:hover{color:#fff;border-color:rgba(255,79,216,.35);background:rgba(255,79,216,.09);transform:translateY(-1px);}
+
+    /* PACKAGES */
+    .grid{display:grid;gap:18px;align-items:stretch;}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+
+    .card-grid:hover .pkg-card:not(:hover){
+      transform:translateY(6px) scale(.982);
+      opacity:.60;
+      filter:saturate(.82) brightness(.80);
+    }
+    .pkg-card{
+      border-radius:30px;
+      padding:30px;
+      min-height:100%;
+      display:flex;
+      flex-direction:column;
+      transition:
+        transform .46s cubic-bezier(.16,1,.3,1),
+        box-shadow .46s ease,
+        border-color .46s ease,
+        opacity .46s ease,
+        filter .46s ease;
+    }
+    .pkg-card:hover{
+      transform:translateY(-18px) scale(1.035);
+      z-index:20;
+      border-color:rgba(255,79,216,.38);
+      box-shadow:
+        0 38px 100px rgba(0,0,0,.70),
+        0 0 0 1px rgba(255,79,216,.14),
+        0 0 56px rgba(255,79,216,.12);
+    }
+    .pkg-card.featured{
+      border-color:rgba(41,151,255,.70);
+      background:
+        radial-gradient(circle at 34% 0%, rgba(41,151,255,.24), transparent 35%),
+        linear-gradient(145deg,rgba(255,255,255,.14),rgba(41,151,255,.075) 42%,rgba(255,255,255,.025)),
+        rgba(7,15,25,.76);
+    }
+    .pkg-card.gold{
+      border-color:rgba(255,215,106,.25);
+      background:
+        radial-gradient(circle at 30% 0%, rgba(255,215,106,.16), transparent 32%),
+        linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,215,106,.045) 44%,rgba(255,255,255,.022)),
+        rgba(16,13,8,.72);
+    }
+    .pkg-card.gold:hover{border-color:rgba(255,215,106,.58);box-shadow:0 38px 100px rgba(0,0,0,.72),0 0 54px rgba(255,215,106,.13);}
+
+    .pkg-tag{
+      width:max-content;
+      max-width:100%;
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.075);
+      border:1px solid rgba(255,255,255,.12);
+      color:rgba(255,255,255,.75);
+      font-size:.62rem;
+      font-weight:900;
+      line-height:1;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      margin-bottom:24px;
+    }
+    .pkg-tag.solid{background:linear-gradient(90deg,var(--blue-2),var(--rose));border-color:transparent;color:#fff;}
+    .pkg-tag.gold{background:rgba(255,215,106,.13);border-color:rgba(255,215,106,.25);color:var(--gold);}
+    .pkg-title{font-size:1.55rem;line-height:1.05;letter-spacing:-.045em;margin-bottom:10px;font-weight:900;}
+    .pkg-desc{font-size:.93rem;color:var(--muted);line-height:1.58;min-height:72px;margin-bottom:22px;}
+    .price-wrap{margin-bottom:8px;}
+    .price{font-size:clamp(2.45rem,4.3vw,3.55rem);font-weight:950;letter-spacing:-.07em;line-height:.88;}
+    .price sup{font-size:.42em;color:var(--blue);font-weight:900;margin-right:2px;}
+    .meta-price{font-size:.83rem;color:var(--muted-2);font-weight:800;margin-top:7px;line-height:1.35;}
+    .saving-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      width:max-content;
+      max-width:100%;
+      margin:12px 0 18px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(52,199,89,.11);
+      border:1px solid rgba(52,199,89,.34);
+      color:#34e873;
+      font-size:.82rem;
+      font-weight:900;
+      line-height:1;
+    }
+    .includes{font-size:.72rem;color:rgba(255,255,255,.46);text-transform:uppercase;letter-spacing:.12em;font-weight:900;margin-bottom:18px;}
+    .divider{height:1px;background:rgba(255,255,255,.09);margin:22px 0;}
+    .list{list-style:none;display:grid;gap:11px;margin-bottom:30px;}
+    .list li{display:flex;gap:10px;color:rgba(245,245,247,.74);font-size:.91rem;line-height:1.45;}
+    .check{
+      width:18px;height:18px;min-width:18px;
+      display:inline-flex;align-items:center;justify-content:center;
+      border-radius:50%;
+      background:rgba(41,151,255,.12);
+      border:1px solid rgba(41,151,255,.27);
+      color:var(--blue);
+      font-size:11px;
+      margin-top:1px;
+    }
+    .pkg-section-title{
+      color:var(--blue);
+      font-size:.68rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-weight:950;
+      margin:18px 0 10px;
+    }
+    .card-actions{margin-top:auto;padding-top:8px;}
+    .card-btn{
+      position:relative;
+      overflow:hidden;
+      width:100%;
+      border:0;
+      padding:14px 16px;
+      border-radius:999px;
+      background:#f5f5f7;
+      color:#000;
+      font-size:.92rem;
+      font-weight:950;
+      cursor:pointer;
+      transition:transform .28s ease,background .28s ease,box-shadow .28s ease;
+    }
+    .card-btn:hover{background:#fff;transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.34);}
+    .card-btn.secondary{background:rgba(255,255,255,.075);color:#fff;border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px);}
+    .card-btn.secondary:hover{background:rgba(255,255,255,.12);}
+
+    /* VALUE */
+    .value-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px;}
+    .value-item{border-radius:26px;padding:24px;}
+    .value-icon{
+      width:44px;height:44px;border-radius:16px;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(41,151,255,.12);
+      border:1px solid rgba(41,151,255,.24);
+      color:var(--blue);
+      margin-bottom:14px;
+      font-size:21px;
+    }
+    .value-item h3{font-size:1rem;margin-bottom:8px;}
+    .value-item p{color:var(--muted);font-size:.89rem;line-height:1.58;}
+
+    .note-box{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .note-card{border-radius:28px;padding:28px;}
+    .note-card h3{font-size:1.12rem;margin-bottom:8px;}
+    .note-card p{color:var(--muted);font-size:.93rem;line-height:1.65;}
+
+    .cta{
+      padding:112px 24px;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .cta-inner{width:min(850px,100%);margin:0 auto;border-radius:34px;padding:54px 30px;}
+    .cta h2{font-size:clamp(2.35rem,6vw,5.5rem);line-height:.94;letter-spacing:-.07em;margin-bottom:20px;}
+    .cta p{color:var(--muted);max-width:620px;margin:0 auto 30px;font-size:1.07rem;line-height:1.65;}
+
+    footer{
+      padding:42px 24px;
+      border-top:1px solid rgba(255,255,255,.08);
+      text-align:center;
+      color:var(--muted-2);
+      font-size:.82rem;
+    }
+    .footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:18px;}
+    .footer-links a{color:rgba(255,255,255,.62);font-size:.84rem;}
+    .footer-links a:hover{color:#fff;}
+
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .82s cubic-bezier(.5,0,0,1),transform .82s cubic-bezier(.5,0,0,1);}
+    .reveal.active{opacity:1;transform:translateY(0);}
+
+    @media(max-width:980px){
+      .grid-3,.value-grid,.note-box,.seller-wrap{grid-template-columns:1fr;}
+      .hero-stats{grid-template-columns:1fr;}
+      .pkg-desc{min-height:auto;}
+    }
+    @media(max-width:768px){
+      nav{padding:0 20px;}
+      .nav-logo{font-size:.9rem;}
+      .menu-toggle{display:flex;}
+      .nav-links{
+        position:fixed;
+        top:0;right:-100%;
+        width:100%;height:100vh;
+        background:rgba(0,0,0,.96);
+        backdrop-filter:blur(30px);
+        -webkit-backdrop-filter:blur(30px);
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:38px;
+        transition:right .45s cubic-bezier(.77,0,.175,1);
+        z-index:1000;
+      }
+      .nav-links.active{right:0;}
+      .nav-links a{font-size:1.45rem;font-weight:900;color:#fff;}
+      .hero{min-height:auto;padding:110px 18px 72px;}
+      .hero h1{font-size:clamp(3.05rem,16vw,5rem);}
+      .section{padding:74px 20px;}
+      .seller-wrap{width:calc(100% - 32px);margin-top:34px;}
+      .seller-card,.pkg-card,.note-card{padding:24px;}
+      .quick-nav{justify-content:flex-start;}
+      .card-grid:hover .pkg-card:not(:hover){transform:none;opacity:1;filter:none;}
+      .pkg-card:hover{transform:translateY(-8px) scale(1.012);}
+      .stat{text-align:center;}
+      .cta-inner{padding:42px 22px;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">JOHANFILMS</a>
+    <div class="menu-toggle" id="menuToggle" aria-label="Abrir menú" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+    </div>
+  
+  </nav>
+
+  <header class="hero liquid-scene">
+    <span class="orb one"></span>
+    <span class="orb two"></span>
+    <span class="orb three"></span>
+
+    <div class="hero-inner reveal active">
+      <div class="hero-badge glass"><i class="ti ti-sparkles"></i> XV Años · Foto + Video</div>
+      <h1>Una noche para brillar.<br><span class="accent-word">Una historia para siempre.</span></h1>
+      <p>Tus XV no son solo una fiesta. Son una etapa, una familia reunida, una entrada, un vals y momentos que merecen sentirse elegantes cada vez que vuelvas a verlos.</p>
+      <div class="hero-actions">
+        <a href="#combos" class="btn btn-primary">Ver combos recomendados</a>
+        <button class="btn btn-secondary" onclick="sendPackage('Quiero cotizar mis XV años con JohanFilms')">Cotizar mi fecha</button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat glass"><strong>Fecha reservada</strong><span>Se agenda con 50% de anticipo para asegurar disponibilidad.</span></div>
+        <div class="stat glass"><strong>Dirección visual</strong><span>Foto y video con una misma estética para que todo se vea coherente.</span></div>
+        <div class="stat glass"><strong>Entrega cuidada</strong><span>Material editado, organizado y listo para compartir con familia y redes.</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="seller-wrap reveal">
+    <div class="seller-card glass">
+      <div class="eyebrow">Nuestra recomendación honesta</div>
+      <h2>Cuando todo pasa rápido, el recuerdo completo vale más.</h2>
+      <p>La fotografía congela el vestido, la familia, la decoración y los detalles. El video conserva la entrada, el vals, las voces, la música y las emociones reales. Por eso los combos aparecen primero: son la forma más completa de recordar tus XV.</p>
+    </div>
+    <div class="seller-card glass">
+      <div class="eyebrow">Decisión inteligente</div>
+      <h2>Un solo equipo. Una sola estética.</h2>
+      <p><strong>Menos estrés, más orden y mejor resultado.</strong> Foto y video trabajan juntos para cuidar cada momento importante sin que la familia tenga que coordinar proveedores separados.</p>
+    </div>
+  </section>
+
+  <div class="quick-nav">
+    <div class="quick-nav-inner">
+      <a href="#combos">Combos Foto + Video</a>
+      <a href="#valor">Por qué combo</a>
+      <a href="#foto">Solo fotografía</a>
+      <a href="#video">Solo video</a>
+      <a href="#sesion-xv">Sesión XV</a>
+      <a href="#reservar">Reservar</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="section" id="combos">
+      <div class="section-head reveal">
+        <div class="eyebrow">Primera opción recomendada</div>
+        <h2>Combos Foto + Video</h2>
+        <p>Los paquetes más completos para XV años. Foto y video cubren las mismas horas, trabajan bajo una sola dirección visual y te ayudan a ahorrar al contratar todo junto.</p>
+      </div>
+
+      <div class="grid grid-3 card-grid">
+        <article class="pkg-card glass reveal">
+          <span class="pkg-tag">XV Esencia</span>
+          <h3 class="pkg-title">Combo Esencia</h3>
+          <p class="pkg-desc">Para celebraciones íntimas donde lo más importante es conservar la emoción principal del día con foto y video.</p>
+          <div class="price-wrap">
+            <div class="price"><sup>Q</sup>5,499</div>
+            <div class="meta-price">6 horas de cobertura foto + video</div>
+          </div>
+          <div class="saving-pill"><i class="ti ti-discount-check"></i> Ahorrás Q199 al elegir combo</div>
+          <div class="includes">Foto Esencia + Video Esencia</div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>6 horas de cobertura foto + video.</li>
+            <li><span class="check">✓</span>Ceremonia o misa.</li>
+            <li><span class="check">✓</span>Sesión breve de quinceañera y familia.</li>
+            <li><span class="check">✓</span>Fotografías profesionales editadas.</li>
+            <li><span class="check">✓</span>Video cinemático de 8 a 10 minutos.</li>
+            <li><span class="check">✓</span>Reel vertical para redes sociales.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn secondary" onclick="sendPackage('Combo Esencia de XV años Q5,499')">Cotizar Combo Esencia</button></div>
+        </article>
+
+        <article class="pkg-card glass featured reveal" style="transition-delay:.06s">
+          <span class="pkg-tag solid">Más recomendado</span>
+          <h3 class="pkg-title">Combo Cine</h3>
+          <p class="pkg-desc">La opción ideal para recordar la ceremonia, sesión, recepción, entrada, vals y momentos principales con más calma.</p>
+          <div class="price-wrap">
+            <div class="price"><sup>Q</sup>7,499</div>
+            <div class="meta-price">8 horas de cobertura foto + video</div>
+          </div>
+          <div class="saving-pill"><i class="ti ti-discount-check"></i> Ahorrás Q499 al elegir combo</div>
+          <div class="includes">Foto Cine + Video Cine</div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>8 horas de cobertura foto + video.</li>
+            <li><span class="check">✓</span>Preparativos parciales.</li>
+            <li><span class="check">✓</span>Ceremonia o misa completa.</li>
+            <li><span class="check">✓</span>Sesión de quinceañera, familia y decoración.</li>
+            <li><span class="check">✓</span>Recepción, entrada, vals y pastel.</li>
+            <li><span class="check">✓</span>Video cinemático de 10 a 12 minutos.</li>
+            <li><span class="check">✓</span>Reel vertical para redes sociales.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn" onclick="sendPackage('Combo Cine de XV años Q7,499')">Quiero Combo Cine</button></div>
+        </article>
+
+        <article class="pkg-card glass gold reveal" style="transition-delay:.12s">
+          <span class="pkg-tag gold">Full Experience</span>
+          <h3 class="pkg-title">Combo Full</h3>
+          <p class="pkg-desc">Para familias que quieren una historia más completa, desde preparativos hasta los momentos importantes de fiesta.</p>
+          <div class="price-wrap">
+            <div class="price"><sup>Q</sup>9,999</div>
+            <div class="meta-price">10 horas de cobertura foto + video</div>
+          </div>
+          <div class="saving-pill"><i class="ti ti-discount-check"></i> Ahorrás Q999 al elegir combo</div>
+          <div class="includes">Foto Full + Video Full</div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>10 horas de cobertura foto + video.</li>
+            <li><span class="check">✓</span>Preparativos completos.</li>
+            <li><span class="check">✓</span>Ceremonia o misa completa.</li>
+            <li><span class="check">✓</span>Sesión artística de quinceañera.</li>
+            <li><span class="check">✓</span>Recepción y momentos importantes de fiesta.</li>
+            <li><span class="check">✓</span>Video documental/cinemático de 13 a 15 minutos.</li>
+            <li><span class="check">✓</span>Trailer para redes sociales.</li>
+            <li><span class="check">✓</span>Drone si la locación lo permite.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn secondary" onclick="sendPackage('Combo Full de XV años Q9,999')">Cotizar Combo Full</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="valor">
+      <div class="section-head reveal">
+        <div class="eyebrow">Por qué conviene el combo</div>
+        <h2>Más orden el día del evento. Más emoción al recordarlo.</h2>
+        <p>La experiencia se siente mejor cuando todo el equipo trabaja con una misma intención: cuidar la historia visual de tus XV.</p>
+      </div>
+      <div class="value-grid">
+        <div class="value-item glass reveal">
+          <div class="value-icon"><i class="ti ti-users"></i></div>
+          <h3>Un solo equipo</h3>
+          <p>Menos proveedores que coordinar y una comunicación más clara antes, durante y después del evento.</p>
+        </div>
+        <div class="value-item glass reveal" style="transition-delay:.06s">
+          <div class="value-icon"><i class="ti ti-movie"></i></div>
+          <h3>Historia completa</h3>
+          <p>Las fotos guardan el instante. El video guarda la entrada, el vals, las voces y las reacciones.</p>
+        </div>
+        <div class="value-item glass reveal" style="transition-delay:.12s">
+          <div class="value-icon"><i class="ti ti-sparkles"></i></div>
+          <h3>Estética coherente</h3>
+          <p>Foto y video se sienten parte de la misma celebración, no como trabajos separados.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="foto">
+      <div class="section-head reveal">
+        <div class="eyebrow">Paquetes por aparte</div>
+        <h2>Solo Fotografía</h2>
+        <p>Para familias que desean enfocarse en fotografías profesionales del evento, la quinceañera, la familia y los detalles.</p>
+      </div>
+      <div class="grid grid-3 card-grid">
+        <article class="pkg-card glass reveal">
+          <span class="pkg-tag">Esencia Foto</span>
+          <h3 class="pkg-title">XV Esencia Foto</h3>
+          <p class="pkg-desc">Una cobertura elegante para conservar los momentos principales de la celebración.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>2,199</div><div class="meta-price">6 horas de cobertura fotográfica</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>6 horas de cobertura.</li>
+            <li><span class="check">✓</span>Ceremonia o misa.</li>
+            <li><span class="check">✓</span>Sesión breve de quinceañera y familia.</li>
+            <li><span class="check">✓</span>Fotografías profesionales editadas.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn secondary" onclick="sendPackage('XV Esencia Foto Q2,199')">Cotizar Esencia Foto</button></div>
+        </article>
+
+        <article class="pkg-card glass featured reveal" style="transition-delay:.06s">
+          <span class="pkg-tag solid">Popular</span>
+          <h3 class="pkg-title">XV Cine Foto</h3>
+          <p class="pkg-desc">Más tiempo para cubrir preparativos parciales, ceremonia, sesión y recepción con mayor tranquilidad.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>2,999</div><div class="meta-price">8 horas de cobertura fotográfica</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>8 horas de cobertura.</li>
+            <li><span class="check">✓</span>Preparativos parciales.</li>
+            <li><span class="check">✓</span>Ceremonia o misa completa.</li>
+            <li><span class="check">✓</span>Sesión de quinceañera, familia y decoración.</li>
+            <li><span class="check">✓</span>Recepción y momentos importantes.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn" onclick="sendPackage('XV Cine Foto Q2,999')">Quiero Cine Foto</button></div>
+        </article>
+
+        <article class="pkg-card glass gold reveal" style="transition-delay:.12s">
+          <span class="pkg-tag gold">Premium</span>
+          <h3 class="pkg-title">XV Full Foto</h3>
+          <p class="pkg-desc">Una cobertura más completa para familias que no quieren quedarse cortas en momentos importantes.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>3,999</div><div class="meta-price">10 horas de cobertura fotográfica</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>10 horas de cobertura.</li>
+            <li><span class="check">✓</span>Preparativos completos.</li>
+            <li><span class="check">✓</span>Ceremonia o misa completa.</li>
+            <li><span class="check">✓</span>Sesión artística de quinceañera.</li>
+            <li><span class="check">✓</span>Recepción y fiesta.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn secondary" onclick="sendPackage('XV Full Foto Q3,999')">Cotizar Full Foto</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="video">
+      <div class="section-head reveal">
+        <div class="eyebrow">Paquetes por aparte</div>
+        <h2>Solo Video</h2>
+        <p>Para familias que quieren conservar la entrada, los discursos, el vals y la energía del evento en una pieza cinematográfica.</p>
+      </div>
+      <div class="grid grid-3 card-grid">
+        <article class="pkg-card glass reveal">
+          <span class="pkg-tag">Esencia Video</span>
+          <h3 class="pkg-title">XV Esencia Video</h3>
+          <p class="pkg-desc">Una historia breve, cuidada y emocional para conservar los momentos principales.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>3,499</div><div class="meta-price">6 horas de cobertura de video</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>6 horas de cobertura.</li>
+            <li><span class="check">✓</span>Grabación en 4K.</li>
+            <li><span class="check">✓</span>Ceremonia o misa.</li>
+            <li><span class="check">✓</span>Momentos principales de recepción.</li>
+            <li><span class="check">✓</span>Video cinemático de 8 a 10 minutos.</li>
+            <li><span class="check">✓</span>Reel vertical para redes sociales.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn secondary" onclick="sendPackage('XV Esencia Video Q3,499')">Cotizar Esencia Video</button></div>
+        </article>
+
+        <article class="pkg-card glass featured reveal" style="transition-delay:.06s">
+          <span class="pkg-tag solid">Popular</span>
+          <h3 class="pkg-title">XV Cine Video</h3>
+          <p class="pkg-desc">Más cobertura y más historia para capturar la celebración con ritmo, emoción y seguridad.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>4,999</div><div class="meta-price">8 horas de cobertura de video</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>8 horas de cobertura.</li>
+            <li><span class="check">✓</span>Preparativos parciales.</li>
+            <li><span class="check">✓</span>Ceremonia o misa completa.</li>
+            <li><span class="check">✓</span>Recepción, entrada, vals y pastel.</li>
+            <li><span class="check">✓</span>Video cinemático de 10 a 12 minutos.</li>
+            <li><span class="check">✓</span>Reel vertical para redes sociales.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn" onclick="sendPackage('XV Cine Video Q4,999')">Quiero Cine Video</button></div>
+        </article>
+
+        <article class="pkg-card glass gold reveal" style="transition-delay:.12s">
+          <span class="pkg-tag gold">Premium</span>
+          <h3 class="pkg-title">XV Full Video</h3>
+          <p class="pkg-desc">Una producción más completa para que la celebración se sienta como una película.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>6,999</div><div class="meta-price">10 horas de cobertura de video</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>10 horas de cobertura.</li>
+            <li><span class="check">✓</span>Preparativos completos.</li>
+            <li><span class="check">✓</span>Ceremonia o misa completa.</li>
+            <li><span class="check">✓</span>Recepción y momentos importantes de fiesta.</li>
+            <li><span class="check">✓</span>Video documental/cinemático de 13 a 15 minutos.</li>
+            <li><span class="check">✓</span>Trailer para redes sociales.</li>
+            <li><span class="check">✓</span>Drone si la locación lo permite.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn secondary" onclick="sendPackage('XV Full Video Q6,999')">Cotizar Full Video</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="sesion-xv">
+      <div class="section-head reveal">
+        <div class="eyebrow">Complemento recomendado</div>
+        <h2>Sesión de XV Años</h2>
+        <p>Una sesión previa permite usar el vestido con calma, crear fotos elegantes y llegar al evento con más confianza frente a cámara.</p>
+      </div>
+      <div class="grid grid-2 card-grid">
+        <article class="pkg-card glass reveal">
+          <span class="pkg-tag">Sesión Básica</span>
+          <h3 class="pkg-title">Sesión XV Básica</h3>
+          <p class="pkg-desc">Para crear fotografías de la quinceañera en una locación, con una estética limpia y profesional.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>1,399</div><div class="meta-price">2 horas · una locación</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>2 horas de cobertura.</li>
+            <li><span class="check">✓</span>Fotos profesionales editadas.</li>
+            <li><span class="check">✓</span>Una locación.</li>
+            <li><span class="check">✓</span>Dirección básica durante la sesión.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn secondary" onclick="sendPackage('Sesión XV Básica Q1,399')">Cotizar Sesión Básica</button></div>
+        </article>
+
+        <article class="pkg-card glass featured reveal" style="transition-delay:.06s">
+          <span class="pkg-tag solid">Recomendada</span>
+          <h3 class="pkg-title">Sesión XV Profesional</h3>
+          <p class="pkg-desc">Más tiempo y más variedad para lograr una galería visual más completa antes del evento.</p>
+          <div class="price-wrap"><div class="price"><sup>Q</sup>1,799</div><div class="meta-price">3 horas · varias locaciones</div></div>
+          <div class="divider"></div>
+          <ul class="list">
+            <li><span class="check">✓</span>3 horas de cobertura.</li>
+            <li><span class="check">✓</span>Fotos profesionales editadas.</li>
+            <li><span class="check">✓</span>Varias locaciones.</li>
+            <li><span class="check">✓</span>Dirección completa durante la sesión.</li>
+            <li><span class="check">✓</span>Entrega digital por link privado.</li>
+          </ul>
+          <div class="card-actions"><button class="card-btn" onclick="sendPackage('Sesión XV Profesional Q1,799')">Quiero Sesión Profesional</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="note-box reveal">
+        <div class="note-card glass">
+          <h3>Información importante</h3>
+          <p>La fecha se reserva con el 50% del valor del paquete. Hora adicional: Q300. Viáticos no incluidos fuera de Suchitepéquez. Drone sujeto a clima, permisos y condiciones de la locación.</p>
+        </div>
+        <div class="note-card glass">
+          <h3>Consejo de compra</h3>
+          <p>Si estás entre dos opciones, elegí la que te dé más tranquilidad. La entrada, el vals, los abrazos y las reacciones no se repiten.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cta liquid-scene" id="reservar">
+    <span class="orb two"></span>
+    <div class="cta-inner glass reveal">
+      <div class="eyebrow">Reservá tu fecha</div>
+      <h2>Hagamos que tus XV se recuerden bonito.</h2>
+      <p>Escríbenos por WhatsApp con tu fecha, ubicación y paquete favorito. Te confirmamos disponibilidad y te guiamos hacia la mejor opción.</p>
+      <button class="btn btn-primary" onclick="sendPackage('Hola JohanFilms, quiero cotizar cobertura de XV años. Mi fecha es:')">Escribir por WhatsApp</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="Portafolio.html">Portafolio</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <p>&copy; 2026 JOHANFILMS. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const phone = "50247474348";
+
+    function sendPackage(packageName){
+      const text = `Hola JohanFilms. Estoy interesado/a en ${packageName}. Quiero confirmar disponibilidad y recibir más información para mis XV años.`;
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      const elementVisible = 90;
+      reveals.forEach((reveal) => {
+        const elementTop = reveal.getBoundingClientRect().top;
+        if(elementTop < windowHeight - elementVisible){
+          reveal.classList.add('active');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    function toggleMenu(){
+      menuToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    menuToggle.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+  </script>
+</body>
+</html>
