@@ -15,9 +15,6 @@
   <link rel="stylesheet" href="assets/css/site-nav.css">
   <script src="assets/js/site-nav.js" defer></script>
 
-  <!-- jsPDF — genera el PDF de la cotización del configurador (paso 12) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
   <!--
     ============================================================
     DÓNDE COLOCAR TUS ARCHIVOS (fotos y videos ya optimizados):
@@ -337,8 +334,18 @@
     .jf-config-progress-track{height:3px;background:rgba(255,255,255,.08);flex-shrink:0;}
     .jf-config-progress-fill{height:100%;width:0%;background:var(--accent);transition:width .4s cubic-bezier(.5,0,0,1);}
 
-    .jf-config-body{display:flex;overflow:hidden;flex:1;}
-    .jf-config-main{flex:1;overflow-y:auto;padding:36px 32px 24px;}
+    .jf-config-body{display:flex;overflow:hidden;flex:1;min-height:0;}
+    .jf-config-main{flex:1;overflow-y:auto;padding:36px 32px 24px;min-height:0;}
+    .jf-config-mobile-total{
+      display:none;flex-shrink:0;
+      align-items:center;justify-content:space-between;
+      padding:12px 24px;
+      border-top:1px solid var(--border);
+      background:rgba(0,0,0,.3);
+      font-size:.78rem;color:var(--muted);
+    }
+    .jf-config-mobile-total strong{font-size:1.1rem;color:#fff;}
+    .jf-config-mobile-total strong sup{font-size:.6em;color:var(--accent);margin-right:1px;}
     .jf-config-step-num{color:var(--accent);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px;}
     .jf-config-main h3{font-size:clamp(1.35rem,3vw,1.85rem);letter-spacing:-.03em;margin-bottom:8px;}
     .jf-config-main > p{color:var(--muted);font-size:.94rem;margin-bottom:26px;max-width:560px;line-height:1.55;}
@@ -496,20 +503,26 @@
     .jf-config-review-row span{color:var(--accent);font-weight:700;white-space:nowrap;}
 
     @media (max-width:900px){
+      .jf-config-overlay{padding:0;}
+      .jf-config-modal{width:100%;height:100%;max-height:100%;border-radius:0;}
       .jf-config-body{flex-direction:column;}
-      .jf-config-summary{width:100%;border-left:0;border-top:1px solid var(--border);padding:18px 24px;}
+      /* En móvil el sidebar de resumen ocupaba demasiado espacio y tapaba
+         el contenido del paso actual. Se oculta y en su lugar se muestra
+         solo el total en una barra compacta (.jf-config-mobile-total);
+         el resumen completo ya aparece en el paso de confirmación. */
+      .jf-config-summary{display:none;}
+      .jf-config-mobile-total{display:flex;}
       .jf-config-options,
       .jf-config-options.jf-cols-4{grid-template-columns:repeat(2,minmax(0,1fr));}
     }
     @media (max-width:560px){
-      .jf-config-modal{max-height:96vh;border-radius:20px;}
-      .jf-config-main{padding:26px 20px 20px;}
+      .jf-config-main{padding:24px 20px 20px;}
       .jf-config-options,
       .jf-config-options.jf-cols-2,
       .jf-config-options.jf-cols-4{grid-template-columns:1fr;}
-      .jf-config-nav{padding:16px 20px;}
-      .jf-config-head{padding:18px 20px;}
-      .jf-config-summary{padding:16px 20px;}
+      .jf-config-nav{padding:14px 20px;}
+      .jf-config-mobile-total{padding:10px 20px;}
+      .jf-config-head{padding:16px 20px;}
       .jf-config-location-grid{grid-template-columns:1fr;}
     }
   </style>
@@ -522,7 +535,13 @@
       <span></span>
       <span></span>
     </div>
-    <ul class="nav-links" id="navLinks"></ul>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Proyectos</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="Portafolio.html">Portafolio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
   </nav>
 
   <header class="hero">
@@ -679,7 +698,7 @@
         </div>
         <div>
           <h3>Cómo agendar</h3>
-          <p>Escribinos por WhatsApp con el nombre de tu marca y qué necesitás mostrar. Coordinamos fecha, locación y detalles de la sesión.</p>
+          <p>Ahora tú mismo puedes seleccionar lo que quieres en el paquete.</p>
         </div>
       </div>
     </section>
@@ -701,8 +720,8 @@
     <div class="reveal">
       <div class="eyebrow">Empecemos</div>
       <h2>Tu marca lista,<br>en una sola sesión.</h2>
-      <p>Escribinos por WhatsApp con el nombre de tu marca y qué necesitás mostrar. Te confirmamos disponibilidad y coordinamos la sesión.</p>
-      <button class="btn btn-primary" onclick="sendWhatsApp('Quiero agendar una sesión de Marcas Una Vez para mi marca')">Escribir por WhatsApp</button>
+      <p>Configura tu paquete a tu medida y te escribimos por WhatsApp para confirmar disponibilidad y coordinar la sesión.</p>
+      <button class="btn btn-primary" onclick="openConfigurator()">Personalizar mi cotización</button>
     </div>
   </section>
 
@@ -736,6 +755,7 @@
         <div class="jf-config-main" id="jfConfigMain"></div>
         <aside class="jf-config-summary" id="jfConfigSummary"></aside>
       </div>
+      <div class="jf-config-mobile-total" id="jfConfigMobileTotal"></div>
       <div class="jf-config-nav">
         <button class="jf-config-btn" id="jfConfigBack">Atrás</button>
         <button class="jf-config-btn primary" id="jfConfigNext">Continuar</button>
@@ -845,7 +865,7 @@
       },
       { key:'location', label:'Ubicación', title:'¿Dónde se realizará la producción?', subtitle:'Selecciona el departamento y municipio, y escribe la dirección exacta.', type:'location' },
       { key:'client', label:'Datos de contacto', title:'¿A quién le enviamos la cotización?', subtitle:'Necesitamos estos datos para prepararla a tu nombre.', type:'client' },
-      { key:'confirm', label:'Confirmación', title:'Revisa tu cotización antes de enviarla.', subtitle:'Verifica que todo esté correcto. Al confirmar, generamos tu PDF y lo enviamos por WhatsApp.', type:'confirm' }
+      { key:'confirm', label:'Confirmación', title:'Revisa tu cotización antes de enviarla.', subtitle:'Verifica que todo esté correcto. Al confirmar, te redirigimos a WhatsApp con tu cotización lista para enviar.', type:'confirm' }
     ];
 
     /* Departamentos y municipios de Guatemala (22 departamentos, 340 municipios),
@@ -1104,7 +1124,7 @@
         </div>
         <div class="jf-config-notice">
           <i class="ti ti-info-circle"></i>
-          <div>Al confirmar, generamos un PDF con esta cotización y lo enviamos junto con tu mensaje por WhatsApp. Este total es un estimado y puede estar sujeto a cambios según requerimientos adicionales.</div>
+          <div>Al confirmar, se abre WhatsApp con el detalle completo de tu cotización listo para enviar. Este total es un estimado y puede estar sujeto a cambios según requerimientos adicionales.</div>
         </div>
       `;
     }
@@ -1138,6 +1158,14 @@
           <div class="jf-config-summary-total-price"><sup>Q</sup>${total.toLocaleString('es-GT')}</div>
         </div>
       `;
+
+      const mobileTotal = document.getElementById('jfConfigMobileTotal');
+      if(mobileTotal){
+        mobileTotal.innerHTML = `
+          <span>Total estimado</span>
+          <strong><sup>Q</sup>${total.toLocaleString('es-GT')}</strong>
+        `;
+      }
     }
 
     function cfgUpdateNav(){
@@ -1180,160 +1208,46 @@
       return 'COT-2026-' + String(seq).padStart(4, '0');
     }
 
-    function cfgGeneratePDF(quoteNumber){
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ unit: 'pt', format: 'a4' });
-      const pageW = doc.internal.pageSize.getWidth();
-      const pageH = doc.internal.pageSize.getHeight();
-      const v = cfgState.values;
-
-      doc.setFillColor(0, 0, 0);
-      doc.rect(0, 0, pageW, pageH, 'F');
-
-      doc.setTextColor(245, 245, 247);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(22);
-      doc.text('JOHANFILMS', 40, 60);
-
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      doc.setTextColor(142, 142, 147);
-      doc.text('Producción audiovisual y de contenido · Guatemala', 40, 76);
-
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(10);
-      doc.setTextColor(41, 151, 255);
-      doc.text(quoteNumber, pageW - 40, 60, { align: 'right' });
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      doc.setTextColor(142, 142, 147);
-      const fecha = new Date().toLocaleDateString('es-GT', { day: '2-digit', month: 'long', year: 'numeric' });
-      doc.text('Generado el ' + fecha, pageW - 40, 76, { align: 'right' });
-
-      doc.setDrawColor(45, 45, 48);
-      doc.line(40, 96, pageW - 40, 96);
-
-      let y = 128;
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9);
-      doc.setTextColor(41, 151, 255);
-      doc.text('COTIZACIÓN · MARCAS UNA VEZ', 40, y);
-      y += 24;
-
-      doc.setFontSize(17);
-      doc.setTextColor(245, 245, 247);
-      doc.text('Propuesta de producción audiovisual', 40, y);
-      y += 34;
-
-      doc.setFontSize(10.5);
-      doc.text('Datos del cliente', 40, y); y += 18;
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9.5);
-      doc.setTextColor(190, 190, 196);
-      const clientLines = [
-        'Nombre: ' + ((v.nombre || '') + ' ' + (v.apellido || '')).trim(),
-        'Teléfono: ' + (v.telefono || '—'),
-        'Tipo de negocio: ' + (v.business || '—'),
-        'Ubicación: ' + cfgDisplayValueFor({type:'location'})
-      ];
-      clientLines.forEach(l => { doc.text(l, 40, y); y += 15; });
-      y += 16;
-
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(10.5);
-      doc.setTextColor(245, 245, 247);
-      doc.text('Resumen del servicio', 40, y); y += 18;
-
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9.5);
-      CONFIG_STEPS.filter(s => s.type === 'price' || s.type === 'select').forEach(step => {
-        doc.setTextColor(190, 190, 196);
-        doc.text(step.label, 40, y);
-        doc.text(String(cfgDisplayValueFor(step)), 210, y);
-        if(step.type === 'price'){
-          const delta = PRICE[step.priceKey][v[step.key]] || 0;
-          doc.setTextColor(41, 151, 255);
-          doc.text(delta > 0 ? ('+' + cfgFormatQ(delta)) : 'Incluido', pageW - 40, y, { align: 'right' });
-        }
-        y += 17;
-      });
-
-      y += 8;
-      doc.setDrawColor(45, 45, 48);
-      doc.line(40, y, pageW - 40, y);
-      y += 34;
-
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(11);
-      doc.setTextColor(142, 142, 147);
-      doc.text('PRECIO ESTIMADO', 40, y);
-      doc.setFontSize(26);
-      doc.setTextColor(41, 151, 255);
-      doc.text(cfgFormatQ(cfgTotal()), pageW - 40, y + 4, { align: 'right' });
-      y += 44;
-
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8.3);
-      doc.setTextColor(130, 130, 136);
-      const nota = 'Esta cotización es un estimado y puede estar sujeta a cambios según requerimientos adicionales. Los viáticos fuera de Suchitepéquez se calculan y confirman por separado según la ubicación seleccionada.';
-      const notaLines = doc.splitTextToSize(nota, pageW - 80);
-      doc.text(notaLines, 40, y);
-
-      doc.setDrawColor(45, 45, 48);
-      doc.line(40, pageH - 92, pageW - 40, pageH - 92);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(10.5);
-      doc.setTextColor(245, 245, 247);
-      doc.text('Johan Quan · JohanFilms', 40, pageH - 66);
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(9);
-      doc.setTextColor(142, 142, 147);
-      doc.text('4747-4348   ·   johanqfilms@gmail.com   ·   johanfilms.com', 40, pageH - 50);
-
-      return doc;
-    }
-
     function cfgGenerateAndSend(){
       const btn = document.getElementById('jfConfigNext');
-      if(btn){ btn.disabled = true; btn.textContent = 'Generando PDF...'; }
+      const quoteNumber = cfgBuildQuoteNumber();
+      const v = cfgState.values;
 
-      setTimeout(() => {
-        const quoteNumber = cfgBuildQuoteNumber();
-        const doc = cfgGeneratePDF(quoteNumber);
-        const fileName = quoteNumber + '-JohanFilms.pdf';
+      const lines = [
+        'Hola Johan Films, acabo de configurar mi paquete en la página web y me gustaría solicitar esta cotización.',
+        '',
+        `Cotización: ${quoteNumber}`,
+        `Cliente: ${((v.nombre || '') + ' ' + (v.apellido || '')).trim()}`,
+        `Teléfono: ${v.telefono || '—'}`,
+        `Tipo de negocio: ${v.business || '—'}`,
+        `Ubicación: ${cfgDisplayValueFor({type:'location'})}`,
+        ''
+      ];
 
-        doc.save(fileName);
-
-        const v = cfgState.values;
-        const message = [
-          'Hola Johan Films, acabo de configurar mi paquete en la página web y me gustaría solicitar esta cotización. Adjunto el PDF generado automáticamente.',
-          '',
-          `Cotización: ${quoteNumber}`,
-          `Cliente: ${((v.nombre || '') + ' ' + (v.apellido || '')).trim()}`,
-          `Total estimado: ${cfgFormatQ(cfgTotal())}`
-        ].join('\n');
-
-        let shared = false;
-        try {
-          const blob = doc.output('blob');
-          const file = new File([blob], fileName, { type: 'application/pdf' });
-          if(navigator.canShare && navigator.canShare({ files: [file] })){
-            shared = true;
-            navigator.share({ files: [file], title: 'Cotización JohanFilms', text: message })
-              .catch(() => {
-                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-              });
-          }
-        } catch(e){ shared = false; }
-
-        if(!shared){
-          window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+      CONFIG_STEPS.filter(s => s.type === 'price' || s.type === 'select').forEach(step => {
+        const display = cfgDisplayValueFor(step);
+        let deltaLabel = '';
+        if(step.type === 'price'){
+          const delta = PRICE[step.priceKey][v[step.key]] || 0;
+          deltaLabel = delta > 0 ? ` (+${cfgFormatQ(delta)})` : ' (Incluido)';
         }
+        lines.push(`• ${step.label}: ${display}${deltaLabel}`);
+      });
 
-        if(btn){
-          setTimeout(() => { btn.disabled = false; btn.textContent = 'Mandar cotización'; }, 1200);
-        }
-      }, 250);
+      lines.push('');
+      lines.push(`Total estimado: ${cfgFormatQ(cfgTotal())}`);
+      lines.push('(Los viáticos fuera de Suchitepéquez se calculan y confirman por separado.)');
+
+      const message = lines.join('\n');
+
+      // Redirige directo al chat de WhatsApp con todo listo para enviar.
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+
+      if(btn){
+        btn.textContent = 'Cotización enviada';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = 'Mandar cotización'; btn.disabled = false; }, 2000);
+      }
     }
 
     document.getElementById('jfConfigClose').addEventListener('click', closeConfigurator);
