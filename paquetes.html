@@ -77,7 +77,8 @@ html.js .reveal.in{opacity:1;translate:0 0}
 .site-header{position:fixed;inset:0 0 auto 0;z-index:100;padding-top:env(safe-area-inset-top);transition:background .4s,border-color .4s}
 .site-header.scrolled{background:rgba(0,0,0,.72);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line)}
 .nav{height:60px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{font-size:17px;font-weight:700;letter-spacing:-.015em}
+.brand{display:flex;align-items:center;font-size:17px;font-weight:700;letter-spacing:-.015em}
+.brand img{display:block;height:24px;width:auto}
 .nav-links{display:flex;gap:32px;font-size:13px;color:var(--gray)}
 .nav-links a{transition:color .3s}
 .nav-links a:hover{color:#fff}
@@ -377,6 +378,7 @@ html.js .mg-chip{animation:mgChip 8s cubic-bezier(.34,1.56,.64,1) infinite}
 .site-footer{border-top:1px solid var(--line);padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
 .foot{display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between;align-items:flex-end}
 .foot .brand{font-size:19px}
+.foot .brand img{height:28px}
 .foot small{display:block;margin-top:6px;color:var(--gray);font-size:13.5px}
 .foot-links{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--gray)}
 .foot-links a:hover{color:#fff}
@@ -404,7 +406,7 @@ html.js .mg-chip{animation:mgChip 8s cubic-bezier(.34,1.56,.64,1) infinite}
 <header class="site-header" id="siteHeader">
   <div class="wrap">
     <nav class="nav" aria-label="Principal">
-      <a class="brand" href="#inicio">JohanFilms</a>
+      <a class="brand" href="#inicio" aria-label="JohanFilms, inicio"><img src="assets/logo/johanfilms-blanco.webp" alt="JohanFilms" width="480" height="107"></a>
       <div class="nav-links">
         <a href="#trabajo" data-needs-work hidden>Trabajo</a>
         <a href="#proceso">Proceso</a>
@@ -903,7 +905,7 @@ html.js .mg-chip{animation:mgChip 8s cubic-bezier(.34,1.56,.64,1) infinite}
   <div class="wrap">
     <div class="foot">
       <div>
-        <a class="brand" href="#inicio">JohanFilms</a>
+        <a class="brand" href="#inicio" aria-label="JohanFilms, inicio"><img src="assets/logo/johanfilms-blanco.webp" alt="JohanFilms" width="480" height="107"></a>
         <small>Menos es más.</small>
       </div>
       <nav class="foot-links" aria-label="Pie de página">
