@@ -10,7 +10,21 @@
 <meta property="og:title" content="Paquetes mensuales — JohanFilms">
 <meta property="og:description" content="Contenido con intención. Marca con presencia. Elige el plan según el objetivo de tu marca.">
 <meta property="og:type" content="website">
-<script>document.documentElement.classList.replace('no-js','js');</script>
+<script>document.documentElement.classList.replace('no-js','js');
+/* Siempre abrir desde el inicio: sin restaurar scroll ni saltar a #anclas */
+(function(){
+  var root=document.documentElement;
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  function top(){
+    try{ if(location.hash) history.replaceState(null,'',location.pathname+location.search); }catch(e){}
+    root.style.scrollBehavior='auto'; window.scrollTo(0,0);
+    setTimeout(function(){ root.style.scrollBehavior=''; },60);
+  }
+  top();
+  window.addEventListener('load',top);
+  window.addEventListener('pageshow',function(e){ if(e.persisted) top(); });
+})();
+</script>
 
 <style>
 /* =========================================================
