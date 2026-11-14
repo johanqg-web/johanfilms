@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex, nofollow">
+<title>Paquetes mensuales — JohanFilms</title>
+<meta name="description" content="Contenido audiovisual con intención. Planes mensuales de planeación, producción y edición en Mazatenango: Presencia, Crecimiento y Dominación.">
+<meta property="og:title" content="Paquetes mensuales — JohanFilms">
+<meta property="og:description" content="Contenido con intención. Marca con presencia. Elige el plan según el objetivo de tu marca.">
+<meta property="og:type" content="website">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+
+<style>
+/* =========================================================
+   JOHANFILMS · Página de paquetes
+   Paleta del manual: #000000 · #FFFFFF · #8E8E93 · #0071E3
+   ========================================================= */
+:root{
+  --bg:#000000;
+  --white:#ffffff;
+  --gray:#8e8e93;
+  --blue:#0071e3;
+  --blue-hover:#0a84ff;
+  --body:rgba(255,255,255,.74);
+  --line:rgba(255,255,255,.11);
+  --panel:rgba(255,255,255,.035);
+  --panel-2:rgba(255,255,255,.065);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --pad:clamp(20px,5vw,56px);
+  --max:1160px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--white);font-family:var(--font);line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+body.no-scroll{overflow:hidden}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+svg{display:block;flex:none}
+img,video{display:block;max-width:100%}
+[hidden]{display:none !important}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6px}
+::selection{background:var(--blue);color:#fff}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.section{padding:clamp(80px,12vw,152px) 0}
+
+/* ---------- Encabezado de sección (barra de acento del manual) ---------- */
+.sec-head{display:flex;gap:18px;align-items:stretch;margin-bottom:clamp(40px,6vw,72px)}
+.sec-head .bar{width:4px;border-radius:2px;background:var(--blue);flex:none}
+.sec-head h2{font-size:clamp(30px,4.6vw,54px);font-weight:700;letter-spacing:-.032em;line-height:1.06;text-wrap:balance}
+.sec-head p{margin-top:16px;color:var(--gray);font-size:clamp(16px,1.6vw,19px);max-width:54ch;text-wrap:pretty}
+
+/* ---------- Botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:999px;font-size:15px;font-weight:600;letter-spacing:-.005em;transition:transform .45s var(--ease),background .3s,border-color .3s,color .3s}
+.btn svg{transition:transform .45s var(--ease)}
+.btn:hover svg.arrow{transform:translateX(4px)}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-hover);transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.24);color:#fff}
+.btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+.btn-white{background:#fff;color:#000}
+.btn-white:hover{background:var(--blue);color:#fff;transform:translateY(-2px)}
+
+/* ---------- Revelado al hacer scroll (solo si JS está activo) ---------- */
+html.js .reveal{opacity:0;translate:0 26px;transition:opacity .95s var(--ease) var(--d,0s),translate .95s var(--ease) var(--d,0s)}
+html.js .reveal.in{opacity:1;translate:0 0}
+
+/* =========================================================
+   HEADER + MENÚ MÓVIL
+   ========================================================= */
+.site-header{position:fixed;inset:0 0 auto 0;z-index:100;padding-top:env(safe-area-inset-top);transition:background .4s,border-color .4s}
+.site-header.scrolled{background:rgba(0,0,0,.72);-webkit-backdrop-filter:saturate(180%) blur(18px);backdrop-filter:saturate(180%) blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:60px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-size:17px;font-weight:700;letter-spacing:-.015em}
+.nav-links{display:flex;gap:32px;font-size:13px;color:var(--gray)}
+.nav-links a{transition:color .3s}
+.nav-links a:hover{color:#fff}
+.nav-right{display:flex;align-items:center;gap:14px}
+.btn-sm{padding:8px 16px;font-size:13px}
+.menu-btn{display:none;position:relative;width:38px;height:38px}
+.menu-btn span{position:absolute;left:9px;right:9px;height:1.6px;background:#fff;border-radius:2px;transition:transform .5s var(--ease),top .5s var(--ease)}
+.menu-btn span:nth-child(1){top:15px}
+.menu-btn span:nth-child(2){top:22px}
+.menu-btn[aria-expanded="true"] span:nth-child(1){top:18.5px;transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"] span:nth-child(2){top:18.5px;transform:rotate(-45deg)}
+.progress{position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--blue);transform-origin:left;transform:scaleX(var(--scroll,0))}
+
+.menu{position:fixed;inset:0;z-index:99;display:flex;flex-direction:column;justify-content:center;padding:90px var(--pad) 48px;background:#000;opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s}
+.menu.open{opacity:1;visibility:visible}
+.menu a.m-link{font-size:clamp(30px,9vw,44px);font-weight:700;letter-spacing:-.03em;padding:12px 0;border-bottom:1px solid var(--line);opacity:0;translate:0 18px;transition:opacity .6s var(--ease),translate .6s var(--ease)}
+.menu.open a.m-link{opacity:1;translate:0 0;transition-delay:calc(var(--i) * 60ms + 120ms)}
+.menu .btn{margin-top:32px;align-self:flex-start}
+
+@media (max-width:860px){
+  .nav-links{display:none}
+  .menu-btn{display:block}
+  .nav-right .btn-sm{display:none}
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:calc(60px + 9vh) 0 12vh;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-1}
+.glow{position:absolute;border-radius:50%;pointer-events:none;will-change:transform}
+.glow.g1{width:72vmax;height:72vmax;left:-22vmax;top:-34vmax;background:radial-gradient(closest-side,rgba(0,113,227,.30),transparent 70%);animation:drift1 24s ease-in-out infinite alternate}
+.glow.g2{width:60vmax;height:60vmax;right:-26vmax;bottom:-34vmax;background:radial-gradient(closest-side,rgba(0,113,227,.17),transparent 70%);animation:drift2 28s ease-in-out infinite alternate}
+@keyframes drift1{to{transform:translate3d(12vmax,8vmax,0) scale(1.12)}}
+@keyframes drift2{to{transform:translate3d(-10vmax,-6vmax,0) scale(1.1)}}
+.grain{position:absolute;inset:0;opacity:.075;mix-blend-mode:overlay;pointer-events:none;background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s var(--ease)}
+.hero-video.ready{opacity:.55}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.2) 45%,#000 100%)}
+
+.hero-title{font-size:clamp(38px,7.2vw,86px);font-weight:700;letter-spacing:-.04em;line-height:1.02;text-wrap:balance}
+.hero-title .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.hero-title .ln>span{display:block}
+.hero-title .blue{color:var(--blue)}
+html.js .hero-title .ln>span{transform:translateY(112%);animation:lineUp 1.2s var(--ease) .15s forwards}
+html.js .hero-title .ln:nth-child(2)>span{animation-delay:.3s}
+@keyframes lineUp{to{transform:none}}
+
+.hero-sub{margin-top:clamp(22px,3vw,32px);max-width:46ch;font-size:clamp(17px,2vw,21px);color:var(--body);text-wrap:pretty}
+.hero-actions{margin-top:clamp(28px,4vw,40px);display:flex;flex-wrap:wrap;gap:14px}
+.hero-loc{margin-top:28px;font-size:14px;color:var(--gray)}
+html.js .hero-sub,html.js .hero-actions,html.js .hero-loc{opacity:0;translate:0 18px;animation:fadeUp 1.1s var(--ease) forwards}
+html.js .hero-sub{animation-delay:.55s}
+html.js .hero-actions{animation-delay:.7s}
+html.js .hero-loc{animation-delay:.85s}
+@keyframes fadeUp{to{opacity:1;translate:0 0}}
+
+.cue{position:absolute;left:50%;bottom:28px;translate:-50% 0;width:1px;height:54px;background:var(--line);overflow:hidden}
+.cue::after{content:"";position:absolute;left:0;top:-40%;width:1px;height:40%;background:#fff;animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{to{top:110%}}
+@media (max-width:640px){.cue{display:none}}
+
+/* =========================================================
+   PRUEBA SOCIAL (+300) + MARCAS
+   ========================================================= */
+.proof{padding-top:clamp(56px,8vw,96px)}
+.proof-top{display:flex;align-items:center;gap:clamp(20px,4vw,48px);flex-wrap:wrap}
+.proof-num{font-size:clamp(64px,13vw,150px);font-weight:700;letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+.proof-num .plus{color:var(--blue)}
+.proof-top p{max-width:30ch;font-size:clamp(18px,2.2vw,24px);color:var(--body);line-height:1.35;text-wrap:balance}
+.marquee{margin-top:clamp(44px,6vw,80px);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:marq 48s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marq-set{display:flex;align-items:center;gap:clamp(44px,6vw,84px);padding-right:clamp(44px,6vw,84px);flex:none}
+.brand-item{flex:none;height:38px;display:flex;align-items:center;font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--gray);white-space:nowrap;opacity:.7;transition:opacity .35s,color .35s}
+.brand-item:hover{opacity:1;color:#fff}
+.brand-item img{height:100%;width:auto;filter:brightness(0) invert(1)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* =========================================================
+   TRABAJO (galería horizontal, opcional)
+   ========================================================= */
+.rail{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px max(var(--pad),calc((100vw - var(--max)) / 2 + var(--pad))) 12px;scroll-padding-inline:max(var(--pad),calc((100vw - var(--max)) / 2 + var(--pad)))}
+.rail::-webkit-scrollbar{display:none}
+.work-card{position:relative;flex:none;border-radius:24px;overflow:hidden;background:#0b0b0b;scroll-snap-align:start;isolation:isolate}
+.work-card.vertical{width:clamp(250px,34vw,390px);aspect-ratio:4/5}
+.work-card.reel{width:clamp(210px,24vw,290px);aspect-ratio:9/16}
+.work-card.horizontal{width:clamp(300px,56vw,640px);aspect-ratio:16/10}
+.work-card img,.work-card video{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.work-card:hover img,.work-card:hover video{transform:scale(1.045)}
+.work-card figcaption{position:absolute;inset:auto 0 0 0;padding:44px 20px 18px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.78));font-size:14px;line-height:1.3}
+.work-card figcaption b{display:block;font-weight:600;font-size:15px}
+.work-card figcaption span{color:var(--body)}
+.rail-ctrl{display:flex;gap:10px;margin-top:22px}
+.rail-ctrl button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:border-color .3s,opacity .3s,background .3s}
+.rail-ctrl button:hover:not(:disabled){border-color:#fff;background:var(--panel-2)}
+.rail-ctrl button:disabled{opacity:.3;cursor:default}
+
+/* =========================================================
+   PROCESO
+   ========================================================= */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.steps::before,.steps::after{content:"";position:absolute;top:27px;left:27px;right:27px;height:1px}
+.steps::before{background:var(--line)}
+.steps::after{background:var(--blue);transform-origin:left;transform:scaleX(var(--p,0))}
+.step{position:relative}
+.step-ico{position:relative;z-index:1;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#000;border:1px solid var(--line);color:#fff;transition:border-color .6s var(--ease),background .6s var(--ease),color .6s var(--ease)}
+.step.on .step-ico{border-color:var(--blue);background:rgba(0,113,227,.14);color:var(--blue)}
+.step h3{margin-top:22px;font-size:22px;font-weight:700;letter-spacing:-.02em}
+.step p{margin-top:8px;color:var(--gray);font-size:15.5px;max-width:30ch;text-wrap:pretty}
+@media (max-width:860px){
+  .steps{grid-template-columns:1fr;gap:34px}
+  .steps::before,.steps::after{top:27px;bottom:27px;left:27px;right:auto;width:1px;height:auto}
+  .steps::after{transform-origin:top;transform:scaleY(var(--p,0))}
+  .step{display:grid;grid-template-columns:54px 1fr;column-gap:20px}
+  .step h3{margin-top:2px}
+  .step p{grid-column:2}
+}
+
+/* =========================================================
+   PLANES
+   ========================================================= */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+@media (max-width:1000px){.plans{grid-template-columns:1fr;max-width:540px;margin-inline:auto}}
+.plan{position:relative;display:flex;flex-direction:column;padding:clamp(26px,3vw,36px);border-radius:30px;background:var(--panel);border:1px solid var(--line);transition:transform .6s var(--ease),border-color .4s,background .4s}
+html.js .plan.reveal{transition:opacity .95s var(--ease) var(--d,0s),translate .95s var(--ease) var(--d,0s),transform .6s var(--ease),border-color .4s,background .4s}
+.plan:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.24)}
+.plan.featured{background:linear-gradient(180deg,rgba(0,113,227,.16),rgba(0,113,227,.035) 52%,var(--panel));border-color:rgba(0,113,227,.75);box-shadow:0 36px 90px -36px rgba(0,113,227,.6)}
+.plan.featured:hover{border-color:var(--blue)}
+.badge{align-self:flex-start;display:inline-flex;align-items:center;padding:6px 13px;border-radius:999px;font-size:12.5px;font-weight:600;border:1px solid rgba(255,255,255,.22);color:var(--body)}
+.featured .badge{background:var(--blue);border-color:var(--blue);color:#fff}
+.plan h3{margin-top:20px;font-size:clamp(28px,3vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.goal{margin-top:8px;font-size:18px;font-weight:600;letter-spacing:-.015em;line-height:1.3}
+.for{margin-top:8px;color:var(--gray);font-size:15px;min-height:46px;text-wrap:pretty}
+.price{display:flex;align-items:flex-start;gap:6px;margin-top:26px}
+.price .cur{margin-top:9px;font-size:22px;font-weight:600;color:var(--blue)}
+.price .amt{font-size:clamp(50px,5.6vw,62px);font-weight:700;letter-spacing:-.045em;line-height:1;font-variant-numeric:tabular-nums}
+.price .per{align-self:flex-end;margin-bottom:9px;margin-left:4px;color:var(--gray);font-size:16px}
+.day{margin-top:10px;font-size:14px;color:var(--gray)}
+.day b{color:var(--blue);font-weight:600}
+.plan .btn{margin-top:24px;width:100%}
+.rule{height:1px;background:var(--line);margin:28px 0 22px}
+.inc-title{font-size:13px;font-weight:600;color:var(--gray);margin-bottom:16px}
+.checks{display:grid;gap:13px}
+.checks li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45;color:rgba(255,255,255,.9)}
+.checks li svg{color:var(--blue);margin-top:1px}
+.checks li.lead{font-weight:600;color:#fff}
+.scope{margin-top:auto;padding-top:26px}
+.acc-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left}
+.scope .acc-btn{padding:16px 0 4px;border-top:1px solid var(--line);font-size:14.5px;font-weight:600;color:var(--blue)}
+.acc-btn svg{transition:transform .6s var(--ease)}
+.acc-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.acc-panel{display:grid;grid-template-rows:1fr}
+html.js .acc-panel{grid-template-rows:0fr;transition:grid-template-rows .7s var(--ease)}
+html.js .acc-panel.open{grid-template-rows:1fr}
+.acc-inner{overflow:hidden;min-height:0}
+.scope-list{display:grid;gap:16px;padding-top:18px}
+.scope-list li{display:grid;grid-template-columns:1fr auto;column-gap:16px;align-items:baseline;font-size:14.5px}
+.scope-list li span{color:var(--gray)}
+.scope-list li strong{font-weight:600}
+.scope-list li small{grid-column:1 / -1;margin-top:3px;color:var(--gray);font-size:13px;line-height:1.4}
+
+.fine{margin-top:clamp(32px,4vw,48px);display:grid;gap:10px;max-width:84ch}
+.fine p{position:relative;padding-left:18px;font-size:13.5px;color:var(--gray);line-height:1.5}
+.fine p::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--blue)}
+
+/* =========================================================
+   PIEZAS GRÁFICAS
+   ========================================================= */
+.pieza-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.pieza-grid{grid-template-columns:1fr}}
+.pieza{padding:clamp(24px,3vw,32px);border-radius:26px;background:var(--panel);border:1px solid var(--line)}
+.pieza svg{color:var(--blue)}
+.pieza h3{margin-top:22px;font-size:23px;font-weight:700;letter-spacing:-.025em}
+.pieza .job{margin-top:4px;font-weight:600;color:#fff;font-size:15.5px}
+.pieza p{margin-top:10px;color:var(--gray);font-size:15px;text-wrap:pretty}
+.mix{margin-top:clamp(48px,7vw,88px)}
+.mix-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 28px;margin-bottom:28px}
+.mix-head h3{font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-.025em}
+.legend{display:flex;gap:20px;font-size:13.5px;color:var(--gray);flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:10px;height:10px;border-radius:3px;background:#fff}
+.legend i.s{background:rgba(255,255,255,.2)}
+.legend i.c{background:var(--blue)}
+.mix-row{display:grid;grid-template-columns:170px 1fr;gap:6px 24px;align-items:center;padding:18px 0;border-top:1px solid var(--line)}
+.mix-row:last-child{border-bottom:1px solid var(--line)}
+.mix-name{font-size:18px;font-weight:600;letter-spacing:-.015em}
+.mix-name small{display:block;margin-top:2px;font-size:13.5px;font-weight:400;color:var(--gray)}
+.mix-bar{display:flex;gap:4px;height:46px;width:var(--w)}
+.seg{display:grid;place-items:center;border-radius:11px;font-size:14px;font-weight:700;flex:var(--n) 1 0;min-width:0}
+.seg.p{background:#fff;color:#000}
+.seg.s{background:rgba(255,255,255,.18);color:#fff}
+.seg.c{background:var(--blue);color:#fff}
+.mix-note{grid-column:2;font-size:13.5px;color:var(--gray)}
+html.js .mix-bar{clip-path:inset(0 100% 0 0 round 11px);transition:clip-path 1.4s var(--ease) .25s}
+html.js .mix-row.in .mix-bar{clip-path:inset(0 0 0 0 round 11px)}
+@media (max-width:760px){
+  .mix-row{grid-template-columns:1fr;gap:10px}
+  .mix-note{grid-column:1}
+}
+
+/* =========================================================
+   MOTION GRAPHIC
+   ========================================================= */
+.motion-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,80px);align-items:center}
+@media (max-width:900px){.motion-grid{grid-template-columns:1fr}}
+.mg-frame{position:relative;aspect-ratio:16/10;border-radius:26px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(120% 90% at 15% 0%,rgba(0,113,227,.26),transparent 62%),#050505;isolation:isolate}
+.mg-top{position:absolute;top:16px;left:20px;right:20px;display:flex;justify-content:space-between;font-size:12px;color:var(--gray)}
+.rec{display:inline-flex;align-items:center;gap:8px}
+.rec i{width:7px;height:7px;border-radius:50%;background:var(--blue);animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.25}}
+.mg-title{position:absolute;left:7%;top:30%;font-size:clamp(30px,6.2vw,64px);font-weight:700;letter-spacing:-.04em;line-height:1}
+.mg-title small{display:block;margin-top:8px;font-size:clamp(11px,1.5vw,15px);font-weight:500;letter-spacing:0;color:var(--gray)}
+.mg-lower{position:absolute;left:7%;bottom:16%;display:flex;gap:12px;align-items:stretch}
+.mg-lower .lbar{width:3px;border-radius:2px;background:var(--blue);transform-origin:top}
+.mg-lower b{display:block;font-size:clamp(12px,1.8vw,17px);font-weight:600}
+.mg-lower span{display:block;font-size:clamp(10px,1.4vw,13px);color:var(--gray)}
+.mg-chip{position:absolute;right:7%;top:26%;padding:7px 14px;border-radius:999px;background:var(--blue);font-size:clamp(11px,1.5vw,14px);font-weight:600}
+.mg-play{position:absolute;left:20px;right:20px;bottom:16px;height:2px;border-radius:2px;background:var(--line)}
+.mg-play::after{content:"";position:absolute;left:0;top:-3px;width:8px;height:8px;border-radius:50%;background:#fff;animation:playhead 8s linear infinite}
+@keyframes playhead{from{left:0}to{left:calc(100% - 8px)}}
+html.js .mg-title{animation:mgTitle 8s var(--ease) infinite}
+html.js .mg-lower .lbar{animation:mgBar 8s var(--ease) infinite}
+html.js .mg-lower .t1{animation:mgText 8s var(--ease) infinite}
+html.js .mg-lower .t2{animation:mgText 8s var(--ease) .12s infinite}
+html.js .mg-chip{animation:mgChip 8s cubic-bezier(.34,1.56,.64,1) infinite}
+@keyframes mgTitle{0%,4%{clip-path:inset(0 100% 0 0);opacity:0}6%{opacity:1}16%,80%{clip-path:inset(0 0 0 0);opacity:1}88%,100%{clip-path:inset(0 0 0 0);opacity:0}}
+@keyframes mgBar{0%,18%{transform:scaleY(0)}28%,80%{transform:scaleY(1)}88%,100%{transform:scaleY(1);opacity:0}}
+@keyframes mgText{0%,24%{opacity:0;translate:-18px 0}34%,80%{opacity:1;translate:0 0}88%,100%{opacity:0;translate:0 0}}
+@keyframes mgChip{0%,44%{opacity:0;scale:.5}54%,80%{opacity:1;scale:1}88%,100%{opacity:0;scale:1}}
+.motion-copy h2{font-size:clamp(30px,4.2vw,48px);font-weight:700;letter-spacing:-.032em;line-height:1.08;text-wrap:balance}
+.motion-copy>p{margin-top:18px;color:var(--body);font-size:clamp(16px,1.6vw,18px);text-wrap:pretty}
+.mg-points{margin-top:26px;display:grid;gap:14px}
+.mg-points li{display:flex;gap:14px;align-items:center;font-size:16px;font-weight:500}
+.mg-points svg{color:var(--blue)}
+.tag{display:inline-flex;margin-top:30px;padding:8px 16px;border-radius:999px;border:1px solid rgba(0,113,227,.7);color:var(--blue);font-size:14px;font-weight:600}
+
+/* =========================================================
+   POR QUÉ NO SOLO VIDEOS
+   ========================================================= */
+.porque h2{font-size:clamp(30px,5vw,60px);font-weight:700;letter-spacing:-.035em;line-height:1.05;max-width:20ch;text-wrap:balance}
+.vs{margin-top:clamp(36px,5vw,60px);display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.vs{grid-template-columns:1fr}}
+.vs-card{padding:clamp(24px,3vw,34px);border-radius:28px;border:1px solid var(--line);background:var(--panel)}
+.vs-card.us{border-color:rgba(0,113,227,.75);background:linear-gradient(180deg,rgba(0,113,227,.13),var(--panel))}
+.vs-card h3{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:20px}
+.vs-card li{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid var(--line);font-size:15.5px;color:var(--body)}
+.vs-card li svg{margin-top:2px;color:var(--gray)}
+.vs-card.us li{color:#fff}
+.vs-card.us li svg{color:var(--blue)}
+
+/* =========================================================
+   CÓMO TRABAJAMOS
+   ========================================================= */
+.promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:980px){.promise-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.promise-grid{grid-template-columns:1fr}}
+.promise{padding:clamp(24px,3vw,30px);border-radius:26px;background:var(--panel);border:1px solid var(--line);transition:border-color .4s,background .4s}
+.promise:hover{border-color:rgba(255,255,255,.24);background:var(--panel-2)}
+.promise svg{color:var(--blue)}
+.promise h3{margin-top:20px;font-size:19px;font-weight:700;letter-spacing:-.02em}
+.promise p{margin-top:8px;color:var(--gray);font-size:15px;text-wrap:pretty}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq{max-width:820px}
+.faq-item{border-top:1px solid var(--line)}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq .acc-btn{padding:24px 0;font-size:clamp(17px,2vw,20px);font-weight:600;letter-spacing:-.015em}
+.faq .acc-btn svg{color:var(--blue)}
+.faq .acc-btn[aria-expanded="true"] svg{transform:rotate(45deg)}
+.faq .acc-inner p{padding-bottom:26px;max-width:62ch;color:var(--body);font-size:16.5px;text-wrap:pretty}
+
+/* =========================================================
+   CONTACTO
+   ========================================================= */
+.cta{position:relative;overflow:hidden;isolation:isolate;text-align:left}
+.cta::before{content:"";position:absolute;z-index:-1;left:50%;top:50%;width:90vmax;height:60vmax;translate:-50% -50%;background:radial-gradient(closest-side,rgba(0,113,227,.2),transparent 70%)}
+.cta-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,6vw,80px);align-items:center}
+@media (max-width:900px){.cta-grid{grid-template-columns:1fr}}
+.cta h2{font-size:clamp(40px,7vw,84px);font-weight:700;letter-spacing:-.045em;line-height:1}
+.cta p.lead{margin-top:22px;font-size:clamp(17px,2vw,21px);color:var(--body);max-width:30ch}
+.cta-actions{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
+.contact-card{padding:clamp(24px,3vw,34px);border-radius:28px;border:1px solid var(--line);background:var(--panel)}
+.c-row{display:flex;gap:16px;align-items:center;padding:18px 0;border-top:1px solid var(--line)}
+.c-row:first-child{border-top:0;padding-top:0}
+.c-row:last-child{padding-bottom:0}
+.c-ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(0,113,227,.14);color:var(--blue);flex:none}
+.c-row small{display:block;font-size:12.5px;color:var(--gray)}
+.c-row a,.c-row span.v{font-size:16.5px;font-weight:600;word-break:break-word}
+.c-row a:hover{color:var(--blue)}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.site-footer{border-top:1px solid var(--line);padding:48px 0 calc(40px + env(safe-area-inset-bottom))}
+.foot{display:flex;flex-wrap:wrap;gap:24px 40px;justify-content:space-between;align-items:flex-end}
+.foot .brand{font-size:19px}
+.foot small{display:block;margin-top:6px;color:var(--gray);font-size:13.5px}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--gray)}
+.foot-links a:hover{color:#fff}
+.copy{margin-top:34px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--gray)}
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+   ========================================================= */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;transition-delay:0s !important}
+  html.js .reveal{opacity:1;translate:none}
+  html.js .hero-sub,html.js .hero-actions,html.js .hero-loc{opacity:1;translate:none}
+  html.js .hero-title .ln>span{transform:none}
+  .marquee-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center}
+  .marq-set[aria-hidden="true"]{display:none}
+  .glow,.cue{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <nav class="nav" aria-label="Principal">
+      <a class="brand" href="#inicio">JohanFilms</a>
+      <div class="nav-links">
+        <a href="#trabajo" data-needs-work hidden>Trabajo</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#planes">Paquetes</a>
+        <a href="#preguntas">Preguntas</a>
+      </div>
+      <div class="nav-right">
+        <a class="btn btn-white btn-sm" href="https://wa.me/50247474348?text=Hola%20Johan%2C%20quiero%20cotizar%20un%20plan%20mensual." target="_blank" rel="noopener">Cotizar</a>
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <a class="m-link" style="--i:0" href="#trabajo" data-needs-work hidden>Trabajo</a>
+  <a class="m-link" style="--i:1" href="#proceso">Proceso</a>
+  <a class="m-link" style="--i:2" href="#planes">Paquetes</a>
+  <a class="m-link" style="--i:3" href="#preguntas">Preguntas</a>
+  <a class="btn btn-primary" href="https://wa.me/50247474348?text=Hola%20Johan%2C%20quiero%20cotizar%20un%20plan%20mensual." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+</div>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="glow g1"></span>
+    <span class="glow g2"></span>
+    <span class="grain"></span>
+  </div>
+  <div class="wrap">
+    <h1 class="hero-title">
+      <span class="ln"><span>Contenido con intención.</span></span>
+      <span class="ln blue"><span>Marca con presencia.</span></span>
+    </h1>
+    <p class="hero-sub">Planeamos, grabamos y editamos cada mes para que tu marca se vea como lo que es: profesional.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#planes">Ver paquetes
+        <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="https://wa.me/50247474348?text=Hola%20Johan%2C%20quiero%20cotizar%20un%20plan%20mensual." target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+    </div>
+    <p class="hero-loc">Producción audiovisual y de contenido · Mazatenango, Guatemala</p>
+  </div>
+  <a class="cue" href="#prueba" aria-label="Bajar"></a>
+</section>
+
+<!-- ============================ PRUEBA (+300) + MARCAS ============================ -->
+<section class="section proof" id="prueba">
+  <div class="wrap">
+    <div class="proof-top reveal">
+      <div class="proof-num" aria-label="Más de 300"><span class="plus">+</span><span id="projCount" data-count="300">300</span></div>
+      <p>proyectos cerrados. Marcas, negocios y eventos que ya confiaron en JohanFilms.</p>
+    </div>
+  </div>
+  <div class="marquee reveal" id="marquee" aria-label="Marcas con las que hemos trabajado" hidden></div>
+</section>
+
+<!-- ============================ TRABAJO (se activa con CONFIG.trabajo) ============================ -->
+<section class="section" id="trabajo" hidden style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="bar"></span>
+      <div>
+        <h2>Nuestro trabajo.</h2>
+        <p>Una selección de lo que hemos producido para marcas y negocios.</p>
+      </div>
+    </div>
+  </div>
+  <div class="rail" id="rail" tabindex="0" aria-label="Galería de trabajos"></div>
+  <div class="wrap">
+    <div class="rail-ctrl">
+      <button id="railPrev" aria-label="Anterior"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button>
+      <button id="railNext" aria-label="Siguiente"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PROCESO ============================ -->
+<section class="section" id="proceso">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="bar"></span>
+      <div>
+        <h2>Así se construye tu mes.</h2>
+        <p>El mismo proceso en los tres planes. Cambia qué tan a fondo llegamos en cada paso.</p>
+      </div>
+    </div>
+
+    <div class="steps" id="steps">
+      <div class="step reveal">
+        <div class="step-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></div>
+        <h3>Planeamos</h3>
+        <p>Definimos qué publicar y por qué: un plan con el objetivo de cada pieza.</p>
+      </div>
+      <div class="step reveal" style="--d:.1s">
+        <div class="step-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6.5" width="14" height="11" rx="2.5"/><path d="m17 10.5 4-2.2v7.4l-4-2.2"/></svg></div>
+        <h3>Grabamos</h3>
+        <p>Sesiones con dirección creativa. Dron cuando el lugar lo permite.</p>
+      </div>
+      <div class="step reveal" style="--d:.2s">
+        <div class="step-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M4 12h16M4 17h7"/><circle cx="17" cy="7" r="1.6"/><circle cx="14" cy="17" r="1.6"/></svg></div>
+        <h3>Editamos</h3>
+        <p>Color, sonido y motion graphics con criterio de marca.</p>
+      </div>
+      <div class="step reveal" style="--d:.3s">
+        <div class="step-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 10 18.7l1-1"/></svg></div>
+        <h3>Entregamos</h3>
+        <p>Link privado ordenado, ajustes incluidos y cierre del mes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PLANES ============================ -->
+<section class="section" id="planes" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="bar"></span>
+      <div>
+        <h2>¿Qué necesita tu marca este mes?</h2>
+        <p>Elige por objetivo, no por cantidad de piezas. Cada plan está pensado como un todo.</p>
+      </div>
+    </div>
+
+    <div class="plans">
+
+      <!-- ===== PRESENCIA ===== -->
+      <article class="plan reveal" id="plan-presencia">
+        <span class="badge">Entrada</span>
+        <h3>Presencia</h3>
+        <p class="goal">Verte profesional y ser constante</p>
+        <p class="for">Para negocios que quieren dejar de improvisar.</p>
+
+        <div class="price"><span class="cur">Q</span><span class="amt">2,499</span><span class="per">/ mes</span></div>
+        <p class="day">≈ <b>Q83</b> al día · pago al inicio del mes</p>
+        <a class="btn btn-ghost" href="https://wa.me/50247474348?text=Hola%20Johan%2C%20quiero%20el%20plan%20Presencia." target="_blank" rel="noopener">Quiero Presencia</a>
+
+        <div class="rule"></div>
+        <p class="inc-title">Lo que incluye</p>
+        <ul class="checks">
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Plan de contenido del mes, con el porqué de cada pieza</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Idea y guion para cada pieza</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>1 sesión de producción al mes</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Fotografía profesional como banco de imágenes de tu marca</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Piezas gráficas: posts y stories</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Corrección de color en cada video</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Entrega organizada por link privado</li>
+        </ul>
+
+        <div class="scope">
+          <button class="acc-btn" data-acc aria-expanded="false" aria-controls="alc-presencia"><span>Ver alcance mensual</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="acc-panel" id="alc-presencia"><div class="acc-inner">
+            <ul class="scope-list">
+              <li><span>Videos verticales</span><strong>Hasta 4</strong><small>Presentación del negocio, producto o servicio, detrás de cámaras y una oferta.</small></li>
+              <li><span>Fotografías</span><strong>Hasta 20</strong><small>Es un máximo; la cantidad final varía en cada sesión.</small></li>
+              <li><span>Piezas gráficas</span><strong>8</strong><small>4 posts y 4 stories.</small></li>
+              <li><span>Sesiones</span><strong>1 al mes</strong></li>
+              <li><span>Revisiones</span><strong>1 ronda</strong></li>
+            </ul>
+          </div></div>
+        </div>
+      </article>
+
+      <!-- ===== CRECIMIENTO ===== -->
+      <article class="plan featured reveal" style="--d:.1s" id="plan-crecimiento">
+        <span class="badge">Más popular</span>
+        <h3>Crecimiento</h3>
+        <p class="goal">Atraer y convertir con estrategia</p>
+        <p class="for">Para marcas que ya publican y quieren que el contenido venda.</p>
+
+        <div class="price"><span class="cur">Q</span><span class="amt">3,999</span><span class="per">/ mes</span></div>
+        <p class="day">≈ <b>Q133</b> al día · pago al inicio del mes</p>
+        <a class="btn btn-primary" href="https://wa.me/50247474348?text=Hola%20Johan%2C%20quiero%20el%20plan%20Crecimiento." target="_blank" rel="noopener">Quiero Crecimiento</a>
+
+        <div class="rule"></div>
+        <p class="inc-title">Lo que incluye</p>
+        <ul class="checks">
+          <li class="lead"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Todo lo de Presencia, más:</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Concepto de campaña mensual con línea visual propia</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>2 sesiones al mes, con dron cuando el lugar lo permite</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Motion graphics y diseño de sonido</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Piezas gráficas: posts, stories y carruseles</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>2 rondas de revisión</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Revisión mensual de estrategia, con reporte simple</li>
+        </ul>
+
+        <div class="scope">
+          <button class="acc-btn" data-acc aria-expanded="false" aria-controls="alc-crecimiento"><span>Ver alcance mensual</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="acc-panel" id="alc-crecimiento"><div class="acc-inner">
+            <ul class="scope-list">
+              <li><span>Videos</span><strong>Hasta 6</strong><small>Suma testimonio y una pieza de campaña.</small></li>
+              <li><span>Fotografías</span><strong>Hasta 40</strong><small>Es un máximo; la cantidad final varía en cada sesión.</small></li>
+              <li><span>Piezas gráficas</span><strong>12</strong><small>4 posts, 6 stories y 2 carruseles.</small></li>
+              <li><span>Sesiones</span><strong>2 al mes</strong><small>Con dron cuando el lugar lo permite.</small></li>
+              <li><span>Revisiones</span><strong>2 rondas</strong></li>
+            </ul>
+          </div></div>
+        </div>
+      </article>
+
+      <!-- ===== DOMINACIÓN ===== -->
+      <article class="plan reveal" style="--d:.2s" id="plan-dominacion">
+        <span class="badge">Premium</span>
+        <h3>Dominación</h3>
+        <p class="goal">Liderar tu mercado</p>
+        <p class="for">Para marcas que quieren verse como la primera opción.</p>
+
+        <div class="price"><span class="cur">Q</span><span class="amt">5,999</span><span class="per">/ mes</span></div>
+        <p class="day">≈ <b>Q200</b> al día · pago al inicio del mes</p>
+        <a class="btn btn-ghost" href="https://wa.me/50247474348?text=Hola%20Johan%2C%20quiero%20el%20plan%20Dominaci%C3%B3n." target="_blank" rel="noopener">Quiero Dominación</a>
+
+        <div class="rule"></div>
+        <p class="inc-title">Lo que incluye</p>
+        <ul class="checks">
+          <li class="lead"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Todo lo de Crecimiento, más:</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Dirección creativa total y planificación personalizada</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Producción cinematográfica: locación, talento y equipo completo</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>1 video insignia del mes, en versión horizontal y vertical</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Dron en vertical y horizontal, cuando el lugar lo permite</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Edición premium con 3 rondas de revisión</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Licencia para usar el contenido en pauta</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Atención prioritaria y entrega express</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Reunión mensual de estrategia, con reporte</li>
+        </ul>
+
+        <div class="scope">
+          <button class="acc-btn" data-acc aria-expanded="false" aria-controls="alc-dominacion"><span>Ver alcance mensual</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="acc-panel" id="alc-dominacion"><div class="acc-inner">
+            <ul class="scope-list">
+              <li><span>Videos</span><strong>Hasta 8</strong><small>1 video insignia y 7 verticales.</small></li>
+              <li><span>Fotografías</span><strong>Hasta 60</strong><small>Es un máximo; la cantidad final varía en cada sesión.</small></li>
+              <li><span>Piezas gráficas</span><strong>16</strong><small>4 posts, 8 stories y 4 carruseles.</small></li>
+              <li><span>Visitas</span><strong>4 al mes</strong><small>Con dron cuando el lugar lo permite.</small></li>
+              <li><span>Revisiones</span><strong>3 rondas</strong></li>
+            </ul>
+          </div></div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="fine reveal">
+      <p>Las fotografías se entregan como máximo (hasta 20, 40 o 60 según el plan). La cantidad final varía en cada sesión.</p>
+      <p>El dron forma parte de los planes Crecimiento y Dominación y se usa cuando el lugar lo permite. No se descuenta del precio.</p>
+      <p>Los precios son fijos y se pagan al inicio de cada mes. Cualquier pieza o cambio adicional se cotiza aparte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PIEZAS GRÁFICAS ============================ -->
+<section class="section" id="piezas" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="bar"></span>
+      <div>
+        <h2>Cada pieza tiene un trabajo.</h2>
+        <p>No vendemos volumen. Asignamos cada pieza a un objetivo para que tu contenido tenga sentido.</p>
+      </div>
+    </div>
+
+    <div class="pieza-grid">
+      <div class="pieza reveal">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="9" cy="9.5" r="1.6"/><path d="m4 17 5-4.5 3.5 3L16 12l4 4"/></svg>
+        <h3>Posts</h3>
+        <p class="job">Imagen de marca</p>
+        <p>Mensajes que se quedan en tu perfil: identidad, producto y oferta.</p>
+      </div>
+      <div class="pieza reveal" style="--d:.1s">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="3"/><path d="M10 6h4"/></svg>
+        <h3>Stories</h3>
+        <p class="job">Venta rápida</p>
+        <p>Avisos, promociones y testimonios para el contacto diario con tu cliente.</p>
+      </div>
+      <div class="pieza reveal" style="--d:.2s">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="5" width="10" height="14" rx="2.5"/><path d="M3.5 8v8M20.5 8v8"/></svg>
+        <h3>Carruseles</h3>
+        <p class="job">Educar y convencer</p>
+        <p>La pieza que se guarda y se comparte: explica, demuestra y convierte.</p>
+      </div>
+    </div>
+
+    <div class="mix">
+      <div class="mix-head reveal">
+        <h3>Cómo se reparte cada plan</h3>
+        <div class="legend" aria-hidden="true">
+          <span><i></i>Posts</span><span><i class="s"></i>Stories</span><span><i class="c"></i>Carruseles</span>
+        </div>
+      </div>
+
+      <div class="mix-row reveal">
+        <div class="mix-name">Presencia<small>8 piezas</small></div>
+        <div class="mix-bar" style="--w:50%" role="img" aria-label="Presencia: 4 posts y 4 stories">
+          <span class="seg p" style="--n:4">4</span><span class="seg s" style="--n:4">4</span>
+        </div>
+        <p class="mix-note">1 post y 1 story por semana: un perfil ordenado y activo.</p>
+      </div>
+      <div class="mix-row reveal">
+        <div class="mix-name">Crecimiento<small>12 piezas</small></div>
+        <div class="mix-bar" style="--w:75%" role="img" aria-label="Crecimiento: 4 posts, 6 stories y 2 carruseles">
+          <span class="seg p" style="--n:4">4</span><span class="seg s" style="--n:6">6</span><span class="seg c" style="--n:2">2</span>
+        </div>
+        <p class="mix-note">Suma carruseles para educar y convencer; más stories para vender.</p>
+      </div>
+      <div class="mix-row reveal">
+        <div class="mix-name">Dominación<small>16 piezas</small></div>
+        <div class="mix-bar" style="--w:100%" role="img" aria-label="Dominación: 4 posts, 8 stories y 4 carruseles">
+          <span class="seg p" style="--n:4">4</span><span class="seg s" style="--n:8">8</span><span class="seg c" style="--n:4">4</span>
+        </div>
+        <p class="mix-note">Un carrusel por semana y 2 stories semanales: la marca educa y convierte todo el mes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ MOTION GRAPHIC ============================ -->
+<section class="section" id="motion" style="padding-top:0">
+  <div class="wrap">
+    <div class="motion-grid">
+      <div class="mg-frame reveal" aria-hidden="true">
+        <div class="mg-top"><span class="rec"><i></i>REC</span><span>Motion graphics</span></div>
+        <div class="mg-title">Tu marca<small>en movimiento</small></div>
+        <div class="mg-chip">Nuevo</div>
+        <div class="mg-lower"><span class="lbar"></span><div><b class="t1">Nombre del producto</b><span class="t2">Descripción corta</span></div></div>
+        <div class="mg-play"></div>
+      </div>
+
+      <div class="motion-copy reveal" style="--d:.1s">
+        <h2>¿Qué es un motion graphic?</h2>
+        <p>Son los textos, formas e íconos animados que viven dentro del video: el título que entra en pantalla, la cifra que sube, el precio que aparece, la transición entre escenas.</p>
+        <p style="margin-top:14px">Hacen que el video se entienda aun sin sonido, que destaque en redes y que tenga identidad propia en lugar de verse como cualquier otro.</p>
+        <ul class="mg-points">
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h14M12 6v13"/></svg>Títulos y textos animados</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9m6 10V5m6 14v-7"/></svg>Cifras, precios y datos en movimiento</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h7m-3-3 3 3-3 3M14 6l7 6-7 6"/></svg>Transiciones con identidad de marca</li>
+        </ul>
+        <span class="tag">Incluido en Crecimiento y Dominación</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ POR QUÉ NO SOLO VIDEOS ============================ -->
+<section class="section porque" id="porque" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="reveal">Un video suelto se ve bien un día. Un plan hace que tu marca se vea bien todo el mes.</h2>
+    <div class="vs">
+      <div class="vs-card reveal">
+        <h3>Solo videos</h3>
+        <ul>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>Se graba lo que haya ese día</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>Se publica cuando se puede</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>Cada pieza se ve distinta</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>Nadie conecta las piezas con un objetivo</li>
+        </ul>
+      </div>
+      <div class="vs-card us reveal" style="--d:.1s">
+        <h3>Un plan JohanFilms</h3>
+        <ul>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Plan del mes con el porqué de cada pieza</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Idea y guion antes de grabar</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Edición cuidada, con criterio de marca</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="m8 12.4 2.6 2.6L16 9.6"/></svg>Fechas claras y entrega ordenada</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CÓMO TRABAJAMOS ============================ -->
+<section class="section" id="como-trabajamos" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="bar"></span>
+      <div>
+        <h2>Lo que acordamos, por escrito.</h2>
+        <p>Un proceso claro para que sepas qué recibes y cuándo.</p>
+      </div>
+    </div>
+
+    <div class="promise-grid">
+      <div class="promise reveal">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+        <h3>Calendario por escrito</h3>
+        <p>Al iniciar el mes recibes las fechas de sesiones y de entregas.</p>
+      </div>
+      <div class="promise reveal" style="--d:.08s">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M9.5 12h5M9.5 15.5h5"/></svg>
+        <h3>Alcance en tu cotización</h3>
+        <p>Cada plan queda detallado: qué incluye y qué no.</p>
+      </div>
+      <div class="promise reveal" style="--d:.16s">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3A4 4 0 0 0 10 18.7l1-1"/></svg>
+        <h3>Entrega por link privado</h3>
+        <p>Ves lo que va saliendo, ordenado y en un solo lugar.</p>
+      </div>
+      <div class="promise reveal">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4M4 13a8 8 0 0 0 14.5 4"/><path d="M5.5 3v4h4M18.5 21v-4h-4"/></svg>
+        <h3>Revisiones definidas</h3>
+        <p>Cada plan incluye sus rondas de ajustes. Los cambios mayores se cotizan aparte.</p>
+      </div>
+      <div class="promise reveal" style="--d:.08s">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9m6 10V5m6 14v-7m4 7H3"/></svg>
+        <h3>Cierre de mes</h3>
+        <p>Revisamos qué funcionó y planeamos el siguiente. En Crecimiento y Dominación, con reporte.</p>
+      </div>
+      <div class="promise reveal" style="--d:.16s">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18M16.5 14.5h1"/></svg>
+        <h3>Pago al inicio del mes</h3>
+        <p>Reserva tu lugar en el calendario de producción del mes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section" id="preguntas" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="bar"></span>
+      <div><h2>Preguntas frecuentes.</h2></div>
+    </div>
+
+    <div class="faq reveal">
+      <div class="faq-item">
+        <button class="acc-btn" data-acc aria-expanded="false" aria-controls="f1"><span>¿Puedo quitar el dron para pagar menos?</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="acc-panel" id="f1"><div class="acc-inner"><p>No. Los precios son fijos porque cada plan está pensado como un todo: quitar una parte no reduce el trabajo de las demás. El dron se usa cuando el lugar lo permite; si no se puede volar, la sesión sigue con el resto de la producción.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="acc-btn" data-acc aria-expanded="false" aria-controls="f2"><span>¿Siempre recibo 20, 40 o 60 fotografías?</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="acc-panel" id="f2"><div class="acc-inner"><p>Es un máximo. La cantidad final varía en cada sesión y entregamos las mejores, no las más.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="acc-btn" data-acc aria-expanded="false" aria-controls="f3"><span>¿Cuándo se paga?</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="acc-panel" id="f3"><div class="acc-inner"><p>Al inicio de cada mes. Con el pago reservas tu lugar en el calendario de producción.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="acc-btn" data-acc aria-expanded="false" aria-controls="f4"><span>¿Qué pasa si necesito más piezas o cambios mayores?</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="acc-panel" id="f4"><div class="acc-inner"><p>Se cotiza aparte. Cada plan tiene su alcance y sus rondas de revisión definidas desde el inicio.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <button class="acc-btn" data-acc aria-expanded="false" aria-controls="f5"><span>¿Cómo sé qué plan me conviene?</span>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="acc-panel" id="f5"><div class="acc-inner"><p>Por tu objetivo. Presencia es para verte profesional y publicar con constancia. Crecimiento, para atraer y convertir con estrategia. Dominación, para liderar tu mercado. Escríbenos y lo definimos juntos.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACTO ============================ -->
+<section class="section cta" id="contacto">
+  <div class="wrap">
+    <div class="cta-grid">
+      <div class="reveal">
+        <h2>Hablemos del proyecto.</h2>
+        <p class="lead">Producimos el contenido que tu marca necesita.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="https://wa.me/50247474348?text=Hola%20Johan%2C%20quiero%20cotizar%20un%20plan%20mensual." target="_blank" rel="noopener">Escribir por WhatsApp
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="mailto:johanqfilms@gmail.com?subject=Cotizaci%C3%B3n%20plan%20mensual">Enviar correo</a>
+        </div>
+      </div>
+
+      <div class="contact-card reveal" style="--d:.1s">
+        <div class="c-row">
+          <div class="c-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.3 2.6 3.4 4.7 6 6l2-2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V19c0 .6-.4 1-1 1C10.6 20 4 13.4 4 5c0-.6.4-1 1-1h2.9c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1l-2 2.3Z"/></svg></div>
+          <div><small>Teléfono y WhatsApp</small><a href="tel:+50247474348">4747-4348</a></div>
+        </div>
+        <div class="c-row">
+          <div class="c-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></svg></div>
+          <div><small>Correo</small><a href="mailto:johanqfilms@gmail.com">johanqfilms@gmail.com</a></div>
+        </div>
+        <div class="c-row">
+          <div class="c-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.1 7-11.3A7 7 0 0 0 5 9.7C5 14.9 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.3"/></svg></div>
+          <div><small>Ubicación</small><span class="v">Mazatenango, Suchitepéquez</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#inicio">JohanFilms</a>
+        <small>Menos es más.</small>
+      </div>
+      <nav class="foot-links" aria-label="Pie de página">
+        <a href="#proceso">Proceso</a>
+        <a href="#planes">Paquetes</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+    <p class="copy">© 2026 JohanFilms · Producción audiovisual y de contenido — Guatemala</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =====================================================
+     CONFIGURA AQUÍ TU CONTENIDO
+     - Las secciones "marcas" y "trabajo" aparecen solo
+       cuando agregas elementos a estas listas.
+     - Coloca los archivos en la carpeta "assets" junto a
+       este archivo (ver rutas de ejemplo).
+     ===================================================== */
+  var CONFIG = {
+    // Video de fondo del inicio (opcional). Ej: 'assets/hero.mp4'
+    heroVideo: '',
+    heroPoster: '',
+
+    // Marcas con las que has trabajado.
+    // Con logo:  { nombre: 'Marca', logo: 'assets/marcas/marca.svg' }
+    // Sin logo:  { nombre: 'Marca' }  (se muestra el nombre en texto)
+    marcas: [
+      { nombre: 'Teisa' },
+      { nombre: 'SNK' },
+      { nombre: 'El Rodeo' },
+      { nombre: 'Plaza América' },
+      { nombre: 'El Monchis' },
+      { nombre: 'PL Glow Aesthetic' },
+      { nombre: 'Salchiwafle' }
+    ],
+
+    // Fotos y videos de tu trabajo.
+    // formato: 'vertical' (4:5) · 'reel' (9:16) · 'horizontal' (16:10)
+    trabajo: [
+      { tipo: 'video', src: 'assets/trabajo/paninis.mp4',        poster: 'assets/trabajo/paninis.webp',        formato: 'reel',       titulo: 'Sabores de paninis',        marca: 'Video para redes' },
+      { tipo: 'foto',  src: 'assets/trabajo/hamburguesa.webp',                                                   formato: 'vertical',   titulo: 'Fotografía gastronómica',   marca: 'Contenido para marcas' },
+      { tipo: 'video', src: 'assets/trabajo/teisa.mp4',          poster: 'assets/trabajo/teisa.webp',          formato: 'reel',       titulo: 'Energía solar',             marca: 'Teisa' },
+      { tipo: 'foto',  src: 'assets/trabajo/tenis-navidad.webp',                                                 formato: 'horizontal', titulo: 'Tenis · Campaña de Navidad', marca: 'Fotografía de producto' },
+      { tipo: 'video', src: 'assets/trabajo/salchiwafle.mp4',    poster: 'assets/trabajo/salchiwafle.webp',    formato: 'reel',       titulo: 'Salchiwafle',               marca: 'Video gastronómico' },
+      { tipo: 'video', src: 'assets/trabajo/snk-camisetas.mp4',  poster: 'assets/trabajo/snk-camisetas.webp',  formato: 'reel',       titulo: 'Camisetas de selección',    marca: 'SNK' },
+      { tipo: 'foto',  src: 'assets/trabajo/postre.webp',                                                        formato: 'vertical',   titulo: 'Postre',                    marca: 'Fotografía gastronómica' },
+      { tipo: 'video', src: 'assets/trabajo/el-rodeo.mp4',       poster: 'assets/trabajo/el-rodeo.webp',       formato: 'horizontal', titulo: 'Un día en la finca',        marca: 'El Rodeo' },
+      { tipo: 'foto',  src: 'assets/trabajo/hoodies.webp',                                                       formato: 'vertical',   titulo: 'Hoodies',                   marca: 'Fotografía de producto' },
+      { tipo: 'video', src: 'assets/trabajo/snk-tienda.mp4',     poster: 'assets/trabajo/snk-tienda.webp',     formato: 'reel',       titulo: 'Tienda y colección',        marca: 'SNK' }
+    ]
+  };
+
+  var $  = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+  var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); };
+
+  /* ---------- Header + progreso de lectura + proceso ---------- */
+  var header = $('#siteHeader'), progress = $('.progress'), stepsBox = $('#steps');
+  var steps = $$('.step', stepsBox), ticking = false;
+
+  function updateSteps() {
+    if (!stepsBox) return;
+    var r = stepsBox.getBoundingClientRect();
+    var p = (window.innerHeight * 0.72 - r.top) / Math.max(r.height, 1);
+    p = Math.min(1, Math.max(0, p));
+    stepsBox.style.setProperty('--p', p.toFixed(3));
+    steps.forEach(function (s, i) { s.classList.toggle('on', p >= i / steps.length + 0.02); });
+  }
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var y = window.scrollY || 0;
+      header.classList.toggle('scrolled', y > 8);
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.setProperty('--scroll', h > 0 ? (y / h).toFixed(4) : 0);
+      updateSteps();
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* ---------- Menú móvil ---------- */
+  var menuBtn = $('#menuBtn'), menu = $('#menu');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    menu.setAttribute('aria-hidden', String(!open));
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    document.body.classList.toggle('no-scroll', open);
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
+  $$('a', menu).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 860) setMenu(false); });
+
+  /* ---------- Revelado al hacer scroll ---------- */
+  var reveals = $$('.reveal');
+  if (!hasIO || reduced) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- Acordeones (alcance de planes + preguntas) ---------- */
+  $$('[data-acc]').forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    var label = $('span', btn);
+    var isScope = btn.closest('.scope');
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.classList.toggle('open', !open);
+      if (isScope && label) label.textContent = open ? 'Ver alcance mensual' : 'Ocultar alcance';
+    });
+  });
+
+  /* ---------- Contador +300 (el valor final ya está escrito en el HTML) ---------- */
+  var num = $('#projCount');
+  if (num && hasIO && !reduced) {
+    var target = parseInt(num.getAttribute('data-count'), 10) || 0, done = false;
+    var finish = function () { done = true; num.textContent = fmt(target); };
+    num.textContent = '0';
+    var safety = setTimeout(finish, 9000);
+    var cio = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return;
+      cio.disconnect();
+      if (done) return;
+      clearTimeout(safety);
+      var t0 = null, dur = 1700;
+      (function tick(ts) {
+        if (t0 === null) t0 = ts;
+        var k = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - k, 3);
+        num.textContent = fmt(Math.round(e * target));
+        if (k < 1) requestAnimationFrame(tick); else finish();
+      })(performance.now());
+    }, { threshold: 0.6 });
+    cio.observe(num);
+  }
+
+  /* ---------- Video de fondo del inicio (opcional) ---------- */
+  if (CONFIG.heroVideo) {
+    var hv = document.createElement('video');
+    hv.className = 'hero-video';
+    hv.muted = true; hv.loop = true; hv.autoplay = true; hv.playsInline = true;
+    hv.setAttribute('muted', ''); hv.setAttribute('playsinline', '');
+    if (CONFIG.heroPoster) hv.poster = CONFIG.heroPoster;
+    hv.src = CONFIG.heroVideo;
+    hv.addEventListener('canplay', function () { hv.classList.add('ready'); });
+    var bg = $('.hero-bg');
+    bg.insertBefore(hv, bg.firstChild);
+    var shade = document.createElement('span'); shade.className = 'hero-shade';
+    bg.insertBefore(shade, $('.grain', bg));
+    if (!reduced) hv.play().catch(function () {});
+  }
+
+  /* ---------- Marcas (marquesina) ---------- */
+  var marcas = CONFIG.marcas || [];
+  var marquee = $('#marquee');
+  if (marcas.length && marquee) {
+    var reps = Math.max(1, Math.ceil(10 / marcas.length));
+    var makeSet = function (hidden) {
+      var set = document.createElement('div');
+      set.className = 'marq-set';
+      if (hidden) set.setAttribute('aria-hidden', 'true');
+      for (var r = 0; r < reps; r++) {
+        marcas.forEach(function (m) {
+          var item = document.createElement('div');
+          item.className = 'brand-item';
+          if (m.logo) {
+            var img = document.createElement('img');
+            img.src = m.logo; img.alt = m.nombre || ''; img.loading = 'lazy';
+            item.appendChild(img);
+          } else {
+            item.textContent = m.nombre || '';
+          }
+          set.appendChild(item);
+        });
+      }
+      return set;
+    };
+    var track = document.createElement('div');
+    track.className = 'marquee-track';
+    track.appendChild(makeSet(false));
+    track.appendChild(makeSet(true));
+    marquee.appendChild(track);
+    marquee.hidden = false;
+  }
+
+  /* ---------- Trabajo (galería horizontal) ---------- */
+  var trabajo = CONFIG.trabajo || [];
+  var workSec = $('#trabajo');
+  if (trabajo.length && workSec) {
+    workSec.hidden = false;
+    $$('[data-needs-work]').forEach(function (el) { el.hidden = false; });
+    var rail = $('#rail');
+
+    trabajo.forEach(function (it) {
+      var fig = document.createElement('figure');
+      fig.className = 'work-card ' + (it.formato || 'vertical');
+      var media;
+      if (it.tipo === 'video') {
+        media = document.createElement('video');
+        media.src = it.src;
+        if (it.poster) media.poster = it.poster;
+        media.muted = true; media.loop = true; media.playsInline = true; media.preload = it.poster ? 'none' : 'metadata';
+        media.setAttribute('muted', ''); media.setAttribute('playsinline', '');
+        if (reduced) media.controls = true;
+      } else {
+        media = document.createElement('img');
+        media.src = it.src; media.alt = it.titulo || 'Trabajo de JohanFilms';
+        media.loading = 'lazy'; media.decoding = 'async';
+      }
+      fig.appendChild(media);
+      if (it.titulo || it.marca) {
+        var cap = document.createElement('figcaption');
+        if (it.titulo) { var b = document.createElement('b'); b.textContent = it.titulo; cap.appendChild(b); }
+        if (it.marca) { var s = document.createElement('span'); s.textContent = it.marca; cap.appendChild(s); }
+        fig.appendChild(cap);
+      }
+      rail.appendChild(fig);
+    });
+
+    var vids = $$('video', rail);
+    if (hasIO && !reduced && vids.length) {
+      var vio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting && e.intersectionRatio > 0.6) e.target.play().catch(function () {});
+          else e.target.pause();
+        });
+      }, { root: rail, threshold: [0, 0.6, 1] });
+      vids.forEach(function (v) { vio.observe(v); });
+    }
+
+    var prev = $('#railPrev'), next = $('#railNext');
+    var cards = $$('.work-card', rail);
+    var padL = function () { return parseFloat(getComputedStyle(rail).paddingLeft) || 0; };
+    var current = function () {
+      var x = rail.scrollLeft + padL(), idx = 0;
+      cards.forEach(function (c, i) { if (c.offsetLeft <= x + 24) idx = i; });
+      return idx;
+    };
+    var go = function (dir) {
+      var i = Math.min(cards.length - 1, Math.max(0, current() + dir));
+      rail.scrollTo({ left: cards[i].offsetLeft - padL(), behavior: reduced ? 'auto' : 'smooth' });
+    };
+    var syncArrows = function () {
+      prev.disabled = rail.scrollLeft <= 4;
+      next.disabled = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 4;
+    };
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    rail.addEventListener('scroll', syncArrows, { passive: true });
+    window.addEventListener('resize', syncArrows);
+    syncArrows();
+  }
+})();
+</script>
+</body>
+</html>
